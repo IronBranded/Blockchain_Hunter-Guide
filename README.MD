@@ -18,8 +18,11 @@
 The guide is structured around the **FACT Attribution Framework** (Shavers, 2025) — a jurisprudence-centered methodology that explicitly separates *technical identification* ("what acted?") from *person-level attribution* ("who acted?"). This distinction is the cornerstone of legally defensible blockchain investigation.
 ---
 
-OPEN THE GUIDE
-https://ironbranded.github.io/Blockchain_Hunter-Guide/
+<h3 align="center">
+  <a href="https://ironbranded.github.io/Blockchain_Hunter-Guide/" target="_blank" rel="noopener noreferrer">
+    🟢 OPEN THE GUIDE 🟢
+  </a>
+</h3>
 ---
 
 ## Features
