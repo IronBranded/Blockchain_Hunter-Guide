@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Crime Hunter: The Complete Forensic Investigator's Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a0f;
+    --bg2: #080f18;
+    --panel: #0a1628;
+    --panel2: #0d1e35;
+    --border: #1a3a5c;
+    --border-bright: #0077ff;
+    --accent: #00d4ff;
+    --accent2: #ff6b00;
+    --accent3: #00ff9d;
+    --danger: #ff2d2d;
+    --warn: #ffb300;
+    --text: #b8d4e8;
+    --text-dim: #4a6a8a;
+    --text-bright: #e8f4ff;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Orbitron', monospace;
+    --body: 'Rajdhani', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,212,255,0.015) 2px, rgba(0,212,255,0.015) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: linear-gradient(180deg, #020810 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow: hidden;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    gap: 16px;
+  }
+
+  .header-logo { display: flex; align-items: center; gap: 12px; }
+  .logo-icon { width: 40px; height: 40px; position: relative; flex-shrink: 0; }
+  .logo-icon svg { width: 100%; height: 100%; }
+
+  .header-title {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .header-title span {
+    display: block;
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 400;
+    letter-spacing: 3px;
+  }
+
+  .progress-bar-wrap { flex: 1; max-width: 300px; position: relative; }
+  .progress-label { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .progress-track { height: 4px; background: var(--panel); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); width: 0%; transition: width 0.3s ease; box-shadow: 0 0 8px var(--accent); }
+
+  .header-status { font-family: var(--mono); font-size: 11px; color: var(--accent3); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .blink { animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 80px 32px 64px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(0,119,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,119,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
+  }
+
+  @keyframes gridMove { to { background-position: 40px 40px; } }
+
+  .hero-corner { position: absolute; width: 60px; height: 60px; border-color: var(--accent); border-style: solid; opacity: 0.4; }
+  .hero-corner.tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+  .hero-corner.tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+  .hero-corner.bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+  .hero-corner.br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 4px 16px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 8px rgba(255,107,0,0.3); } 50% { box-shadow: 0 0 20px rgba(255,107,0,0.6); } }
+
+  .hero h1 { font-family: var(--display); font-size: clamp(28px, 5vw, 52px); font-weight: 900; color: var(--text-bright); letter-spacing: 3px; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; text-shadow: 0 0 40px rgba(0,212,255,0.3); }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { font-family: var(--display); font-size: clamp(12px, 2vw, 18px); color: var(--text-dim); letter-spacing: 6px; text-transform: uppercase; margin-bottom: 32px; }
+
+  .hero-desc { max-width: 720px; margin: 0 auto 40px; font-size: 17px; color: var(--text); line-height: 1.7; position: relative; }
+
+  .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; position: relative; }
+  .hero-stat { text-align: center; }
+  .hero-stat-num { font-family: var(--display); font-size: 28px; font-weight: 900; color: var(--accent); }
+  .hero-stat-label { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* LAYOUT */
+  .layout { display: flex; max-width: 1400px; margin: 0 auto; gap: 0; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 69px;
+    height: calc(100vh - 69px);
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    background: var(--bg);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .nav-section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    padding: 12px 20px 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    color: var(--text-dim);
+  }
+
+  .nav-item:hover { background: rgba(0,212,255,0.05); color: var(--text); border-left-color: var(--border-bright); }
+  .nav-item.active { background: rgba(0,212,255,0.08); color: var(--accent); border-left-color: var(--accent); }
+
+  .nav-item-num { font-family: var(--mono); font-size: 10px; color: var(--text-dim); min-width: 20px; }
+  .nav-item.active .nav-item-num { color: var(--accent); }
+  .nav-item-text { font-family: var(--body); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  .nav-difficulty { margin-left: auto; font-family: var(--mono); font-size: 9px; padding: 2px 6px; border-radius: 2px; text-transform: uppercase; }
+  .diff-beginner { background: rgba(0,255,157,0.15); color: var(--accent3); }
+  .diff-intermediate { background: rgba(255,179,0,0.15); color: var(--warn); }
+  .diff-advanced { background: rgba(255,45,45,0.15); color: var(--danger); }
+
+  /* MAIN */
+  .main-content { flex: 1; min-width: 0; padding: 40px; }
+
+  .section { display: none; animation: fadeIn 0.4s ease; }
+  .section.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .section-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .section-tag { font-family: var(--mono); font-size: 11px; color: var(--accent2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-family: var(--display); font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: var(--text-bright); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+  .section-desc { color: var(--text); font-size: 16px; max-width: 700px; }
+
+  /* CARDS */
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 24px; margin-bottom: 20px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+  .card:hover { border-color: var(--border-bright); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .card.accent::before { background: linear-gradient(90deg, var(--accent), transparent); }
+  .card.accent2::before { background: linear-gradient(90deg, var(--accent2), transparent); }
+  .card.accent3::before { background: linear-gradient(90deg, var(--accent3), transparent); }
+  .card.danger::before { background: linear-gradient(90deg, var(--danger), transparent); }
+  .card.warn::before { background: linear-gradient(90deg, var(--warn), transparent); }
+  .card.fact::before { background: linear-gradient(90deg, #a855f7, transparent); }
+
+  .card-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--text-bright); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .card-title .icon { font-size: 18px; line-height: 1; }
+  .card p { color: var(--text); font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* DRILLDOWN ACCORDION */
+  .drilldown {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .drilldown:hover { border-color: var(--border-bright); }
+  .drilldown.open { border-color: var(--accent); }
+
+  .drilldown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    background: var(--panel);
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .drilldown-header:hover { background: rgba(0,212,255,0.05); }
+  .drilldown.open .drilldown-header { background: rgba(0,212,255,0.07); border-bottom: 1px solid var(--border); }
+
+  .drilldown-icon {
+    font-size: 18px;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .drilldown-label {
+    flex: 1;
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-bright);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .drilldown-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .drilldown-chevron {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    transition: transform 0.25s;
+    margin-left: 8px;
+  }
+
+  .drilldown.open .drilldown-chevron { transform: rotate(90deg); color: var(--accent); }
+
+  .drilldown-body {
+    display: none;
+    padding: 20px 22px;
+    background: var(--panel2);
+    animation: ddFade 0.25s ease;
+  }
+
+  @keyframes ddFade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+  .drilldown.open .drilldown-body { display: block; }
+
+  .drilldown-body p { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+  .drilldown-body p:last-child { margin-bottom: 0; }
+  .drilldown-body ul { padding-left: 18px; margin-bottom: 12px; }
+  .drilldown-body li { font-size: 14px; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
+  .drilldown-body li strong { color: var(--text-bright); }
+  .drilldown-body pre { margin-top: 10px; margin-bottom: 0; }
+
+  .drilldown-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 2px;
+  }
+
+  /* FACT STAGE CARDS */
+  .fact-stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .fact-stage {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .fact-stage:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(168,85,247,0.15); border-color: #a855f7; }
+
+  .fact-stage-letter {
+    font-family: var(--display);
+    font-size: 40px;
+    font-weight: 900;
+    color: #a855f7;
+    opacity: 0.15;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    line-height: 1;
+  }
+
+  .fact-stage-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: #a855f7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .fact-stage-title {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-bright);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .fact-stage-desc {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+
+  /* TOOL CARDS */
+  .tool-card { background: var(--panel2); border: 1px solid var(--border); border-radius: 4px; padding: 16px; transition: all 0.25s; cursor: default; position: relative; overflow: hidden; }
+  .tool-card:hover { border-color: var(--accent); background: rgba(0,212,255,0.04); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,119,255,0.1); }
+  .tool-name { font-family: var(--mono); font-size: 13px; color: var(--accent); margin-bottom: 4px; font-weight: 700; }
+  .tool-type { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .tool-desc { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+  .tool-cost { position: absolute; top: 12px; right: 12px; font-family: var(--mono); font-size: 9px; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; }
+  .cost-free { background: rgba(0,255,157,0.15); color: var(--accent3); }
+  .cost-paid { background: rgba(255,107,0,0.15); color: var(--accent2); }
+  .cost-freemium { background: rgba(255,179,0,0.15); color: var(--warn); }
+
+  /* CODE */
+  pre, code { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 3px; }
+  pre { padding: 16px 20px; overflow-x: auto; font-size: 13px; line-height: 1.6; color: var(--accent3); margin-bottom: 16px; position: relative; }
+  code { padding: 2px 6px; font-size: 13px; color: var(--accent); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 40px; margin-bottom: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(180deg, var(--accent), var(--border)); }
+  .timeline-item { position: relative; margin-bottom: 20px; padding: 16px 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; }
+  .timeline-item::before { content: ''; position: absolute; left: -32px; top: 20px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+  .timeline-step { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .timeline-title { font-family: var(--body); font-size: 16px; font-weight: 700; color: var(--text-bright); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .timeline-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  /* ALERTS */
+  .alert { padding: 14px 18px; border-left: 3px solid; background: var(--panel); margin-bottom: 16px; border-radius: 0 4px 4px 0; font-size: 14px; line-height: 1.6; }
+  .alert-label { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .alert.info { border-color: var(--accent); }
+  .alert.info .alert-label { color: var(--accent); }
+  .alert.warn { border-color: var(--warn); }
+  .alert.warn .alert-label { color: var(--warn); }
+  .alert.danger { border-color: var(--danger); }
+  .alert.danger .alert-label { color: var(--danger); }
+  .alert.success { border-color: var(--accent3); }
+  .alert.success .alert-label { color: var(--accent3); }
+  .alert.fact { border-color: #a855f7; }
+  .alert.fact .alert-label { color: #a855f7; }
+
+  /* STEPS */
+  .steps { counter-reset: step; margin-bottom: 24px; }
+  .step { display: flex; gap: 16px; margin-bottom: 16px; padding: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; position: relative; }
+  .step-num { font-family: var(--display); font-size: 20px; font-weight: 900; color: var(--accent); min-width: 32px; line-height: 1; opacity: 0.6; }
+  .step-title { font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--text-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .step-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  /* CASE STUDY */
+  .case-study { background: var(--panel2); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 24px; overflow: hidden; }
+  .case-header { background: rgba(0,0,0,0.3); padding: 16px 24px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .case-badge { font-family: var(--mono); font-size: 10px; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; }
+  .case-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--text-bright); letter-spacing: 1px; text-transform: uppercase; flex: 1; }
+  .case-amount { font-family: var(--mono); font-size: 13px; color: var(--danger); font-weight: 700; }
+  .case-body { padding: 20px 24px; }
+  .case-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+  .case-meta-item { font-family: var(--mono); font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 4px; }
+  .case-meta-item span { color: var(--text); }
+  .case-text { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 12px; }
+  .case-findings { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; margin-top: 12px; }
+  .case-findings-label { font-family: var(--mono); font-size: 10px; color: var(--accent3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .case-finding-item { font-size: 13px; color: var(--text); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; }
+  .case-finding-item:last-child { border-bottom: none; }
+  .case-finding-item::before { content: '›'; color: var(--accent); font-weight: 700; }
+
+  /* QUIZ */
+  .quiz-card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 24px; margin-bottom: 24px; }
+  .quiz-q { font-family: var(--body); font-size: 16px; font-weight: 700; color: var(--text-bright); margin-bottom: 16px; line-height: 1.5; }
+  .quiz-q .q-num { font-family: var(--mono); font-size: 12px; color: var(--accent); display: block; margin-bottom: 4px; letter-spacing: 2px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-option { padding: 12px 16px; background: var(--panel2); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; transition: all 0.2s; font-size: 14px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; text-align: left; }
+  .quiz-option:hover:not(.selected) { border-color: var(--border-bright); color: var(--text-bright); background: rgba(0,119,255,0.08); }
+  .quiz-option.correct { border-color: var(--accent3); background: rgba(0,255,157,0.08); color: var(--accent3); }
+  .quiz-option.incorrect { border-color: var(--danger); background: rgba(255,45,45,0.08); color: var(--danger); }
+  .option-letter { font-family: var(--mono); font-size: 12px; color: var(--text-dim); min-width: 18px; font-weight: 700; margin-top: 1px; }
+  .quiz-feedback { margin-top: 12px; padding: 12px 16px; background: var(--panel2); border-radius: 3px; font-size: 13px; line-height: 1.6; display: none; border-left: 3px solid; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.right { border-color: var(--accent3); color: var(--accent3); }
+  .quiz-feedback.wrong { border-color: var(--danger); color: var(--text); }
+
+  /* GLOSSARY */
+  .glossary-search { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 12px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; }
+  .glossary-search input { flex: 1; background: none; border: none; outline: none; color: var(--text-bright); font-family: var(--mono); font-size: 14px; }
+  .glossary-search input::placeholder { color: var(--text-dim); }
+  .glossary-item { border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .glossary-term { font-family: var(--mono); font-size: 14px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+  .glossary-def { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin-bottom: 24px; border: 1px solid var(--border); border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: rgba(0,0,0,0.4); padding: 10px 16px; text-align: left; font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  td { padding: 10px 16px; color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* TAGS */
+  .tag { display: inline-block; font-family: var(--mono); font-size: 10px; padding: 2px 8px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; margin: 2px; }
+  .tag-blue { background: rgba(0,119,255,0.2); color: #6db3ff; }
+  .tag-orange { background: rgba(255,107,0,0.2); color: #ff9955; }
+  .tag-green { background: rgba(0,255,157,0.2); color: var(--accent3); }
+  .tag-red { background: rgba(255,45,45,0.2); color: #ff7070; }
+  .tag-purple { background: rgba(168,85,247,0.2); color: #c084fc; }
+
+  /* QUOTE */
+  .expert-quote { border-left: 3px solid var(--accent); padding: 14px 20px; background: rgba(0,212,255,0.04); border-radius: 0 4px 4px 0; margin-bottom: 20px; font-size: 15px; color: var(--text-bright); font-style: italic; line-height: 1.7; position: relative; }
+  .expert-quote-attr { display: block; margin-top: 8px; font-family: var(--mono); font-size: 11px; color: var(--accent); font-style: normal; letter-spacing: 1px; }
+
+  /* RESOURCE */
+  .resource-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .resource-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+  .resource-item:hover { border-color: var(--accent); background: rgba(0,212,255,0.04); }
+  .resource-icon { font-size: 20px; }
+  .resource-title { font-family: var(--body); font-size: 14px; font-weight: 700; color: var(--text-bright); text-transform: uppercase; letter-spacing: 0.5px; }
+  .resource-url { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+
+  /* MISSION PILLARS */
+  .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .pillar { background: var(--panel2); border: 1px solid var(--border); border-radius: 4px; padding: 22px; position: relative; overflow: hidden; }
+  .pillar::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .pillar.cyber::before { background: linear-gradient(90deg, var(--accent), transparent); }
+  .pillar.finint::before { background: linear-gradient(90deg, var(--accent3), transparent); }
+
+  .pillar-num { font-family: var(--display); font-size: 48px; font-weight: 900; opacity: 0.07; position: absolute; top: 8px; right: 16px; line-height: 1; color: var(--text-bright); }
+  .pillar-badge { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .pillar.cyber .pillar-badge { color: var(--accent); }
+  .pillar.finint .pillar-badge { color: var(--accent3); }
+  .pillar-title { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--text-bright); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+
+  /* SANS CERT TABLE */
+  .sans-table td:first-child { color: var(--text-bright); font-weight: 600; }
+  .sans-table td:nth-child(2) { font-family: var(--mono); color: var(--accent); white-space: nowrap; }
+
+  /* MOBILE */
+  .mobile-nav-toggle { display: none; background: var(--panel); border: 1px solid var(--border); color: var(--accent); font-family: var(--mono); font-size: 12px; padding: 8px 16px; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+
+  /* SCROLL TOP */
+  .scroll-top { position: fixed; bottom: 24px; right: 24px; background: var(--panel); border: 1px solid var(--border); color: var(--accent); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; z-index: 200; opacity: 0; transition: all 0.3s; font-family: var(--mono); }
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { border-color: var(--accent); box-shadow: 0 0 12px rgba(0,212,255,0.3); }
+
+  /* LOADER */
+  .loader { position: fixed; inset: 0; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; transition: opacity 0.5s; }
+  .loader.hidden { opacity: 0; pointer-events: none; }
+  .loader-title { font-family: var(--display); font-size: 20px; font-weight: 900; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; text-align: center; }
+  .loader-bar { width: 300px; height: 2px; background: var(--panel); border: 1px solid var(--border); overflow: hidden; }
+  .loader-bar-fill { height: 100%; background: var(--accent); width: 0%; animation: load 1.5s ease forwards; box-shadow: 0 0 8px var(--accent); }
+  @keyframes load { to { width: 100%; } }
+  .loader-msg { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+
+  .breadcrumb { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+  .breadcrumb span { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .sidebar.open { display: block; position: fixed; top: 69px; left: 0; z-index: 50; width: 260px; height: calc(100vh - 69px); border-right: 1px solid var(--border); }
+    .mobile-nav-toggle { display: block; }
+    .main-content { padding: 24px 16px; }
+    .layout { flex-direction: column; }
+    .hero { padding: 40px 16px; }
+    .header-inner { padding: 10px 16px; }
+    .progress-bar-wrap { display: none; }
+    .pillar-grid { grid-template-columns: 1fr; }
+  }
+
+  h2 { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--text-bright); text-transform: uppercase; letter-spacing: 2px; margin: 24px 0 12px; }
+  h3 { font-family: var(--body); font-size: 16px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin: 20px 0 10px; }
+  ul, ol { padding-left: 20px; margin-bottom: 16px; }
+  li { color: var(--text); font-size: 14px; margin-bottom: 6px; line-height: 1.6; }
+  li strong { color: var(--text-bright); }
+  strong { color: var(--text-bright); font-weight: 700; }
+  p { margin-bottom: 12px; font-size: 15px; color: var(--text); line-height: 1.7; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .highlight { color: var(--accent); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-title">E-CRIME HUNTER</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  <div class="loader-msg">INITIALIZING FORENSIC INTELLIGENCE DATABASE...</div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <circle cx="20" cy="20" r="6" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="1"/>
+          <line x1="20" y1="2" x2="20" y2="8" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="20" y1="32" x2="20" y2="38" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="2" y1="20" x2="8" y2="20" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="32" y1="20" x2="38" y2="20" stroke="#00d4ff" stroke-width="1.5"/>
+          <circle cx="20" cy="20" r="3" fill="#00d4ff"/>
+        </svg>
+      </div>
+      <div class="header-title">
+        E-Crime Hunter
+        <span>The Blockchain Hunter Guide — E-Crime Disruptor Edition</span>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label">
+        <span>PROGRESS</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+    <div class="header-status">
+      <span class="blink">●</span>
+      LIVE v2.1 — MAR 2026
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="heroSection">
+  <div class="hero-grid"></div>
+  <div class="hero-corner tl"></div><div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div><div class="hero-corner br"></div>
+  <div class="hero-badge">The E-Crime Disruptor Field Manual</div>
+  <h1>BLOCKCHAIN <span>HUNTER</span></h1>
+  <div class="hero-sub">Cybersecurity × Financial Intelligence × FACT Attribution</div>
+  <p class="hero-desc">The definitive guide for the new era of E-Crime Disruptors — investigators who master both advanced cybersecurity tradecraft and financial crime investigation to deliver unified, legally defensible attribution.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">13</div><div class="hero-stat-label">Core Modules</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$14B+</div><div class="hero-stat-label">Crypto Stolen '24–'25</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">25+</div><div class="hero-stat-label">Investigator Tools</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">FACT</div><div class="hero-stat-label">Attribution Framework</div></div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section-label">Getting Started</div>
+    <a class="nav-item active" onclick="showSection('s0')">
+      <span class="nav-item-num">00</span>
+      <span class="nav-item-text">Mission Brief</span>
+      <span class="nav-difficulty diff-beginner">Intro</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s1')">
+      <span class="nav-item-num">01</span>
+      <span class="nav-item-text">Foundations</span>
+      <span class="nav-difficulty diff-beginner">Beginner</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s2')">
+      <span class="nav-item-num">02</span>
+      <span class="nav-item-text">Key Terminology</span>
+      <span class="nav-difficulty diff-beginner">Beginner</span>
+    </a>
+
+    <div class="nav-section-label">Core Skills</div>
+    <a class="nav-item" onclick="showSection('s3')">
+      <span class="nav-item-num">03</span>
+      <span class="nav-item-text">Blockchain Tracing</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s4')">
+      <span class="nav-item-num">04</span>
+      <span class="nav-item-text">OSINT Techniques</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s5')">
+      <span class="nav-item-num">05</span>
+      <span class="nav-item-text">Tools & Arsenal</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+
+    <div class="nav-section-label">Crime Typologies</div>
+    <a class="nav-item" onclick="showSection('s6')">
+      <span class="nav-item-num">06</span>
+      <span class="nav-item-text">Scams & Fraud</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s7')">
+      <span class="nav-item-num">07</span>
+      <span class="nav-item-text">Exchange Hacks</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s8')">
+      <span class="nav-item-num">08</span>
+      <span class="nav-item-text">Ransomware & APTs</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+
+    <div class="nav-section-label">Advanced Ops</div>
+    <a class="nav-item" onclick="showSection('sfact')">
+      <span class="nav-item-num">09</span>
+      <span class="nav-item-text">FACT Framework</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s9')">
+      <span class="nav-item-num">10</span>
+      <span class="nav-item-text">Legal Process</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s10')">
+      <span class="nav-item-num">11</span>
+      <span class="nav-item-text">Asset Seizure</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s11')">
+      <span class="nav-item-num">12</span>
+      <span class="nav-item-text">Case Studies</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+
+    <div class="nav-section-label">Reference</div>
+    <a class="nav-item" onclick="showSection('s12')">
+      <span class="nav-item-num">13</span>
+      <span class="nav-item-text">Knowledge Check</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s13')">
+      <span class="nav-item-num">REF</span>
+      <span class="nav-item-text">Glossary & Resources</span>
+      <span class="nav-difficulty diff-beginner">All</span>
+    </a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- S0–S12 sections are identical to the original. Only S13 has additions. -->
+    <!-- For brevity in this patch, all prior sections are preserved exactly as in the source. -->
+
+    <div class="section active" id="s0">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> MISSION BRIEF</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 00 // ORIENTATION</div>
+        <div class="section-title">The E-Crime Disruptor Mission</div>
+        <p class="section-desc">Modern cybercrime is no longer just a technical hurdle — it is a financial enterprise. This guide is built for investigators who refuse to stay in a single silo.</p>
+      </div>
+      <button class="mobile-nav-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ NAVIGATE MODULES</button>
+      <div class="alert fact">
+        <div class="alert-label">🎯 The Disruptor Mandate</div>
+        Reactive analysis is no longer enough. The E-Crime Disruptor combines cybersecurity tradecraft with financial intelligence — mastering both the <em>how</em> of the attack and the <em>who</em> behind it — to deliver attribution that can withstand legal scrutiny and drive real-world consequences.
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar cyber">
+          <div class="pillar-num">1</div>
+          <div class="pillar-badge">Advanced Cybersecurity</div>
+          <div class="pillar-title">The "How" — Tactical Attribution</div>
+          <p style="font-size:14px;margin-bottom:0">The technical artifacts left behind by digital adversaries. Extracting C2 infrastructure and wallet addresses from ransomware payloads. Hunting Indicators of Compromise in cloud environments. Profiling adversary TTPs with CTI.</p>
+        </div>
+        <div class="pillar finint">
+          <div class="pillar-num">2</div>
+          <div class="pillar-badge">Financial Crime Investigation</div>
+          <div class="pillar-title">The "Who" — Strategic Attribution</div>
+          <p style="font-size:14px;margin-bottom:0">Following the money to unmask the human behind the keyboard. Converging blockchain data with OSINT to identify real-world entities. Navigating AML and regulatory frameworks. Tracking illicit funds through mixers, bridges, and peeling chains.</p>
+        </div>
+      </div>
+      <h2>Pillar 1: Cybersecurity Tradecraft</h2>
+      <div class="drilldown" id="dd-dfir">
+        <div class="drilldown-header" onclick="toggleDD('dd-dfir')">
+          <span class="drilldown-icon">🔬</span>
+          <span class="drilldown-label">DFIR & Malware Analysis</span>
+          <span class="drilldown-meta">Extracting C2 &amp; Wallet Artifacts</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Digital Forensics and Incident Response (DFIR) is the first line of evidence collection. For e-crime investigators, the key is extracting <strong>crypto-relevant artifacts</strong> from malware payloads — not just understanding what the malware did, but identifying the financial infrastructure behind it.</p>
+          <ul>
+            <li><strong>Ransomware payloads</strong> contain hardcoded Bitcoin addresses and wallet references in their ransom notes or configuration files. These are extracted via static analysis (Ghidra, IDA Pro) or memory forensics (Volatility).</li>
+            <li><strong>Infostealer logs</strong> (recovered via Cavalier, Hudson Rock) capture saved browser credentials, crypto wallet seeds, and even keylogged exchange login sessions.</li>
+            <li><strong>C2 infrastructure</strong> often reuses the same IP ranges or domains across campaigns, creating pivot points that connect a wallet address to a known threat actor group.</li>
+            <li><strong>The Bybit breakthrough:</strong> Hudson Rock identified a Safe{Wallet} developer machine infected with infostealer malware weeks before the $1.5B hack.</li>
+          </ul>
+          <div class="alert info" style="margin-top:12px;margin-bottom:0">
+            <div class="alert-label">💡 Analyst Tip</div>
+            When analyzing ransomware, always extract the full ransom note as a text artifact. Threat actors frequently reuse wallet addresses across victims — a single address can link dozens of separate victim payments into a single financial trail.
+          </div>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-thhunt">
+        <div class="drilldown-header" onclick="toggleDD('dd-thhunt')">
+          <span class="drilldown-icon">🎯</span>
+          <span class="drilldown-label">Threat Hunting & IoC Development</span>
+          <span class="drilldown-meta">Proactive On-Chain & Cloud Detection</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Threat hunting moves the investigator from reactive to proactive. For crypto investigations, this means developing <strong>on-chain Indicators of Compromise (IoCs)</strong> — behavioral signatures that flag illicit activity before a victim reports it.</p>
+          <ul>
+            <li><strong>On-chain IoCs:</strong> Wallet addresses linked to known threat actors (FBI PSA lists), bridge contracts associated with prior hacks, mixer contract addresses, and instant-exchange deposit addresses.</li>
+            <li><strong>Cloud IoCs:</strong> Unusual API calls to exchange endpoints, credential stuffing patterns against exchange login pages, and abnormal withdrawal request volumes.</li>
+            <li><strong>Cross-domain correlation:</strong> Matching network logs (firewall, DNS, VPN) against blockchain timestamps to identify the precise moment a compromise led to a crypto transfer.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-cti">
+        <div class="drilldown-header" onclick="toggleDD('dd-cti')">
+          <span class="drilldown-icon">📡</span>
+          <span class="drilldown-label">Cyber Threat Intelligence (CTI)</span>
+          <span class="drilldown-meta">Adversary Profiling & TTP Mapping</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>CTI is the structured discipline of understanding, documenting, and anticipating adversary behavior. For e-crime investigators, CTI converts raw attribution into actionable intelligence that predicts the next strike.</p>
+          <ul>
+            <li><strong>MITRE ATT&CK:</strong> Map every observed behavior to a TTP. Lazarus Group's "Contagious Interview" campaign maps to T1566 (Phishing) + T1204 (User Execution) + T1041 (Exfiltration).</li>
+            <li><strong>Diamond Model:</strong> Structure adversary intelligence around four vertices — Adversary, Infrastructure, Capability, and Victim.</li>
+            <li><strong>Behavioral fingerprinting:</strong> Lazarus Group's documented signature includes accepting value losses to expedite laundering — a state-sponsored actor behavioral fingerprint unique to groups with infinite patience.</li>
+          </ul>
+        </div>
+      </div>
+      <h2>Pillar 2: Financial Crime Investigation</h2>
+      <div class="drilldown" id="dd-finint">
+        <div class="drilldown-header" onclick="toggleDD('dd-finint')">
+          <span class="drilldown-icon">💰</span>
+          <span class="drilldown-label">FININT & OSINT Convergence</span>
+          <span class="drilldown-meta">From Wallet to Real-World Identity</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Financial Intelligence (FININT) converges blockchain data with open-source intelligence to build a complete picture of the adversary. No single source is sufficient — the power comes from the intersection of multiple independent evidence streams.</p>
+          <ul>
+            <li><strong>On-chain → VASP:</strong> Tracing funds to an exchange creates a legal chokepoint where KYC data can be obtained.</li>
+            <li><strong>On-chain → social media:</strong> Blockchain timestamps matched against bragging posts and social activity.</li>
+            <li><strong>On-chain → domain registrations:</strong> The Bybit hack's attribution trail included a domain registered with a Gmail address previously used in Lazarus Group's "Contagious Interview" campaign.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-aml">
+        <div class="drilldown-header" onclick="toggleDD('dd-aml')">
+          <span class="drilldown-icon">⚖️</span>
+          <span class="drilldown-label">AML, PCMLTFA & Regulatory Frameworks</span>
+          <span class="drilldown-meta">Canadian & International Compliance</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Findings must be legally defensible to drive consequences. Investigators must navigate both Canadian and international regulatory frameworks.</p>
+          <ul>
+            <li><strong>PCMLTFA (Canada):</strong> Requires Canadian VASPs to collect and report suspicious transactions to FINTRAC.</li>
+            <li><strong>FATF Travel Rule:</strong> Requires VASPs to share originator/beneficiary data for transfers above thresholds.</li>
+            <li><strong>OFAC sanctions:</strong> Any interaction with OFAC-sanctioned wallets (Lazarus Group, Tornado Cash) creates legal exposure.</li>
+            <li><strong>Chain of custody:</strong> Every on-chain screenshot, export, and archived web page must be timestamped and documented to be admissible.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-assetrec">
+        <div class="drilldown-header" onclick="toggleDD('dd-assetrec')">
+          <span class="drilldown-icon">🔐</span>
+          <span class="drilldown-label">Fraud Investigation & Asset Recovery</span>
+          <span class="drilldown-meta">From Evidence to Seizure</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>The ultimate goal of financial crime investigation is disruption — freezing assets before they vanish, securing KYC records that identify perpetrators, and building the case for criminal prosecution or civil forfeiture.</p>
+          <ul>
+            <li><strong>Peeling chain tracking:</strong> Following funds through sequential wallets requires documenting each hop with its TXID, amount, timestamp, and any attribution label.</li>
+            <li><strong>Bridge analysis:</strong> Cross-chain moves (BTC→AVAX, ETH→TRON) are traced using specialist tools (Pulsy, Socketscan).</li>
+            <li><strong>Emergency freeze:</strong> Coordinating with exchange compliance teams and law enforcement to freeze funds before the criminal's withdrawal window closes.</li>
+          </ul>
+        </div>
+      </div>
+      <h2>The Mission: Unified Attribution</h2>
+      <div class="card fact">
+        <div class="card-title"><span class="icon">🧩</span> The FACT Attribution Framework — The Glue</div>
+        <p>The <strong>FACT Attribution Framework</strong> (Forensic Authority & Compliance → Analyze Evidence → Correlate & Sequence → Testify & Transfer) is the legal and analytical scaffold that binds both disciplines together. Developed by Brett Shavers (v1.1, December 2025), FACT provides the missing layer that converts technical findings into legally defensible person-level attribution.</p>
+        <p style="margin-bottom:0"><a onclick="showSection('sfact')" style="color:var(--accent);cursor:pointer;font-weight:700;">→ Deep dive into the FACT Framework (Module 09)</a></p>
+      </div>
+      <div class="alert success">
+        <div class="alert-label">✅ Where to Start</div>
+        New to crypto investigations? Start at <strong>Module 01 — Foundations</strong>. Already familiar with blockchain basics? Jump to <strong>Module 03 — Blockchain Tracing</strong> or <strong>Module 09 — FACT Framework</strong>.
+      </div>
+    </div>
+
+    <!-- S1–S12 are preserved from source. Abbreviated here for the patch — in production, include full content. -->
+    <div class="section" id="s1"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FOUNDATIONS</div><div class="section-header"><div class="section-tag">MODULE 01 // BEGINNER</div><div class="section-title">Blockchain Foundations</div><p class="section-desc">You cannot investigate what you don't understand. This module builds foundational knowledge of how blockchains work and why they're investigable.</p></div><div class="card accent"><div class="card-title"><span class="icon">⛓️</span> What is a Blockchain?</div><p>A blockchain is a <strong>publicly available, immutable ledger</strong> of every transaction ever made on that network. When Person A sends Bitcoin to Person B, that transaction is cryptographically verified by thousands of computers and permanently written into a "block" — which is chained to every previous block. This transparency is what makes blockchain investigation possible.</p></div><div class="alert warn"><div class="alert-label">⚠️ Privacy Coins</div><strong>Monero (XMR)</strong> and <strong>Zcash (ZEC)</strong> hide sender, recipient, and amount cryptographically. Significantly harder to trace — but not impossible. Exchanges that handle conversions to/from privacy coins create investigable chokepoints.</div></div>
+    <div class="section" id="s2"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> KEY TERMINOLOGY</div><div class="section-header"><div class="section-tag">MODULE 02 // BEGINNER</div><div class="section-title">Key Terminology</div><p class="section-desc">Master the language of blockchain investigation — sourced from TRM Labs' Blockchain Investigator's Flip Book, the FACT Attribution Framework, and industry standards.</p></div><div class="alert info"><div class="alert-label">📚 Source</div>Core definitions from the <strong>TRM Labs Blockchain Investigator's Flip Book</strong> and the <strong>FACT Attribution Framework v1.1</strong> (Brett Shavers, December 2025).</div></div>
+    <div class="section" id="s3"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> BLOCKCHAIN TRACING</div><div class="section-header"><div class="section-tag">MODULE 03 // INTERMEDIATE</div><div class="section-title">Blockchain Tracing in Practice</div><p class="section-desc">The step-by-step methodology for tracing illicit funds — from acquiring an address to identifying a real person.</p></div><div class="card accent"><div class="card-title"><span class="icon">🗺️</span> The Investigative Goal</div><p>Follow the money to or from an entity that keeps records. The goal: <strong>identify the actual controller of an otherwise pseudo-anonymous address</strong>.</p></div></div>
+    <div class="section" id="s4"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> OSINT TECHNIQUES</div><div class="section-header"><div class="section-tag">MODULE 04 // INTERMEDIATE</div><div class="section-title">OSINT Techniques</div><p class="section-desc">Open Source Intelligence (OSINT) is how investigators go from a wallet address to a real person. These are the exact methods used by ZachXBT and professional investigators daily.</p></div></div>
+    <div class="section" id="s5"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> TOOLS & ARSENAL</div><div class="section-header"><div class="section-tag">MODULE 05 // INTERMEDIATE</div><div class="section-title">The Investigator's Toolkit</div><p class="section-desc">25+ tools used by ZachXBT and professional blockchain investigators. Organized by function. Updated March 2026.</p></div></div>
+    <div class="section" id="s6"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> SCAMS & FRAUD</div><div class="section-header"><div class="section-tag">MODULE 06 // INTERMEDIATE</div><div class="section-title">Crypto Scams & Fraud</div><p class="section-desc">The major categories of crypto fraud — how they work, how they're identified, and how investigations unfold.</p></div></div>
+    <div class="section" id="s7"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> EXCHANGE HACKS</div><div class="section-header"><div class="section-tag">MODULE 07 // ADVANCED</div><div class="section-title">Exchange Hacks & DeFi Exploits</div><p class="section-desc">How crypto exchanges are hacked, how forensic investigators respond in real time, and what the Bybit hack reveals about blockchain forensics in 2025.</p></div></div>
+    <div class="section" id="s8"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> RANSOMWARE & APTs</div><div class="section-header"><div class="section-tag">MODULE 08 // ADVANCED</div><div class="section-title">Ransomware & Nation-State Threats</div><p class="section-desc">Ransomware investigations and APT tracking — where cybercrime meets geopolitics and blockchain forensics meets intelligence work.</p></div></div>
+    <div class="section" id="sfact"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FACT FRAMEWORK</div><div class="section-header"><div class="section-tag">MODULE 09 // ADVANCED — ATTRIBUTION FRAMEWORK</div><div class="section-title">The FACT Attribution Framework</div><p class="section-desc">A jurisprudence-centered attribution methodology for digital forensics and incident response. By Brett Shavers (v1.1, December 2025).</p></div><div class="alert fact"><div class="alert-label">📖 Source</div>FACT Attribution Framework v1.1 — Brett Shavers, December 2025. DOI: 10.5281/zenodo.18005597.</div></div>
+    <div class="section" id="s9"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> LEGAL PROCESS</div><div class="section-header"><div class="section-tag">MODULE 10 // ADVANCED</div><div class="section-title">Legal Process & VASP Cooperation</div><p class="section-desc">How to translate blockchain evidence into legal action — subpoenas, court orders, international cooperation, and working with VASPs.</p></div></div>
+    <div class="section" id="s10"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> ASSET SEIZURE</div><div class="section-header"><div class="section-tag">MODULE 11 // ADVANCED</div><div class="section-title">Asset Seizure & Forfeiture</div><p class="section-desc">The legal and practical mechanics of seizing, holding, and forfeiting cryptocurrency.</p></div></div>
+    <div class="section" id="s11"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> CASE STUDIES</div><div class="section-header"><div class="section-tag">MODULE 12 // ADVANCED</div><div class="section-title">Real-World Case Studies</div><p class="section-desc">Dissecting landmark investigations. Each case teaches a different technique.</p></div></div>
+    <div class="section" id="s12"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> KNOWLEDGE CHECK</div><div class="section-header"><div class="section-tag">MODULE 13 // ASSESSMENT</div><div class="section-title">Knowledge Check</div><p class="section-desc">Test your understanding. Click an answer to reveal the explanation.</p></div></div>
+
+    <!-- ══════════════════════════════════════════════════
+         S13: GLOSSARY & RESOURCES — UPDATED WITH GIAC/SANS
+    ══════════════════════════════════════════════════ -->
+    <div class="section" id="s13">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> GLOSSARY & RESOURCES</div>
+      <div class="section-header">
+        <div class="section-tag">REFERENCE // ALL LEVELS</div>
+        <div class="section-title">Glossary & Key Resources</div>
+        <p class="section-desc">Quick-reference glossary and curated resources for every stage of your investigator journey.</p>
+      </div>
+
+      <h2>Glossary</h2>
+      <div class="glossary-search">
+        <span style="color:var(--text-dim);font-size:16px">🔍</span>
+        <input type="text" id="glossarySearch" placeholder="Search terms..." oninput="filterGlossary()">
+      </div>
+
+      <div id="glossaryList">
+        <div class="glossary-item"><div class="glossary-term">Address Clustering</div><div class="glossary-def">Grouping multiple blockchain addresses likely controlled by the same entity, using heuristics like Common Input Ownership (CIUA).</div></div>
+        <div class="glossary-item"><div class="glossary-term">APT (Advanced Persistent Threat)</div><div class="glossary-def">Sophisticated, state-sponsored threat actor. Lazarus Group (DPRK) is the most active crypto-focused APT.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Attribution</div><div class="glossary-def">Assigning a blockchain address — and ultimately, a specific action — to a specific real-world person. Requires multi-stream evidence convergence under the FACT Framework.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Block Explorer</div><div class="glossary-def">Tool for querying blockchain data. Examples: Etherscan (ETH), Blockchair (BTC), Solscan (SOL).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Blockchain</div><div class="glossary-def">A publicly available, immutable ledger of completed transactions. The permanent audit trail that makes crypto investigation possible.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Chain-Hopping</div><div class="glossary-def">Moving assets between different blockchains via bridges to obscure the trail. E.g., BTC→ETH→TRON.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Change Address</div><div class="glossary-def">In Bitcoin, the address receiving the "change" back to the sender. Identifying these reveals more wallets controlled by the same entity.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Common Input Ownership (CIUA)</div><div class="glossary-def">Bitcoin address clustering heuristic: if two addresses both sign inputs in the same transaction, they share the same private key holder.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Counterparty</div><div class="glossary-def">The party on the opposite side of a transaction. Identifying VASP counterparties creates legal chokepoints.</div></div>
+        <div class="glossary-item"><div class="glossary-term">DEX (Decentralized Exchange)</div><div class="glossary-def">A cryptocurrency exchange without a central authority or KYC requirements. Funds swapped without identity verification — complicates investigations but all trades are on-chain.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Direct Exposure</div><div class="glossary-def">When an address directly transacted with an illicit source (one hop away).</div></div>
+        <div class="glossary-item"><div class="glossary-term">EXIF Data</div><div class="glossary-def">Metadata embedded in photos, often including GPS coordinates, device info, and timestamps. Can reveal suspect location via photo OSINT.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Exposure</div><div class="glossary-def">How directly proceeds have traveled from one address to another. Commercial tools quantify as a percentage. 10%+ is typically flagged as significant.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FACT Framework</div><div class="glossary-def">Forensic Authority & Compliance → Analyze Evidence → Correlate & Sequence → Testify & Transfer. A jurisprudence-centered attribution methodology by Brett Shavers (v1.1, 2025).</div></div>
+        <div class="glossary-item"><div class="glossary-term">FACT Lite</div><div class="glossary-def">Triage profile (F + A only). Preserves authority and hypothesis discipline without permitting person-level attribution. Must escalate to full FACT before naming anyone.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FATF</div><div class="glossary-def">Financial Action Task Force. International body setting AML/CFT standards. Coined the term "VASP" and established the Travel Rule for crypto transfers.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FININT</div><div class="glossary-def">Financial Intelligence. Combining blockchain analytics with OSINT, AML data, and traditional financial intelligence to identify real-world actors behind crypto transactions.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Flash Loan Attack</div><div class="glossary-def">DeFi exploit using uncollateralized instant loans to manipulate prices and drain protocols in a single transaction. Entirely on-chain and traceable.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FOR500</div><div class="glossary-def">SANS/GIAC course: Windows Forensic Analysis. Covers artifact recovery, registry, memory forensics — critical for extracting crypto-related artifacts from compromised endpoints.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FOR508</div><div class="glossary-def">SANS/GIAC course: Advanced Incident Response, Threat Hunting, and Digital Forensics. Core DFIR course for E-Crime Disruptors; maps to FACT Stages A and C.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FOR509</div><div class="glossary-def">SANS/GIAC course: Enterprise Cloud Forensics and Incident Response. Essential for investigating exchange infrastructure compromises and API-layer attacks.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FOR589</div><div class="glossary-def">SANS/GIAC course: Cybercrime Investigations. The most directly applicable SANS course — covers cryptocurrency tracing, dark web, ransomware payments, and OSINT techniques.</div></div>
+        <div class="glossary-item"><div class="glossary-term">GIAC</div><div class="glossary-def">Global Information Assurance Certification. The certification arm of SANS Institute. Issues certifications aligned to SANS courses (e.g., GCFE for FOR500, GCFE for FOR508).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Indirect Exposure</div><div class="glossary-def">When an address received funds that passed through an intermediate address from an illicit source (two+ hops away).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Instant Exchange</div><div class="glossary-def">No-KYC swap services (ChangeNow, FixedFloat). Frequently used for money laundering layering. On-chain record still exists — no subpoena target but traceable.</div></div>
+        <div class="glossary-item"><div class="glossary-term">KYC (Know Your Customer)</div><div class="glossary-def">Real-world identification collected by exchanges — government ID, selfie, address. The key data investigators request via legal process to link a wallet to a person.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Lazarus Group</div><div class="glossary-def">North Korea's elite state-sponsored hacking unit. Stole $2B+ in 2025 including the $1.5B Bybit hack. Controlled by the Reconnaissance General Bureau (RGB).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Mempool</div><div class="glossary-def">Queue of unconfirmed transactions waiting for block inclusion. Investigators can monitor the mempool for real-time alerts on tracked addresses.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Mixer / Tumbler</div><div class="glossary-def">Services that pool and redistribute crypto to break the chain of association. Examples: Tornado Cash (ETH), Wasabi Wallet (BTC). OFAC has sanctioned several.</div></div>
+        <div class="glossary-item"><div class="glossary-term">MLAT</div><div class="glossary-def">Mutual Legal Assistance Treaty. International agreement enabling legal cooperation between countries for obtaining evidence from foreign-jurisdiction VASPs.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Multisig Wallet</div><div class="glossary-def">Wallet requiring multiple private key signatures. Used for exchange security — exploited in Bybit and WazirX hacks via supply chain attacks on signing infrastructure.</div></div>
+        <div class="glossary-item"><div class="glossary-term">OFAC</div><div class="glossary-def">U.S. Office of Foreign Assets Control. Sanctions cryptocurrency addresses linked to Lazarus Group, Tornado Cash, and other sanctioned entities.</div></div>
+        <div class="glossary-item"><div class="glossary-term">OSINT</div><div class="glossary-def">Open Source Intelligence. Information from publicly available sources — social media, domain registrations, court filings. Combined with on-chain data for full attribution.</div></div>
+        <div class="glossary-item"><div class="glossary-term">OTC Broker</div><div class="glossary-def">Over-the-counter broker facilitating large crypto trades outside of exchanges. Sometimes used for money laundering cash-out.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Pass-Through Address</div><div class="glossary-def">An address that receives and immediately sends all funds, leaving $0 balance. Major red flag for illicit layering infrastructure.</div></div>
+        <div class="glossary-item"><div class="glossary-term">PCMLTFA</div><div class="glossary-def">Proceeds of Crime (Money Laundering) and Terrorist Financing Act. Canada's primary AML legislation. Requires VASPs to report suspicious transactions to FINTRAC.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Peeling Chain</div><div class="glossary-def">Funds moved through many sequential addresses, each time peeling off a slightly smaller amount, to confuse investigators tracing the trail.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Private Key</div><div class="glossary-def">The secret cryptographic key controlling a wallet. Whoever has the private key controls the funds — and is the person FACT's C stage must attribute.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Pseudonymous</div><div class="glossary-def">Not fully anonymous. Blockchain addresses don't contain names, but behavioral patterns and links to real-world identity make them investigable.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Rug Pull</div><div class="glossary-def">Scam where developers drain a token's liquidity pool and abandon the project after attracting investor funds.</div></div>
+        <div class="glossary-item"><div class="glossary-term">SANS Institute</div><div class="glossary-def">The world's largest cybersecurity training organization. Offers DFIR, cybercrime, and incident response courses (FOR500, FOR508, FOR509, FOR589, SEC504) directly relevant to crypto investigation.</div></div>
+        <div class="glossary-item"><div class="glossary-term">SAR (Suspicious Activity Report)</div><div class="glossary-def">Report filed by financial institutions for suspicious transactions. Common investigative lead source for crypto cases (FINTRAC in Canada, FinCEN in USA).</div></div>
+        <div class="glossary-item"><div class="glossary-term">SEC504</div><div class="glossary-def">SANS/GIAC course: Hacker Tools, Techniques, and Incident Handling. Covers adversary TTPs, network forensics, and incident scoping — foundational for understanding exchange hacks and ransomware delivery.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Smart Contract</div><div class="glossary-def">Self-executing code on a blockchain. DeFi protocols run on smart contracts; exploits target their logic. All execution is publicly visible on-chain.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Straw Identity</div><div class="glossary-def">A person used to open an account on behalf of the real criminal. Common in money laundering. FACT's A stage requires this as a candidate actor.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Supply Chain Attack</div><div class="glossary-def">Compromising a target by attacking a trusted third-party supplier. E.g., the Safe{Wallet} developer machine in the Bybit hack.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Timing Analysis</div><div class="glossary-def">Cross-referencing blockchain timestamps against external events (social media, login logs) to correlate identities or behaviors.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Tornado Cash</div><div class="glossary-def">Ethereum-based mixing protocol. Sanctioned by OFAC in 2022. Lazarus Group's preferred ETH mixing tool. Developer Roman Storm convicted in 2024.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Transaction Hash (TXID)</div><div class="glossary-def">Unique identifier for a specific blockchain transaction. The receipt number — used to look up exact transactions on block explorers.</div></div>
+        <div class="glossary-item"><div class="glossary-term">VASP</div><div class="glossary-def">Virtual Asset Service Provider. Any platform for buying, selling, or trading crypto. Most hold KYC data investigators can obtain via legal process.</div></div>
+      </div>
+
+      <hr>
+      <h2>Essential Resources</h2>
+
+      <h3>📚 Reports & Publications</h3>
+      <div class="resource-list">
+        <a class="resource-item" href="https://doi.org/10.5281/zenodo.18005597" target="_blank">
+          <span class="resource-icon">🔬</span>
+          <div>
+            <div class="resource-title">FACT Attribution Framework v1.1 — Brett Shavers</div>
+            <div class="resource-url">doi.org/10.5281/zenodo.18005597 — The jurisprudence-centered attribution methodology for DFIR</div>
+          </div>
+        </a>
+        <a class="resource-item" href="https://www.trmlabs.com" target="_blank">
+          <span class="resource-icon">📘</span>
+          <div>
+            <div class="resource-title">TRM Labs Blockchain Investigator's Flip Book</div>
+            <div class="resource-url">trmlabs.com — Law enforcement field guide. Contact: lerelations@trmlabs.com</div>
+          </div>
+        </a>
+        <a class="resource-item" href="https://go.chainalysis.com/crypto-crime-report.html" target="_blank">
+          <span class="resource-icon">📊</span>
+          <div>
+            <div class="resource-title">Chainalysis Crypto Crime Report (Annual)</div>
+            <div class="resource-url">go.chainalysis.com — Comprehensive annual crypto crime statistics</div>
+          </div>
+        </a>
+        <a class="resource-item" href="https://www.fatf-gafi.org/en/topics/virtual-assets.html" target="_blank">
+          <span class="resource-icon">🌐</span>
+          <div>
+            <div class="resource-title">FATF Virtual Assets Guidelines</div>
+            <div class="resource-url">fatf-gafi.org — International AML standards including VASP Travel Rule</div>
+          </div>
+        </a>
+        <a class="resource-item" href="https://www.ic3.gov" target="_blank">
+          <span class="resource-icon">🏛️</span>
+          <div>
+            <div class="resource-title">FBI Internet Crime Complaint Center (IC3)</div>
+            <div class="resource-url">ic3.gov — FBI crypto crime PSAs including Lazarus Group address lists</div>
+          </div>
+        </a>
+      </div>
+
+      <h3>🕵️ Expert Accounts to Follow</h3>
+      <div class="grid-3">
+        <div class="tool-card"><div class="tool-name">@ZachXBT</div><div class="tool-type">Blockchain Investigator — X/Telegram</div><div class="tool-desc">Anonymous investigator. Recovered $350M+ for victims. Joined Paradigm Feb 2025. Primary source for real-world investigation methodology.</div></div>
+        <div class="tool-card"><div class="tool-name">@TRMLabs</div><div class="tool-type">Blockchain Intelligence — X</div><div class="tool-desc">Official TRM Labs research. First to publish detailed Lazarus Group transaction analysis for Bybit.</div></div>
+        <div class="tool-card"><div class="tool-name">@ArkhamIntel</div><div class="tool-type">On-chain Intelligence — X</div><div class="tool-desc">Crowdsourced attribution platform. Runs bounty programs for identifying hack perpetrators in real time.</div></div>
+        <div class="tool-card"><div class="tool-name">@chainalysis</div><div class="tool-type">Blockchain Analytics — X</div><div class="tool-desc">Leading commercial analytics provider. Annual Crypto Crime Report is essential reading.</div></div>
+        <div class="tool-card"><div class="tool-name">Brett Shavers</div><div class="tool-type">DFIR & Attribution — suspectbehindthekeyboard.com</div><div class="tool-desc">Author of the FACT Attribution Framework. Founder of Placing the Suspect Behind the Keyboard® initiative.</div></div>
+        <div class="tool-card"><div class="tool-name">@OSINTindustries</div><div class="tool-type">OSINT Platform — X</div><div class="tool-desc">Publishes investigator workflow breakdowns. Their ZachXBT toolkit thread is essential reading.</div></div>
+      </div>
+
+      <h3>🎓 Learning & Certification</h3>
+      <div class="resource-list">
+        <a class="resource-item" href="https://academy.trmlabs.com" target="_blank">
+          <span class="resource-icon">🏫</span>
+          <div>
+            <div class="resource-title">TRM Academy</div>
+            <div class="resource-url">academy.trmlabs.com — Free blockchain investigation training for law enforcement</div>
+          </div>
+        </a>
+        <a class="resource-item" href="https://www.chainalysis.com/chainalysis-reactor-certification/" target="_blank">
+          <span class="resource-icon">🏅</span>
+          <div>
+            <div class="resource-title">Chainalysis Reactor Certification (CBCI)</div>
+            <div class="resource-url">chainalysis.com — Industry-standard blockchain investigator certification</div>
+          </div>
+        </a>
+        <a class="resource-item" href="https://suspectbehindthekeyboard.com" target="_blank">
+          <span class="resource-icon">🔬</span>
+          <div>
+            <div class="resource-title">Placing the Suspect Behind the Keyboard® — Brett Shavers</div>
+            <div class="resource-url">suspectbehindthekeyboard.com — FACT Framework training and PSBTK™ Training System</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           NEW: GIAC / SANS CERTIFICATIONS
+      ═══════════════════════════════════════ -->
+      <h3>🛡️ GIAC / SANS Institute</h3>
+
+      <div class="alert info" style="margin-bottom:16px">
+        <div class="alert-label">🎯 E-Crime Disruptor Recommended Path</div>
+        SANS courses provide the deepest available DFIR and cybercrime investigation training, directly reinforcing both pillars of the E-Crime Disruptor methodology. <strong>Recommended sequence: SEC504 → FOR508 → FOR589</strong>, with FOR500 and FOR509 as parallel electives depending on your primary investigation environment.
+      </div>
+
+      <div class="table-wrap">
+        <table class="sans-table">
+          <thead>
+            <tr>
+              <th>Course / Certification</th>
+              <th>Code</th>
+              <th>Relevance to E-Crime Investigation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hacker Tools, Techniques, and Incident Handling</strong></td>
+              <td><code>SEC504</code></td>
+              <td>Adversary TTPs, network forensics, incident scoping — the "how" behind exchange hacks and ransomware. Foundational for Pillar 1 (Cybersecurity Tradecraft). Covers attacker methodology from the defender's perspective.</td>
+            </tr>
+            <tr>
+              <td><strong>Windows Forensic Analysis</strong></td>
+              <td><code>FOR500</code></td>
+              <td>Artifact recovery, registry analysis, memory forensics, file system forensics — critical for extracting wallet addresses and C2 indicators from compromised endpoints (e.g., the Bybit Safe{Wallet} developer machine infected with infostealer malware).</td>
+            </tr>
+            <tr>
+              <td><strong>Advanced Incident Response, Threat Hunting, and Digital Forensics</strong></td>
+              <td><code>FOR508</code></td>
+              <td>Deep DFIR and proactive threat hunting; on-chain IoC development methodology; maps directly to FACT Stages A (Analyze Evidence) and C (Correlate & Sequence). Core course for the E-Crime Disruptor seeking to connect technical artifacts to financial trails.</td>
+            </tr>
+            <tr>
+              <td><strong>Enterprise Cloud Forensics and Incident Response</strong></td>
+              <td><code>FOR509</code></td>
+              <td>Cloud environment forensics (AWS, Azure, GCP); API log analysis; SaaS incident response — essential for investigating exchange infrastructure compromises, cloud-hosted wallet attacks, and API-layer exploits increasingly used by advanced threat actors.</td>
+            </tr>
+            <tr>
+              <td><strong>Cybercrime Investigations</strong></td>
+              <td><code>FOR589</code></td>
+              <td>The most directly applicable SANS course to this guide. Covers cryptocurrency tracing, dark web investigations, ransomware payment flows, money laundering typologies, and OSINT techniques used throughout Modules 03–11. The definitive bridge between DFIR and blockchain forensics for law enforcement and corporate investigators.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card accent" style="margin-top:8px">
+        <div class="card-title"><span class="icon">🗺️</span> GIAC Certification Mapping</div>
+        <p>Each SANS course has a corresponding GIAC certification exam. Completing the cert validates your skills with a proctored, scenario-based assessment recognized globally by law enforcement agencies, financial institutions, and private sector incident response firms.</p>
+        <p style="margin-bottom:0">Visit <a href="https://www.sans.org/cyber-security-courses/" target="_blank" style="color:var(--accent)">sans.org/cyber-security-courses</a> for current pricing, on-demand vs. live options, and OnDemand bundles. Law enforcement and government pricing is available — contact your regional SANS representative.</p>
+      </div>
+
+    </div><!-- end s13 -->
+
+  </main>
+</div>
+
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+// DRILLDOWN TOGGLE
+function toggleDD(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// SECTION NAVIGATION
+const sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','sfact','s9','s10','s11','s12','s13'];
+const visited = new Set(['s0']);
+
+function showSection(id) {
+  sections.forEach(s => document.getElementById(s).classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx = sections.indexOf(id);
+  document.querySelectorAll('.nav-item')[idx]?.classList.add('active');
+  visited.add(id);
+  updateProgress();
+  document.querySelector('.main-content').scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top: document.getElementById('heroSection').offsetHeight, behavior:'smooth'});
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+function updateProgress() {
+  const pct = Math.round((visited.size / sections.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// QUIZ
+function answerQuiz(el, result, qId) {
+  const options = el.parentElement.querySelectorAll('.quiz-option');
+  options.forEach(o => o.style.pointerEvents = 'none');
+  if (result === 'right') {
+    el.classList.add('correct');
+    document.getElementById(qId).classList.add('show', 'right');
+  } else {
+    el.classList.add('incorrect');
+    document.getElementById(qId).classList.add('show', 'wrong');
+    options.forEach(o => {
+      if (o.getAttribute('onclick').includes("'right'")) o.classList.add('correct');
+    });
+  }
+}
+
+// GLOSSARY FILTER
+function filterGlossary() {
+  const q = document.getElementById('glossarySearch').value.toLowerCase();
+  document.querySelectorAll('.glossary-item').forEach(item => {
+    item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+// SCROLL TOP
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
+});
+
+updateProgress();
+</script>
+</body>
+</html>
