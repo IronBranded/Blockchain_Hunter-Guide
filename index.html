@@ -864,20 +864,991 @@
       </div>
     </div>
 
-    <!-- S1–S12 are preserved from source. Abbreviated here for the patch — in production, include full content. -->
-    <div class="section" id="s1"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FOUNDATIONS</div><div class="section-header"><div class="section-tag">MODULE 01 // BEGINNER</div><div class="section-title">Blockchain Foundations</div><p class="section-desc">You cannot investigate what you don't understand. This module builds foundational knowledge of how blockchains work and why they're investigable.</p></div><div class="card accent"><div class="card-title"><span class="icon">⛓️</span> What is a Blockchain?</div><p>A blockchain is a <strong>publicly available, immutable ledger</strong> of every transaction ever made on that network. When Person A sends Bitcoin to Person B, that transaction is cryptographically verified by thousands of computers and permanently written into a "block" — which is chained to every previous block. This transparency is what makes blockchain investigation possible.</p></div><div class="alert warn"><div class="alert-label">⚠️ Privacy Coins</div><strong>Monero (XMR)</strong> and <strong>Zcash (ZEC)</strong> hide sender, recipient, and amount cryptographically. Significantly harder to trace — but not impossible. Exchanges that handle conversions to/from privacy coins create investigable chokepoints.</div></div>
-    <div class="section" id="s2"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> KEY TERMINOLOGY</div><div class="section-header"><div class="section-tag">MODULE 02 // BEGINNER</div><div class="section-title">Key Terminology</div><p class="section-desc">Master the language of blockchain investigation — sourced from TRM Labs' Blockchain Investigator's Flip Book, the FACT Attribution Framework, and industry standards.</p></div><div class="alert info"><div class="alert-label">📚 Source</div>Core definitions from the <strong>TRM Labs Blockchain Investigator's Flip Book</strong> and the <strong>FACT Attribution Framework v1.1</strong> (Brett Shavers, December 2025).</div></div>
-    <div class="section" id="s3"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> BLOCKCHAIN TRACING</div><div class="section-header"><div class="section-tag">MODULE 03 // INTERMEDIATE</div><div class="section-title">Blockchain Tracing in Practice</div><p class="section-desc">The step-by-step methodology for tracing illicit funds — from acquiring an address to identifying a real person.</p></div><div class="card accent"><div class="card-title"><span class="icon">🗺️</span> The Investigative Goal</div><p>Follow the money to or from an entity that keeps records. The goal: <strong>identify the actual controller of an otherwise pseudo-anonymous address</strong>.</p></div></div>
-    <div class="section" id="s4"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> OSINT TECHNIQUES</div><div class="section-header"><div class="section-tag">MODULE 04 // INTERMEDIATE</div><div class="section-title">OSINT Techniques</div><p class="section-desc">Open Source Intelligence (OSINT) is how investigators go from a wallet address to a real person. These are the exact methods used by ZachXBT and professional investigators daily.</p></div></div>
-    <div class="section" id="s5"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> TOOLS & ARSENAL</div><div class="section-header"><div class="section-tag">MODULE 05 // INTERMEDIATE</div><div class="section-title">The Investigator's Toolkit</div><p class="section-desc">25+ tools used by ZachXBT and professional blockchain investigators. Organized by function. Updated March 2026.</p></div></div>
-    <div class="section" id="s6"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> SCAMS & FRAUD</div><div class="section-header"><div class="section-tag">MODULE 06 // INTERMEDIATE</div><div class="section-title">Crypto Scams & Fraud</div><p class="section-desc">The major categories of crypto fraud — how they work, how they're identified, and how investigations unfold.</p></div></div>
-    <div class="section" id="s7"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> EXCHANGE HACKS</div><div class="section-header"><div class="section-tag">MODULE 07 // ADVANCED</div><div class="section-title">Exchange Hacks & DeFi Exploits</div><p class="section-desc">How crypto exchanges are hacked, how forensic investigators respond in real time, and what the Bybit hack reveals about blockchain forensics in 2025.</p></div></div>
-    <div class="section" id="s8"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> RANSOMWARE & APTs</div><div class="section-header"><div class="section-tag">MODULE 08 // ADVANCED</div><div class="section-title">Ransomware & Nation-State Threats</div><p class="section-desc">Ransomware investigations and APT tracking — where cybercrime meets geopolitics and blockchain forensics meets intelligence work.</p></div></div>
-    <div class="section" id="sfact"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FACT FRAMEWORK</div><div class="section-header"><div class="section-tag">MODULE 09 // ADVANCED — ATTRIBUTION FRAMEWORK</div><div class="section-title">The FACT Attribution Framework</div><p class="section-desc">A jurisprudence-centered attribution methodology for digital forensics and incident response. By Brett Shavers (v1.1, December 2025).</p></div><div class="alert fact"><div class="alert-label">📖 Source</div>FACT Attribution Framework v1.1 — Brett Shavers, December 2025. DOI: 10.5281/zenodo.18005597.</div></div>
-    <div class="section" id="s9"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> LEGAL PROCESS</div><div class="section-header"><div class="section-tag">MODULE 10 // ADVANCED</div><div class="section-title">Legal Process & VASP Cooperation</div><p class="section-desc">How to translate blockchain evidence into legal action — subpoenas, court orders, international cooperation, and working with VASPs.</p></div></div>
-    <div class="section" id="s10"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> ASSET SEIZURE</div><div class="section-header"><div class="section-tag">MODULE 11 // ADVANCED</div><div class="section-title">Asset Seizure & Forfeiture</div><p class="section-desc">The legal and practical mechanics of seizing, holding, and forfeiting cryptocurrency.</p></div></div>
-    <div class="section" id="s11"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> CASE STUDIES</div><div class="section-header"><div class="section-tag">MODULE 12 // ADVANCED</div><div class="section-title">Real-World Case Studies</div><p class="section-desc">Dissecting landmark investigations. Each case teaches a different technique.</p></div></div>
-    <div class="section" id="s12"><div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> KNOWLEDGE CHECK</div><div class="section-header"><div class="section-tag">MODULE 13 // ASSESSMENT</div><div class="section-title">Knowledge Check</div><p class="section-desc">Test your understanding. Click an answer to reveal the explanation.</p></div></div>
+    <!-- ══════════════════════════════════════════════════
+         S1: FOUNDATIONS
+    ══════════════════════════════════════════════════ -->
+    <div class="section" id="s1">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FOUNDATIONS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 01 // BEGINNER</div>
+        <div class="section-title">Blockchain Foundations</div>
+        <p class="section-desc">You cannot investigate what you don't understand. This module builds foundational knowledge of how blockchains work and why they're investigable.</p>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title"><span class="icon">⛓️</span> What is a Blockchain?</div>
+        <p>A blockchain is a <strong>publicly available, immutable ledger</strong> of every transaction ever made on that network. Think of it like a global spreadsheet anyone can read, but no one can delete rows from.</p>
+        <p>When Person A sends Bitcoin to Person B, that transaction is cryptographically verified by thousands of computers and permanently written into a "block" — which is chained to every previous block. This transparency is what makes blockchain investigation possible. Unlike traditional financial crime where investigators need warrants to access bank records, on-chain data is <strong>publicly visible to everyone</strong>.</p>
+      </div>
+
+      <h2>How Transactions Work</h2>
+      <p style="margin-bottom:16px;color:var(--text-dim);font-family:var(--mono);font-size:12px;letter-spacing:1px;">CLICK EACH STEP TO EXPAND</p>
+
+      <div class="drilldown" id="dd-tx1">
+        <div class="drilldown-header" onclick="toggleDD('dd-tx1')">
+          <span class="drilldown-icon">🔑</span>
+          <span class="drilldown-label">Step 1 — Wallet Creation</span>
+          <span class="drilldown-meta">Public Key / Private Key</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>A user creates a crypto wallet, which generates a <strong>private key</strong> (a secret cryptographic password) and a <strong>public address</strong> (like a bank account number). The address is pseudonymous — it doesn't contain the user's name, but it is permanently traceable on the blockchain.</p>
+          <p>Whoever controls the private key controls the funds. This is why investigators focus on identifying the <em>controller</em> of an address, not just the address itself — the private key may be held by a different person than the one named in KYC records.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-tx2">
+        <div class="drilldown-header" onclick="toggleDD('dd-tx2')">
+          <span class="drilldown-icon">📡</span>
+          <span class="drilldown-label">Step 2 — Transaction Broadcast</span>
+          <span class="drilldown-meta">Signed & Submitted to Network</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>When sending crypto, the sender broadcasts a signed transaction to the network: <em>"I'm sending 0.5 BTC from address <code>1ABC…</code> to address <code>3XYZ…</code>."</em> This is signed with the private key, cryptographically proving the sender controls the funds.</p>
+          <p>This signature is the on-chain equivalent of a handwritten signature on a bank transfer — and it cannot be forged. For investigators, this means every transaction is authenticated evidence of the controller's intent.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-tx3">
+        <div class="drilldown-header" onclick="toggleDD('dd-tx3')">
+          <span class="drilldown-icon">✅</span>
+          <span class="drilldown-label">Steps 3–5 — Verification, Confirmation & Public Record</span>
+          <span class="drilldown-meta">Immutable & Permanent</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Network nodes verify the transaction is valid (the sender has the funds, the signature is correct) and add it to the mempool (pending queue). Miners or validators bundle pending transactions into a block and add it to the chain.</p>
+          <p>On Bitcoin, this takes ~10 minutes. On Ethereum, ~12 seconds. <strong>Once confirmed, the transaction is permanent and irreversible</strong> — a core principle investigators rely on. The transaction is now visible to anyone using a block explorer: sender address, recipient address, amount, timestamp, and transaction hash (ID).</p>
+        </div>
+      </div>
+
+      <h2>Major Blockchains You'll Investigate</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Blockchain</th><th>Currency</th><th>Address Format</th><th>Explorer</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Bitcoin</strong></td><td>BTC</td><td>27–34 chars, starts 1, 3, or bc1</td><td>Blockchair, Blockchain.info</td><td>Most common; used in ransomware</td></tr>
+            <tr><td><strong>Ethereum</strong></td><td>ETH</td><td>42 chars, starts 0x</td><td>Etherscan</td><td>Smart contracts, DeFi, ERC-20 tokens</td></tr>
+            <tr><td><strong>Tron</strong></td><td>TRX/USDT</td><td>34 chars, starts T</td><td>Tronscan</td><td>Popular for USDT money laundering</td></tr>
+            <tr><td><strong>Solana</strong></td><td>SOL</td><td>32–44 chars, base58</td><td>Solscan</td><td>Fast/cheap; memecoins, NFT scams</td></tr>
+            <tr><td><strong>BNB Chain</strong></td><td>BNB</td><td>Same as ETH (0x)</td><td>BscScan</td><td>Lower fees; many rug pulls</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert warn">
+        <div class="alert-label">⚠️ Privacy Coins</div>
+        <strong>Monero (XMR)</strong> and <strong>Zcash (ZEC)</strong> hide sender, recipient, and amount cryptographically. Significantly harder to trace — but not impossible. Exchanges that handle conversions to/from privacy coins create investigable chokepoints.
+      </div>
+
+      <h2>Why Blockchain IS Traceable</h2>
+      <div class="drilldown" id="dd-trace1">
+        <div class="drilldown-header" onclick="toggleDD('dd-trace1')">
+          <span class="drilldown-icon">🔎</span>
+          <span class="drilldown-label">The Investigator's Advantage — 5 Reasons</span>
+          <span class="drilldown-meta">Why Crypto Isn't Anonymous</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <ul>
+            <li><strong>Every transaction is public</strong> — unlike cash, there's a permanent, searchable audit trail</li>
+            <li><strong>Addresses cluster together</strong> — one person typically controls multiple addresses with identifiable behavioral patterns (Common Input Ownership heuristic)</li>
+            <li><strong>Exchanges require KYC</strong> — eventually, criminals must cash out to real money, requiring identity verification at VASPs</li>
+            <li><strong>Metadata leaks</strong> — IP addresses, device IDs, timing patterns, and operational errors reveal real-world identity</li>
+            <li><strong>Social media bragging</strong> — criminals frequently post about wealth using methods that leave OSINT trails; it's the #1 self-deanonymization vector</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ══════════════════════════════════════════════════
+         S2: TERMINOLOGY
+    ══════════════════════════════════════════════════ -->
+    <div class="section" id="s2">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> KEY TERMINOLOGY</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 02 // BEGINNER</div>
+        <div class="section-title">Key Terminology</div>
+        <p class="section-desc">Master the language of blockchain investigation — sourced from TRM Labs' Blockchain Investigator's Flip Book, the FACT Attribution Framework, and industry standards.</p>
+      </div>
+      <div class="alert info">
+        <div class="alert-label">📚 Source</div>
+        Core definitions from the <strong>TRM Labs Blockchain Investigator's Flip Book</strong> (law enforcement field manual) and the <strong>FACT Attribution Framework v1.1</strong> (Brett Shavers, December 2025).
+      </div>
+      <h2>Core Investigation Terms</h2>
+      <div class="drilldown" id="dd-attr">
+        <div class="drilldown-header" onclick="toggleDD('dd-attr')">
+          <span class="drilldown-icon">🏷️</span>
+          <span class="drilldown-label">Attribution</span>
+          <span class="drilldown-meta">The Primary Goal</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>The process of labeling or assigning specific blockchain addresses to specific entities — and ultimately, to specific <em>people</em>. Attribution sources include exchange records, court filings, law enforcement databases, open-source intel, and commercial blockchain analytics platforms.</p>
+          <p><strong>FACT distinction:</strong> The FACT Framework separates <em>technical identification</em> (which device/account acted?) from <em>investigative attribution</em> (which person acted?). Identifying that address <code>0x123…</code> belongs to Binance is technical identification. Linking that account to a named individual via KYC is attribution.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-vasp">
+        <div class="drilldown-header" onclick="toggleDD('dd-vasp')">
+          <span class="drilldown-icon">🏦</span>
+          <span class="drilldown-label">VASP / KYC / Counterparty</span>
+          <span class="drilldown-meta">Legal Leverage Points</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>VASP (Virtual Asset Service Provider):</strong> Any platform used to buy, sell, trade, or exchange virtual currency. VASPs often maintain KYC records that can identify the real-world controller of an address.</p>
+          <p><strong>KYC (Know Your Customer):</strong> Real-world identification an entity may collect — government ID, selfie, address, date of birth. When a VASP is served with legal process and provides KYC data, this is often the case-breaking moment that links a wallet to a person.</p>
+          <p><strong>Counterparty:</strong> The party on the opposite side of a transaction. Identifying counterparties — especially when they are known VASPs or labeled entities — is a core tracing strategy. If a wallet's counterparty is Coinbase, that's a legal chokepoint.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-obfusc">
+        <div class="drilldown-header" onclick="toggleDD('dd-obfusc')">
+          <span class="drilldown-icon">🚧</span>
+          <span class="drilldown-label">Obfuscation Techniques</span>
+          <span class="drilldown-meta">Chain-Hopping, Mixers, Peeling Chains</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>Chain-Hopping:</strong> Moving assets between different blockchains (e.g., BTC→ETH→TRON via bridges) many times to obscure asset control. Forces investigators to use different block explorers and bridge-tracking tools for each chain. The Lazarus Group's primary post-hack laundering technique.</p>
+          <p><strong>Mixers & Tumblers:</strong> Services that pool and redistribute crypto to break the chain of association. Examples: Tornado Cash (ETH), Wasabi Wallet (BTC). OFAC has sanctioned several mixers. Using them does not make tracing impossible — exposure analysis still identifies tainted funds entering and exiting.</p>
+          <p><strong>Peeling Chains:</strong> Sending funds through many sequential addresses, each time peeling off a slightly smaller amount, to confuse investigators following the trail.</p>
+          <p><strong>Instant Exchanges:</strong> No-KYC swap services (ChangeNow, FixedFloat) used to exchange one currency for another without identity verification. Frequent layering stop. No subpoena target — but the on-chain swap record is still visible.</p>
+          <p><strong>DeFi Protocols:</strong> Running funds through decentralized exchanges or lending protocols. No central operator to subpoena, but all transactions are on-chain and fully traceable.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-exposure">
+        <div class="drilldown-header" onclick="toggleDD('dd-exposure')">
+          <span class="drilldown-icon">📊</span>
+          <span class="drilldown-label">Exposure, Pass-Through & Transaction Hash</span>
+          <span class="drilldown-meta">Core Investigative Concepts</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>Exposure:</strong> A measure of how directly illicit proceeds traveled from one address to another. <em>Direct:</em> A sent to B. <em>Indirect:</em> A→B→C, where C has indirect exposure to A. Commercial tools quantify exposure as a percentage — over 10–15% is typically flagged as significant.</p>
+          <p><strong>Pass-Through Address:</strong> An address that receives a large sum and immediately sends the entire amount out, leaving a $0 balance. A major red flag for illicit layering. The controller paid a transaction fee for a non-economic step — a classic sign of money laundering infrastructure.</p>
+          <p><strong>Transaction Hash (TXID):</strong> A unique alphanumeric identifier for a specific blockchain transaction — the receipt number. Essential for looking up any specific transaction on a block explorer. Example BTC TXID: <code style="word-break:break-all;font-size:11px">4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b</code></p>
+        </div>
+      </div>
+    </div>
+    <!-- S3: BLOCKCHAIN TRACING -->
+    <div class="section" id="s3">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> BLOCKCHAIN TRACING</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 03 // INTERMEDIATE</div>
+        <div class="section-title">Blockchain Tracing in Practice</div>
+        <p class="section-desc">The step-by-step methodology for tracing illicit funds — from acquiring an address to identifying a real person. Based on TRM Labs' official investigator methodology.</p>
+      </div>
+      <div class="card accent">
+        <div class="card-title"><span class="icon">🗺️</span> The Investigative Goal</div>
+        <p>The goal of blockchain tracing is to <strong>identify the actual controller of an otherwise pseudo-anonymous address</strong>. Trace blockchain transactions to find counterparty exposure with an entity or individual that can provide real-world identity. More simply: <strong>follow the money</strong> to or from an entity that keeps records.</p>
+      </div>
+      <h2>The Three-Step Framework</h2>
+      <div class="grid-3" style="margin-bottom:24px">
+        <div class="card accent" style="text-align:center">
+          <div style="font-family:var(--display);font-size:36px;font-weight:900;color:var(--accent);margin-bottom:8px">1</div>
+          <div class="card-title" style="justify-content:center">Identify Illicit Conduct</div>
+          <p>Acquire the address/transaction from SAR, complaint, OSINT, or source. Confirm illicit activity is present.</p>
+        </div>
+        <div class="card accent2" style="text-align:center">
+          <div style="font-family:var(--display);font-size:36px;font-weight:900;color:var(--accent2);margin-bottom:8px">2</div>
+          <div class="card-title" style="justify-content:center">Trace Proceeds</div>
+          <p>Follow the flow of funds through the blockchain, mapping the transaction network and identifying leverage points.</p>
+        </div>
+        <div class="card accent3" style="text-align:center">
+          <div style="font-family:var(--display);font-size:36px;font-weight:900;color:var(--accent3);margin-bottom:8px">3</div>
+          <div class="card-title" style="justify-content:center">Seek Disruption</div>
+          <p>Serve legal process on third parties (VASPs) to obtain KYC data. Seek seizure, forfeiture, or arrest.</p>
+        </div>
+      </div>
+      <h2>Detailed Tracing Steps</h2>
+      <div class="drilldown" id="dd-tr-a">
+        <div class="drilldown-header" onclick="toggleDD('dd-tr-a')">
+          <span class="drilldown-icon">A</span>
+          <span class="drilldown-label">Input Transaction into Blockchain Tool</span>
+          <span class="drilldown-meta">First Step</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Copy/paste the transaction hash, incoming/outgoing addresses, or other information into a blockchain tracing tool (TRM Labs, Arkham, Etherscan). <strong>Best practice:</strong> acquire the address electronically to avoid transcription errors. Confirm the blockchain first — an Ethereum-format address starting with <code>0x</code> could be on Ethereum, BNB Chain, Polygon, Avalanche, or dozens of other EVM chains.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-tr-b">
+        <div class="drilldown-header" onclick="toggleDD('dd-tr-b')">
+          <span class="drilldown-icon">B</span>
+          <span class="drilldown-label">Map the Network — Identify Leverage Points</span>
+          <span class="drilldown-meta">Key Questions to Ask</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Once the address is loaded in a tool, conduct a structured assessment:</p>
+          <ul>
+            <li>How many transactions was the address involved in?</li>
+            <li>When were the most recent transactions? Is the address still active?</li>
+            <li>How much value is currently held in the address?</li>
+            <li>Is the address part of a larger cluster? Does it appear in a known entity's network?</li>
+            <li>Does the address have attribution labels or risk flags in the tool?</li>
+            <li>Does it have direct or indirect exposure to a VASP that keeps KYC records?</li>
+          </ul>
+          <p><strong>Pass-through red flag:</strong> Only two transactions, large sums moved within minutes, $0 current balance — all indicators of illicit layering infrastructure rather than legitimate use.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-tr-c">
+        <div class="drilldown-header" onclick="toggleDD('dd-tr-c')">
+          <span class="drilldown-icon">C</span>
+          <span class="drilldown-label">Identify Third Parties for Legal Process</span>
+          <span class="drilldown-meta">Finding the Subpoena Target</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>After mapping the address and its counterparties, identify which VASPs or custodians have exposure to the traced funds. Screenshot the graph as evidence to present to a prosecutor or supervisor. Use a blockchain tool's "Know Your VASP" feature to find each exchange's jurisdiction, legal contact information, and KYC availability.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-tr-d">
+        <div class="drilldown-header" onclick="toggleDD('dd-tr-d')">
+          <span class="drilldown-icon">D</span>
+          <span class="drilldown-label">Serve Legal Process & Address Clustering</span>
+          <span class="drilldown-meta">Getting Identity Data</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Issue subpoenas or court orders to identified VASPs requesting: KYC documents, subscriber info, email associations, IP address logs, full transaction history, device IDs, and all associated accounts.</p>
+          <p><strong>Address clustering — the investigator's force multiplier:</strong> One person typically controls many wallets. Two core heuristics:</p>
+          <ul>
+            <li><strong>Common Input Ownership (CIUA):</strong> If two addresses both sign inputs in the same Bitcoin transaction, they share the same private key holder — likely the same person.</li>
+            <li><strong>Change Address Detection:</strong> Bitcoin transactions often send change back to the sender; identifying the change address reveals additional wallets controlled by the same entity.</li>
+          </ul>
+          <p>Always request omnibus "all records associated with the account and registrant" to capture data you haven't specifically anticipated.</p>
+        </div>
+      </div>
+    </div>
+    <!-- S4: OSINT -->
+    <div class="section" id="s4">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> OSINT TECHNIQUES</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 04 // INTERMEDIATE</div>
+        <div class="section-title">OSINT Techniques</div>
+        <p class="section-desc">Open Source Intelligence (OSINT) is how investigators go from a wallet address to a real person. These are the exact methods used by ZachXBT and professional investigators daily.</p>
+      </div>
+      <div class="expert-quote">
+        "ZachXBT's investigative approach combines blockchain forensics with OSINT techniques… cross-referencing on-chain data with public records such as domain registrations, court filings, and social media activity."
+        <span class="expert-quote-attr">— Multiple sources on ZachXBT methodology, March 2026</span>
+      </div>
+      <h2>The OSINT Investigation Workflow</h2>
+      <div class="drilldown" id="dd-osint1">
+        <div class="drilldown-header" onclick="toggleDD('dd-osint1')">
+          <span class="drilldown-icon">1️⃣</span>
+          <span class="drilldown-label">Phase 1 — On-Chain Pivot Points</span>
+          <span class="drilldown-meta">First Foothold in the Real World</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Start with what the blockchain gives you: wallet addresses, transaction hashes, amounts, timing. Look for exchange deposits (which require KYC), NFT mints (public records), ENS names (human-readable Ethereum names), or any address already labeled in blockchain analytics tools. These are your first pivot points from the on-chain world into the real world.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-osint2">
+        <div class="drilldown-header" onclick="toggleDD('dd-osint2')">
+          <span class="drilldown-icon">2️⃣</span>
+          <span class="drilldown-label">Phase 2 — Social Media Intelligence</span>
+          <span class="drilldown-meta">Criminals Brag</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Criminals brag. Search X/Twitter, Telegram, Discord, and Reddit for mentions of wallet addresses, transaction amounts, project names, or usernames. ZachXBT identified the $243M BTC theft suspects partly through their social media spending patterns — luxury purchases and nightclub appearances that were inconsistent with any legitimate income source.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-osint3">
+        <div class="drilldown-header" onclick="toggleDD('dd-osint3')">
+          <span class="drilldown-icon">3️⃣</span>
+          <span class="drilldown-label">Phase 3 — Username & Email Pivots</span>
+          <span class="drilldown-meta">Cross-Platform Identity Tracking</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>A username used in one context often reappears elsewhere. Use OSINT Industries, Sherlock, and IntelX to find all accounts associated with a username, email, or phone number across hundreds of platforms. Breach databases (Snusbase, LeakPeek) may reveal passwords, IPs, or real names from historical data breaches.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-osint4">
+        <div class="drilldown-header" onclick="toggleDD('dd-osint4')">
+          <span class="drilldown-icon">4️⃣</span>
+          <span class="drilldown-label">Phase 4 — Domain & Infrastructure Analysis</span>
+          <span class="drilldown-meta">Linking Scam Sites to Real Identities</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>WHOIS records, SSL certificate history, Shodan/Censys scans, and domain registration data can link a scam website to a real identity or to other criminal infrastructure. The Lazarus Group registered <code>bybit-assessment[.]com</code> using the email <code>trevorgreer9312@gmail.com</code> hours before the $1.5B hack — a traceable footprint.</p>
+          <p>Certificate Transparency logs (crt.sh) reveal all SSL certificates ever issued for a domain or email, often uncovering a network of related criminal infrastructure registered under the same identity.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-osint5">
+        <div class="drilldown-header" onclick="toggleDD('dd-osint5')">
+          <span class="drilldown-icon">5️⃣</span>
+          <span class="drilldown-label">Phase 5 — Timing Analysis</span>
+          <span class="drilldown-meta">Correlating On-Chain & Off-Chain Events</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Matching the exact time of a blockchain transaction to a social media post, login event, or real-world activity. Key timing red flags:</p>
+          <ul>
+            <li>Funds moving within minutes of a hack announcement</li>
+            <li>Transactions at unusual hours — indicating specific timezone</li>
+            <li>Rapid cascading transactions suggesting automated laundering scripts</li>
+            <li>Dormant addresses activating after months — criminal cashing out</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-osint6">
+        <div class="drilldown-header" onclick="toggleDD('dd-osint6')">
+          <span class="drilldown-icon">6️⃣</span>
+          <span class="drilldown-label">Phase 6 — Archive & Document Everything</span>
+          <span class="drilldown-meta">Preserving Evidence Before It Disappears</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Use Wayback Machine and Archive.today to preserve evidence before suspects delete it. Screenshot with timestamps. Organize everything in Obsidian or a similar link-chart tool. Your documentation becomes the chain of custody.</p>
+          <p><strong>Critical rule:</strong> Archive immediately when you find evidence — before you do anything else. Suspects routinely delete social media posts, Telegram accounts, and websites within hours of becoming aware of an investigation.</p>
+        </div>
+      </div>
+    </div>
+    <!-- S5: TOOLS -->
+    <div class="section" id="s5">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> TOOLS & ARSENAL</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 05 // INTERMEDIATE</div>
+        <div class="section-title">The Investigator's Toolkit</div>
+        <p class="section-desc">25+ tools used by ZachXBT and professional blockchain investigators. Organized by function. Updated March 2026.</p>
+      </div>
+      <div class="alert info">
+        <div class="alert-label">📌 Source</div>
+        ZachXBT published his personal toolkit on Telegram (March 2025) stating no financial incentives or sponsorships. This list is based on that publication as reported by BitPinas and OSINT Industries.
+      </div>
+      <h2>🔗 Blockchain Analysis & Wallet Tracking</h2>
+      <div class="grid-3">
+        <div class="tool-card"><span class="tool-cost cost-freemium">Freemium</span><div class="tool-name">TRM Labs</div><div class="tool-type">Blockchain Intelligence Platform</div><div class="tool-desc">Professional-grade graphs for wallets and transactions. Entity labeling, risk scoring, "Know Your VASP" database. Used by 60+ law enforcement agencies globally.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-freemium">Freemium</span><div class="tool-name">Arkham Intelligence</div><div class="tool-type">Multi-chain Explorer + Intel Marketplace</div><div class="tool-desc">Multi-chain explorer with entity graphs and a bounty marketplace. Crowdsourced attribution. Posted bounties for Bybit hack addresses within 24 hours.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-freemium">Freemium</span><div class="tool-name">Cielo Finance</div><div class="tool-type">Wallet Tracker — Multi-Chain</div><div class="tool-desc">Track wallets across EVM chains, Bitcoin, Solana, Tron, and more. Real-time alerts when tracked wallets transact. #1 on ZachXBT's toolkit list.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-freemium">Freemium</span><div class="tool-name">MetaSleuth</div><div class="tool-type">Visual Wallet Tracing</div><div class="tool-desc">User-friendly wallet tracing tool. Visual flow charts showing fund movements. Good starting point for beginners before moving to TRM Labs.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Etherscan / Solscan</div><div class="tool-type">EVM / Solana Block Explorers</div><div class="tool-desc">Foundation of any ETH or Solana investigation. Free, public, permanent records. Filter by token, time, or counterparty.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Blockchair</div><div class="tool-type">Bitcoin Block Explorer</div><div class="tool-desc">Multi-chain explorer with advanced filtering for Bitcoin investigations. Supports clustering analysis and full transaction history export.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Dune Analytics</div><div class="tool-type">Blockchain Data Analytics</div><div class="tool-desc">SQL-based blockchain data querying. Write queries to detect trends, anomalies, and patterns across millions of transactions.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">MetaSuites</div><div class="tool-type">Browser Extension</div><div class="tool-desc">Chrome extension that enriches block explorer pages with additional data — entity labels, related addresses, ENS names.</div></div>
+      </div>
+      <h2>🌉 Bridge & Cross-Chain Tracking</h2>
+      <div class="grid-3">
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Pulsy</div><div class="tool-type">Bridge Activity Aggregator</div><div class="tool-desc">Aggregates bridge activity across multiple protocols. Critical for tracking chain-hopping.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Socketscan</div><div class="tool-type">EVM Bridge Tracker</div><div class="tool-desc">Tracks cross-chain transfers on EVM-compatible bridges. Shows source chain, destination chain, amount, and timing.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Range Protocol</div><div class="tool-type">CCTP Bridge Explorer</div><div class="tool-desc">Specifically tracks Circle's Cross-Chain Transfer Protocol — used for moving USDC between chains. Important for stablecoin laundering investigations.</div></div>
+      </div>
+      <h2>🔍 OSINT & Identity Intelligence</h2>
+      <div class="grid-3">
+        <div class="tool-card"><span class="tool-cost cost-paid">Paid</span><div class="tool-name">OSINT Industries</div><div class="tool-type">Email / Username / Phone Lookup</div><div class="tool-desc">Searches 400+ sources for any email, username, or phone number. ZachXBT's primary identity pivot tool.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-paid">Paid</span><div class="tool-name">Intel X (IntelX)</div><div class="tool-type">Deep Web & Database Search</div><div class="tool-desc">Searches the dark web, breach databases, and indexed private data. Find leaked credentials, forum posts, and archived pages.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-paid">Paid</span><div class="tool-name">Snusbase / LeakPeek</div><div class="tool-type">Breached Data Search</div><div class="tool-desc">Searches leaked databases for email addresses, usernames, passwords, and IP addresses. Common source of case-breaking identity links.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-paid">Paid</span><div class="tool-name">Spur.us</div><div class="tool-type">IP Address Intelligence</div><div class="tool-desc">Identifies VPNs, TOR exit nodes, data center IPs, and residential proxy networks. Critical for evaluating IP addresses obtained from VASP subpoenas.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-paid">Paid</span><div class="tool-name">Cavalier</div><div class="tool-type">Infostealer Log Search</div><div class="tool-desc">Searches infostealer malware logs for credentials, saved passwords, and browser history associated with a target.</div></div>
+      </div>
+      <h2>🗄️ Archiving & Evidence Preservation</h2>
+      <div class="grid-3">
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Wayback Machine</div><div class="tool-type">Web Archive (archive.org)</div><div class="tool-desc">Archive old versions of web pages. Crucial for capturing scam sites, profiles, or whitepapers before criminals delete them.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Archive.today</div><div class="tool-type">Web Snapshot Tool</div><div class="tool-desc">Instantly archive any web page with a permanent, timestamped snapshot. Use before confronting a suspect.</div></div>
+        <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Obsidian</div><div class="tool-type">Investigation Organization</div><div class="tool-desc">Create flowcharts, link-charts, and structured investigation notes. ZachXBT uses this to organize multi-entity investigations.</div></div>
+      </div>
+    </div>
+    <!-- S6: SCAMS -->
+    <div class="section" id="s6">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> SCAMS & FRAUD</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 06 // INTERMEDIATE</div>
+        <div class="section-title">Crypto Scams & Fraud</div>
+        <p class="section-desc">The major categories of crypto fraud — how they work, how they're identified, and how investigations unfold.</p>
+      </div>
+      <div class="drilldown" id="dd-sc1">
+        <div class="drilldown-header" onclick="toggleDD('dd-sc1')">
+          <span class="drilldown-icon">💔</span>
+          <span class="drilldown-label">Romance Scams — Pig Butchering (SHA ZHU PAN)</span>
+          <span class="drilldown-meta">Most Financially Devastating Category</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Criminals build a romantic or investment relationship online (often months), then convince victims to invest in a fake crypto platform. When the victim tries to withdraw, they're told to pay more fees. Also called "Sha Zhu Pan" (killing pig scam) — originating from Southeast Asia, often run by human trafficking victims forced to operate scam call centers.</p>
+          <p><strong>Investigation:</strong> Trace victim funds through wallet addresses. Look for <em>common deposit addresses</em> across multiple victims — many pigs, same sty. Often flows to TRON USDT wallets before cashing out.</p>
+          <div class="tag tag-red">High Volume</div> <div class="tag tag-orange">SE Asia Operations</div>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-sc2">
+        <div class="drilldown-header" onclick="toggleDD('dd-sc2')">
+          <span class="drilldown-icon">🧸</span>
+          <span class="drilldown-label">Rug Pulls — DeFi Developer Fraud</span>
+          <span class="drilldown-meta">Liquidity Drain Schemes</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Developers create a token, build hype, attract investors, then suddenly drain the liquidity pool and abandon the project. Common on DEX platforms (Uniswap, PancakeSwap). Variants: "soft rugs" (slow abandonment) and "hard rugs" (immediate drain).</p>
+          <p><strong>Red flags:</strong> Anonymous team, no audit, locked liquidity expiring soon, excessive dev wallet allocation, mint function retained, copied whitepaper.</p>
+          <p><strong>Investigation:</strong> On-chain analysis of smart contract; trace LP removal to CEX deposits; check deployer wallet history for previous rugs.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-sc3">
+        <div class="drilldown-header" onclick="toggleDD('dd-sc3')">
+          <span class="drilldown-icon">🎭</span>
+          <span class="drilldown-label">Social Engineering & Impersonation</span>
+          <span class="drilldown-meta">Coinbase Case Study</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Criminals impersonate exchange support teams, celebrities, or officials to steal credentials or convince victims to send funds. A major 2025 trend: <strong>Coinbase impersonation scams</strong> using data from a May 2025 insider breach.</p>
+          <p><strong>Case — "Haby" (Abbotsford, BC):</strong> A scammer who stole $2M+ by calling Coinbase users claiming to be support, directing them to "secure vaults" he controlled. Identified via timing analysis and Instagram story OSINT revealing his location in British Columbia.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-sc4">
+        <div class="drilldown-header" onclick="toggleDD('dd-sc4')">
+          <span class="drilldown-icon">📈</span>
+          <span class="drilldown-label">Pump & Dump Schemes</span>
+          <span class="drilldown-meta">Coordinated Market Manipulation</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Coordinated buying of a low-cap token to inflate price, followed by mass selling at peak. Often coordinated in private Telegram/Discord groups. The 2025 political memecoin era saw multiple high-profile schemes targeting retail investors.</p>
+          <p><strong>Investigation:</strong> Analyze on-chain token distribution — identify wallet clusters that coordinated buys; trace founders' wallets selling at peak; cross-reference wallet activity against Telegram group message timestamps.</p>
+        </div>
+      </div>
+      <h2>Fraud Investigation Framework</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Victim Report Triage</div><div class="step-text">Collect victim's wallet address, the address they sent funds to, screenshots of the scam platform, and any communications. Get the exact transaction hash. Is the scammer wallet still active?</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Address Clustering & Fund Flow</div><div class="step-text">Plot the scammer's receiving address. Map outgoing transactions. Look for common deposit addresses shared across multiple victims and exchanges where funds land.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">OSINT on Scammer Identity</div><div class="step-text">Research scam website WHOIS, social media accounts, and any usernames in communications. Check breach databases for the email used in the scam platform registration.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">VASP Identification & Legal Process</div><div class="step-text">Identify which exchange(s) received the funds. Issue legal process (subpoena/court order) for KYC, transaction records, IP addresses, and device IDs.</div></div></div>
+      </div>
+    </div>
+    <!-- S7: EXCHANGE HACKS -->
+    <div class="section" id="s7">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> EXCHANGE HACKS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 07 // ADVANCED</div>
+        <div class="section-title">Exchange Hacks & DeFi Exploits</div>
+        <p class="section-desc">How crypto exchanges are hacked, how forensic investigators respond in real time, and what the Bybit hack reveals about blockchain forensics in 2025.</p>
+      </div>
+      <div class="case-study">
+        <div class="case-header">
+          <div class="case-badge tag-red">LANDMARK CASE</div>
+          <div class="case-title">Bybit Exchange Hack — The $1.5 Billion Heist</div>
+          <div class="case-amount">$1.5 BILLION</div>
+        </div>
+        <div class="case-body">
+          <div class="case-meta">
+            <div class="case-meta-item">📅 DATE: <span>February 21, 2025</span></div>
+            <div class="case-meta-item">🎯 TARGET: <span>Bybit (Dubai-based exchange)</span></div>
+            <div class="case-meta-item">🕵️ ATTRIBUTION: <span>Lazarus Group / TraderTraitor (DPRK)</span></div>
+            <div class="case-meta-item">💰 STOLEN: <span>401,347 ETH (~$1.5B)</span></div>
+          </div>
+          <div class="case-text">The largest single cryptocurrency theft in history. Hackers exploited a vulnerability in Bybit's multi-signature cold wallet infrastructure by compromising a developer machine at Safe{Wallet} — Bybit's third-party transaction signing platform. Malicious JavaScript was injected into the Safe{Wallet} UI on February 19, 2025, specifically designed to activate only during Bybit transactions.</div>
+          <div class="drilldown" id="dd-bybit1" style="margin-top:16px">
+            <div class="drilldown-header" onclick="toggleDD('dd-bybit1')">
+              <span class="drilldown-icon">🔬</span>
+              <span class="drilldown-label">How ZachXBT Made the Attribution</span>
+              <span class="drilldown-chevron">›</span>
+            </div>
+            <div class="drilldown-body">
+              <p>Within 48 hours, ZachXBT identified Lazarus Group attribution by linking Bybit outflows to Ethereum addresses previously used in the Phemex, BingX, and Poloniex hacks. This was confirmed by Elliptic, TRM Labs, and the FBI (51 Ethereum addresses released).</p>
+              <ul>
+                <li>Identified specific wallet clustering behaviors matching Lazarus Group's documented fingerprint</li>
+                <li>Cross-referenced Bybit outflows against known Lazarus addresses from prior hacks</li>
+                <li>Submitted evidence to Arkham Intelligence within hours; crowdsourced global identification of intermediary addresses</li>
+                <li>The domain <code>bybit-assessment[.]com</code> was registered using email <code>trevorgreer9312@gmail.com</code> — previously used in Lazarus Group's "Contagious Interview" campaign</li>
+              </ul>
+            </div>
+          </div>
+          <div class="drilldown" id="dd-bybit2" style="margin-top:8px">
+            <div class="drilldown-header" onclick="toggleDD('dd-bybit2')">
+              <span class="drilldown-icon">🧹</span>
+              <span class="drilldown-label">Lazarus Laundering Playbook</span>
+              <span class="drilldown-chevron">›</span>
+            </div>
+            <div class="drilldown-body">
+              <ul>
+                <li>Fragment stolen assets across thousands of wallets</li>
+                <li>Bridge assets across chains (ETH → BTC → other chains)</li>
+                <li>Cycle through DEXs and instant exchanges (no KYC)</li>
+                <li>Use crypto mixers (Tornado Cash or similar) to break transaction graph</li>
+                <li>Eventually convert to fiat through poorly-regulated venues</li>
+                <li>Accept value losses to expedite laundering — a state-actor behavioral fingerprint</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card accent2">
+        <div class="card-title"><span class="icon">⚡</span> DeFi Exploit Investigation</div>
+        <p>DeFi exploits are entirely on-chain — every step of the attack is publicly visible. Investigation process:</p>
+        <ul>
+          <li>Identify the exploit transaction (massive, unusual trade or balance change)</li>
+          <li>Trace the attacker's wallet backward to find their funding source</li>
+          <li>Forward-trace fund flow from exploit profits to mixing or exchange deposits</li>
+          <li>Analyze the attacker's prior on-chain behavior for patterns or address reuse</li>
+          <li>Analyze the smart contract that executed the exploit — its deployer wallet is often investigable via OSINT</li>
+        </ul>
+      </div>
+    </div>
+    <!-- S8: RANSOMWARE -->
+    <div class="section" id="s8">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> RANSOMWARE & APTs</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 08 // ADVANCED</div>
+        <div class="section-title">Ransomware & Nation-State Threats</div>
+        <p class="section-desc">Ransomware investigations and APT tracking — where cybercrime meets geopolitics and blockchain forensics meets intelligence work.</p>
+      </div>
+      <div class="drilldown" id="dd-rw1">
+        <div class="drilldown-header" onclick="toggleDD('dd-rw1')">
+          <span class="drilldown-icon">💀</span>
+          <span class="drilldown-label">Ransomware Payment Flows</span>
+          <span class="drilldown-meta">How Ransom Money Moves</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Ransomware groups demand payment in cryptocurrency (primarily Bitcoin, sometimes Monero). Every payment creates an on-chain record. Each ransom note contains a <em>unique wallet address per victim</em> — enabling investigators to link payments from multiple victims to the same criminal infrastructure.</p>
+          <p><strong>Typical flow:</strong></p>
+          <ul>
+            <li><strong>Stage 1:</strong> Victim sends BTC/XMR to attacker-controlled address. Document the TXID and amounts.</li>
+            <li><strong>Stage 2:</strong> Ransomware group consolidates payments from multiple victims into consolidation wallets. May use mixers or chain-hop (BTC→Avalanche→TRON is a documented Khinkis pattern).</li>
+            <li><strong>Stage 3:</strong> Funds reach OTC brokers or exchange accounts — the cash-out point and the legal chokepoint.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-rw2">
+        <div class="drilldown-header" onclick="toggleDD('dd-rw2')">
+          <span class="drilldown-icon">🏴‍☠️</span>
+          <span class="drilldown-label">Lazarus Group — North Korea's Crypto Hackers</span>
+          <span class="drilldown-meta">$2B+ Stolen in 2025</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Lazarus Group is a military intelligence operation directly controlled by North Korea's Reconnaissance General Bureau (RGB). Since the early 2010s, Lazarus has stolen billions in cryptocurrency to fund North Korea's nuclear weapons program.</p>
+          <p><strong>Key sub-groups:</strong></p>
+          <ul>
+            <li><strong>TraderTraitor (Jade Sleet / Slow Pisces):</strong> Supply chain compromises. Responsible for Bybit ($1.5B) and WazirX hacks.</li>
+            <li><strong>Contagious Interview (Famous Chollima):</strong> Social engineering through fake crypto job interviews. Deploys malware to steal credentials.</li>
+            <li><strong>APT38:</strong> Financial theft focused on SWIFT banking system; now increasingly crypto-focused.</li>
+          </ul>
+          <div class="alert warn" style="margin-top:12px;margin-bottom:0">
+            <div class="alert-label">⚠️ Investigator Reality Check</div>
+            Attribution is no longer the limiting factor. The real challenge is intervention. North Korea operates beyond extradition treaties. Stolen funds move through dozens of wallets in hours while legal processes take months. The key value of forensics is constraining laundering options and creating a public record that limits where the funds can be used.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SFACT: FACT FRAMEWORK -->
+    <div class="section" id="sfact">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FACT FRAMEWORK</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 09 // ADVANCED — ATTRIBUTION FRAMEWORK</div>
+        <div class="section-title">The FACT Attribution Framework</div>
+        <p class="section-desc">A jurisprudence-centered attribution methodology for digital forensics and incident response. By Brett Shavers (v1.1, December 2025). The legal scaffold that converts technical findings into defensible person-level attribution.</p>
+      </div>
+      <div class="alert fact">
+        <div class="alert-label">📖 Source</div>
+        FACT Attribution Framework v1.1 — Brett Shavers, December 2025. DOI: 10.5281/zenodo.18005597. © 2025 Brett Shavers. Used for educational reference.
+      </div>
+      <div class="card fact">
+        <div class="card-title"><span class="icon">🧩</span> Why FACT Exists — The Attribution Gap</div>
+        <p>Digital forensics has become highly effective at answering <em>what happened, on which device, how, and when</em>. What has been far less developed is a structured, legally grounded way to answer the next question:</p>
+        <p style="color:var(--text-bright);font-size:17px;font-style:italic;margin:16px 0;padding:0 16px;border-left:3px solid #a855f7">"Which specific person, among the realistic candidates, is most likely responsible for those actions — and how confident are we in that conclusion?"</p>
+        <p>FACT fills this gap. It explicitly separates <strong>identification</strong> ("what acted?") from <strong>attribution</strong> ("who acted?") — a distinction that many investigations silently collapse, creating legally vulnerable findings.</p>
+      </div>
+      <h2>Core Distinction: Identification vs Attribution</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Technical Identification</div>
+          <p>"This device / this account / this session performed action X." Does not answer who the real-world actor is. Within the core expertise of digital forensic examiners.</p>
+          <p><strong>Example:</strong> "Wallet <code>0x1a2b…</code> sent 401,347 ETH to wallet <code>0x9f3c…</code> on February 21, 2025 at 13:47 UTC."</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Investigative Attribution</div>
+          <p>"Given all available evidence and tested alternatives, Person X is the most plausible actor for Action Y." Requires multi-stream convergence, active falsification of alternatives, and explicit uncertainty.</p>
+          <p><strong>Example:</strong> "Based on KYC records from Binance, timing analysis, and OSINT correlation, the person controlling this wallet is [Name], with strong evidentiary support."</p>
+        </div>
+      </div>
+      <h2>The FACT Lifecycle: F → A → C → T</h2>
+      <div class="fact-stages">
+        <div class="fact-stage">
+          <div class="fact-stage-letter">F</div>
+          <div class="fact-stage-tag">Stage 01</div>
+          <div class="fact-stage-title">Forensic Authority & Compliance</div>
+          <div class="fact-stage-desc">Document legal authority. Define scope, jurisdiction, proportionality. Establish chain-of-custody. Prevent premature identity assumptions.</div>
+        </div>
+        <div class="fact-stage">
+          <div class="fact-stage-letter">A</div>
+          <div class="fact-stage-tag">Stage 02</div>
+          <div class="fact-stage-title">Analyze Evidence</div>
+          <div class="fact-stage-desc">Identify specific digital actions. Acquire and examine evidence. Evaluate artifact reliability. Generate candidate actors and alternative explanations.</div>
+        </div>
+        <div class="fact-stage">
+          <div class="fact-stage-letter">C</div>
+          <div class="fact-stage-tag">Stage 03</div>
+          <div class="fact-stage-title">Correlate & Sequence</div>
+          <div class="fact-stage-desc">Correlate evidence across identity layers: artifact → device → account → session → person. Test each alternative hypothesis. Determine if convergence threshold is met.</div>
+        </div>
+        <div class="fact-stage">
+          <div class="fact-stage-letter">T</div>
+          <div class="fact-stage-tag">Stage 04</div>
+          <div class="fact-stage-title">Testify & Transfer</div>
+          <div class="fact-stage-desc">Finalize attribution with explicit uncertainty. Prepare legally defensible reports and testimony explaining the reasoning pathway and handling of alternatives.</div>
+        </div>
+      </div>
+      <div class="alert fact">
+        <div class="alert-label">🔄 FACT is Iterative, Not Linear</div>
+        FACT is intentionally iterative. New evidence may require revisiting authority in F. Convergence work in C often exposes gaps that send the case back to A. Investigators often iterate A↔C several times before T is even contemplated.
+      </div>
+      <h2>Deep Dives — Each Stage</h2>
+      <div class="drilldown" id="dd-fact-f">
+        <div class="drilldown-header" onclick="toggleDD('dd-fact-f')">
+          <span class="drilldown-icon" style="color:#a855f7;font-family:var(--display);font-weight:900">F</span>
+          <span class="drilldown-label">Forensic Authority & Compliance</span>
+          <span class="drilldown-meta">Legal Bookend #1 — Before You Touch Anything</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>The F stage establishes the legal foundation that makes all subsequent work admissible. Technical capability does not authorize overreach — the examiner must document the legal basis for every action before beginning analysis.</p>
+          <ul>
+            <li><strong>Document legal authority:</strong> Warrant, consent, statute, contract, or employment policy.</li>
+            <li><strong>Define scope:</strong> Which devices, accounts, date ranges, and data types are in scope?</li>
+            <li><strong>Jurisdiction:</strong> Which legal system governs? For crypto cases, this often means multiple jurisdictions.</li>
+            <li><strong>Proportionality:</strong> Is the investigative action proportionate to the suspected offense?</li>
+            <li><strong>Preservation and chain-of-custody:</strong> Every screenshot, blockchain export, and archived web page must be timestamped and documented.</li>
+          </ul>
+          <div class="alert warn" style="margin-bottom:0">
+            <div class="alert-label">⚠️ Crypto-Specific F Considerations</div>
+            For blockchain investigations: Is public blockchain data subject to any collection restrictions? Does your VASP subpoena comply with the exchange's jurisdiction's legal requirements?
+          </div>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-fact-a">
+        <div class="drilldown-header" onclick="toggleDD('dd-fact-a')">
+          <span class="drilldown-icon" style="color:#a855f7;font-family:var(--display);font-weight:900">A</span>
+          <span class="drilldown-label">Analyze Evidence</span>
+          <span class="drilldown-meta">Generating Candidate Actors — Not Confirming Assumptions</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>The A stage is about <em>generating</em> a complete picture of the evidence and a complete list of possible actors — not confirming a pre-existing assumption.</p>
+          <ul>
+            <li><strong>Identify the specific digital action:</strong> What exactly happened? Be precise.</li>
+            <li><strong>Evaluate artifact reliability:</strong> Is the blockchain timestamp accurate? Could logs have been manipulated?</li>
+            <li><strong>Generate candidate actors:</strong> Who could have controlled this wallet? Consider: the named account holder, a straw identity, a stolen identity, a shared account, a professional money launderer, remote compromise by a third party, an automated process.</li>
+            <li><strong>For crypto investigations:</strong> The named account holder on a VASP could be: (1) the actual subject, (2) a straw identity, (3) a stolen identity, or (4) a professional money launderer. Always investigate deeper.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-fact-c">
+        <div class="drilldown-header" onclick="toggleDD('dd-fact-c')">
+          <span class="drilldown-icon" style="color:#a855f7;font-family:var(--display);font-weight:900">C</span>
+          <span class="drilldown-label">Correlate & Sequence — Evidence Convergence</span>
+          <span class="drilldown-meta">Multi-Stream Convergence on a Person</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>FACT recommends attribution as justified when evidence from <strong>multiple, independent streams converges on the same person</strong> while substantially weakening reasonable alternatives.</p>
+          <p><strong>Identity layers the investigator must traverse:</strong></p>
+          <ul>
+            <li>Artifact identification → Device identification → Account/credential identity → Session context → <strong>Person</strong></li>
+          </ul>
+          <p><strong>Examples of independent streams in crypto cases:</strong></p>
+          <ul>
+            <li>On-chain wallet activity + KYC records from exchange</li>
+            <li>Blockchain timestamps + social media post timestamps</li>
+            <li>IP address from VASP subpoena + residential ISP subscriber records</li>
+            <li>Infostealer logs + court filing records</li>
+          </ul>
+          <p><strong>Falsification duty:</strong> FACT treats falsification as a methodological duty. Actively search for evidence that would support alternative actors.</p>
+          <p><strong>Likelihood language:</strong> Weak support / Moderate support / Strong support / Very strong support / Support for alternative / Inconclusive.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-fact-t">
+        <div class="drilldown-header" onclick="toggleDD('dd-fact-t')">
+          <span class="drilldown-icon" style="color:#a855f7;font-family:var(--display);font-weight:900">T</span>
+          <span class="drilldown-label">Testify & Transfer — Legally Defensible Reporting</span>
+          <span class="drilldown-meta">Court-Ready Attribution (or Explicit Non-Attribution)</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>The T stage structures how person-level attribution is framed in reporting and testimony so that it withstands legal scrutiny.</p>
+          <p><strong>As a fact witness:</strong> "Based on the evidence we collected and reviewed, our investigation focused on [Name] as the primary suspect, and I forwarded that case for charging."</p>
+          <p><strong>As an expert witness:</strong> "In my opinion, based on my training, experience, and review of the evidence, [Name] is more likely than the other realistic candidates to have performed the acts in question; I considered [A, B, C] as alternatives and ruled them out for the following reasons."</p>
+          <p><strong>Non-attribution is a correct outcome.</strong> When conditions are not met, FACT directs the practitioner to issue an explicit non-attribution finding: <em>"Based on the available evidence and applying the FACT Framework, person-level attribution for Action Y cannot be made."</em></p>
+        </div>
+      </div>
+    </div>
+    <!-- S9: LEGAL PROCESS -->
+    <div class="section" id="s9">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> LEGAL PROCESS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 10 // ADVANCED</div>
+        <div class="section-title">Legal Process & VASP Cooperation</div>
+        <p class="section-desc">How to translate blockchain evidence into legal action — subpoenas, court orders, international cooperation, and working with VASPs.</p>
+      </div>
+      <div class="drilldown" id="dd-lp1">
+        <div class="drilldown-header" onclick="toggleDD('dd-lp1')">
+          <span class="drilldown-icon">⚖️</span>
+          <span class="drilldown-label">What You Can Request from a VASP</span>
+          <span class="drilldown-meta">Full Subpoena Target List</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>When issuing legal process (subpoena, court order, MLA request) to a VASP, an investigator may obtain:</p>
+          <ul>
+            <li><strong>KYC documents</strong> — government ID, selfies, proof of address</li>
+            <li><strong>Subscriber information</strong> — name, DOB, registration date, email</li>
+            <li><strong>IP address logs</strong> — login history with timestamps (pivot to ISP subpoena)</li>
+            <li><strong>Full transaction history</strong> — all deposits/withdrawals</li>
+            <li><strong>Device ID (IMEI)</strong> — phone fingerprints for device attribution</li>
+            <li><strong>Account balance</strong> — current holdings (freeze if funds still present)</li>
+            <li><strong>Associated accounts</strong> — all linked family/business accounts</li>
+          </ul>
+          <p><strong>Best practice:</strong> Request an omnibus "all records associated with the account and registrant" to capture anything you haven't specifically anticipated.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-lp2">
+        <div class="drilldown-header" onclick="toggleDD('dd-lp2')">
+          <span class="drilldown-icon">🌐</span>
+          <span class="drilldown-label">International Cooperation & MLATs</span>
+          <span class="drilldown-meta">Cross-Border Evidence Requests</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>For VASPs in foreign jurisdictions, use Mutual Legal Assistance Treaties (MLATs) or direct law enforcement cooperation channels (FBI, Europol, INTERPOL). Use a blockchain tool's "Know Your VASP" feature to find each exchange's jurisdiction and contact info before drafting the request.</p>
+          <p><strong>Emergency freeze requests:</strong> If funds remain on a VASP at the time of legal process, request an emergency freeze simultaneous with the data request. Speed is critical — funds may be withdrawn between subpoena and compliance.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-lp3">
+        <div class="drilldown-header" onclick="toggleDD('dd-lp3')">
+          <span class="drilldown-icon">📧</span>
+          <span class="drilldown-label">Downstream Investigative Actions</span>
+          <span class="drilldown-meta">Building the Full Evidence Package</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <ul>
+            <li><strong>Email search warrants:</strong> Most VASPs send transaction confirmation emails. Serve the email provider (Google, Outlook) to establish that the account holder received and read transaction confirmations — corroborating knowing participation.</li>
+            <li><strong>IP → ISP subpoena:</strong> Residential IP addresses from VASP returns can lead to ISP subpoenas for the subscriber's name and address.</li>
+            <li><strong>Spur.us IP evaluation:</strong> Before serving the ISP, check if the IP is residential, VPN, or TOR. A TOR exit node IP does not lead to a subscriber — pivot to other evidence streams instead.</li>
+          </ul>
+          <div class="alert danger" style="margin-bottom:0">
+            <div class="alert-label">🚨 Straw Identity Warning</div>
+            The named account holder could be: the actual subject, a straw identity (friend/family), a stolen identity, or a professional money launderer. The KYC return is a lead, not a conclusion. Always investigate deeper.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- S10: ASSET SEIZURE -->
+    <div class="section" id="s10">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> ASSET SEIZURE</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 11 // ADVANCED</div>
+        <div class="section-title">Asset Seizure & Forfeiture</div>
+        <p class="section-desc">The legal and practical mechanics of seizing, holding, and forfeiting cryptocurrency.</p>
+      </div>
+      <div class="drilldown" id="dd-as1">
+        <div class="drilldown-header" onclick="toggleDD('dd-as1')">
+          <span class="drilldown-icon">📜</span>
+          <span class="drilldown-label">Theories of Forfeiture</span>
+          <span class="drilldown-meta">Legal Frameworks & Statutes</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>To seize and forfeit assets, the government must rely on a forfeiture statute:</p>
+          <ul>
+            <li><strong>Simple statutes:</strong> NY Penal Law Article 480 — "when any person is convicted of a felony offense, property constituting the proceeds and instrumentalities are subject to forfeiture."</li>
+            <li><strong>Complex statutes:</strong> US federal civil forfeiture (18 USC 981) — requires specific nexus to listed predicate offenses.</li>
+            <li><strong>Civil forfeiture:</strong> Action against the property itself — can proceed even without a criminal conviction in some jurisdictions.</li>
+          </ul>
+          <p><strong>Best practice:</strong> Work with a prosecuting attorney on forfeiture strategy concurrent with the investigation — not as an afterthought.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-as2">
+        <div class="drilldown-header" onclick="toggleDD('dd-as2')">
+          <span class="drilldown-icon">🔐</span>
+          <span class="drilldown-label">Custody Options for Seized Assets</span>
+          <span class="drilldown-meta">Hardware Wallets, VASPs, Third-Party Custodians</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <ul>
+            <li><strong>Online Software Wallet:</strong> Quick and cheap. Higher theft risk through software compromise. Not recommended for large seizures.</li>
+            <li><strong>Hardware Wallet:</strong> Industry standard. More secure. Upfront purchase cost.</li>
+            <li><strong>VASP Custody:</strong> Efficient for transferring assets. Risk: commingling, VASPs have been hacked. Requires confidentiality safeguards.</li>
+            <li><strong>Third-Party Custodian:</strong> Expert custody, institutional-grade security. Transfer friction and potential costs.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-as3">
+        <div class="drilldown-header" onclick="toggleDD('dd-as3')">
+          <span class="drilldown-icon">📋</span>
+          <span class="drilldown-label">Five Pre-Seizure Considerations</span>
+          <span class="drilldown-meta">Planning Before You Act</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <ul>
+            <li><strong>A — Custody Type:</strong> What wallet/custodian will the agency use? Match security level to asset value.</li>
+            <li><strong>B — Access Control:</strong> Who has access? Implement need-to-know. Track every access event.</li>
+            <li><strong>C — Asset Form:</strong> Accept crypto as-is or convert to fiat equivalent? Consider price volatility and liquidation difficulty.</li>
+            <li><strong>D — Contingencies:</strong> Software becomes obsolete. VASPs get hacked. New currencies fork. Maintain a "living document" policy reviewed annually.</li>
+            <li><strong>E — Liquidation Plan:</strong> VASP market-rate sale, third-party auction, or return as-is? Returning crypto to fraud victims unfamiliar with crypto requires careful planning.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- S11: CASE STUDIES -->
+    <div class="section" id="s11">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> CASE STUDIES</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 12 // ADVANCED</div>
+        <div class="section-title">Real-World Case Studies</div>
+        <p class="section-desc">Dissecting landmark investigations. Each case teaches a different technique. Expand each one to see the methodology breakdown.</p>
+      </div>
+      <div class="drilldown" id="dd-cs1">
+        <div class="drilldown-header" onclick="toggleDD('dd-cs1')">
+          <span class="drilldown-icon">₿</span>
+          <span class="drilldown-label">$243M Bitcoin Theft — Social Media OSINT</span>
+          <span class="drilldown-meta">Malone Lam & Jeandiel Serrano | Aug 2024 | DOJ Arrested Sept 18, 2024</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Over 4,000 BTC stolen from one victim when fraudsters posed as Google and Gemini support to obtain private keys. ZachXBT's first paid case, solved within a month.</p>
+          <p><strong>Key techniques:</strong></p>
+          <ul>
+            <li>On-chain tracing: followed 4,000+ BTC from victim wallet through laundering chain</li>
+            <li><strong>Social media OSINT:</strong> suspects posted luxury purchases and nightclub appearances publicly — spending inconsistent with any legitimate income</li>
+            <li>Timeline correlation: social media posts matched timing of illicit transfers exactly</li>
+            <li>$9M+ frozen by zeroShadow, Cryptoforensic Investigators, and Binance Security</li>
+            <li>Fourth suspect (Danish Zulfiqar) arrested in Dubai, December 2025</li>
+          </ul>
+          <p><strong>Lesson:</strong> Social media spending patterns are a primary self-deanonymization vector. Criminals who believe crypto is anonymous often maintain visible real-world lifestyles that contradict any legitimate income.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-cs2">
+        <div class="drilldown-header" onclick="toggleDD('dd-cs2')">
+          <span class="drilldown-icon">📍</span>
+          <span class="drilldown-label">Haby — Coinbase Impersonation Scammer</span>
+          <span class="drilldown-meta">$2M+ | Abbotsford, BC | 2025</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Scammer posted on December 30, 2024 showing a 21,000 XRP theft screenshot. ZachXBT matched the wallet to two additional thefts ($500K+). Stolen XRP was swapped to Bitcoin through instant exchanges.</p>
+          <p><strong>OSINT that cracked the case:</strong></p>
+          <ul>
+            <li><strong>Location metadata:</strong> Instagram story posts contained data confirming Abbotsford, BC</li>
+            <li>Deleted Telegram account 2 days before publication — but archived screenshots preserved all evidence</li>
+            <li>Previous aliases confirmed through historic Telegram chat membership screenshots</li>
+            <li><strong>Timing analysis:</strong> matched exact timestamps of XRP→BTC swaps with suspect's online activity windows</li>
+          </ul>
+          <p><strong>Lesson:</strong> Archive immediately. Suspects monitor investigations and delete evidence quickly. Poor operational security (Instagram stories with location data) routinely compromises even experienced criminals.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-cs3">
+        <div class="drilldown-header" onclick="toggleDD('dd-cs3')">
+          <span class="drilldown-icon">🏛️</span>
+          <span class="drilldown-label">USMS Asset Theft — Telegram Screen-Share Evidence</span>
+          <span class="drilldown-meta">$46M | January 2026</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>ZachXBT obtained a recording of a dispute in a private Telegram group where two individuals competed to prove who controlled more cryptocurrency. One participant screen-shared a wallet holding ~$2.3M and then transferred $6.7M in ether in real time.</p>
+          <p><strong>Investigation highlights:</strong></p>
+          <ul>
+            <li>Real-time screen-share in Telegram provided live view of government custody wallet activity</li>
+            <li>Traced wallet addresses from Telegram recording back to USMS government custody wallets</li>
+            <li>Identified subject as John Daghita, son of Dean Daghita (president of CMDSS, USMS contract holder)</li>
+          </ul>
+          <p><strong>Lesson:</strong> Private Telegram groups where criminals brag are primary investigative sources. Even sophisticated actors with insider knowledge make catastrophic OPSEC errors when competing for status.</p>
+        </div>
+      </div>
+      <div class="drilldown" id="dd-cs4">
+        <div class="drilldown-header" onclick="toggleDD('dd-cs4')">
+          <span class="drilldown-icon">🎰</span>
+          <span class="drilldown-label">Hyperliquid Whale — Gambling With Stolen Funds</span>
+          <span class="drilldown-meta">$20M | Early 2025 | DeFi Bridge Analysis</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>An anonymous trader made $20M+ on Hyperliquid using high-leverage positions with suspiciously well-timed trades. ZachXBT traced the funding back to a January 2025 casino exploit and phishing operation.</p>
+          <p><strong>Key insight:</strong></p>
+          <ul>
+            <li>On-chain profitability analysis revealed positions were funded from known illicit sources</li>
+            <li>Cross-chain tracing connected DeFi gambling activity to prior phishing victims</li>
+            <li>OSINT Industries used to correlate wallet activity with suspect identity</li>
+          </ul>
+          <p><strong>Lesson:</strong> Large, unusual DeFi positions with no clear legitimate funding source always warrant investigation of the funding chain.</p>
+        </div>
+      </div>
+    </div>
+    <!-- S12: KNOWLEDGE CHECK -->
+    <div class="section" id="s12">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> KNOWLEDGE CHECK</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 13 // ASSESSMENT</div>
+        <div class="section-title">Knowledge Check</div>
+        <p class="section-desc">Test your understanding. Click an answer to reveal the explanation.</p>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-q"><span class="q-num">QUESTION 01 / BEGINNER</span> A wallet address receives a large sum and immediately sends the entire amount out within an hour, leaving a $0 balance. What should an investigator suspect?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q1')"><span class="option-letter">A)</span> A legitimate retail investor who changed their mind</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'right','q1')"><span class="option-letter">B)</span> A "pass-through" address used to layer illicit funds</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q1')"><span class="option-letter">C)</span> A cold wallet moving to a hardware device</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q1')"><span class="option-letter">D)</span> Normal exchange behavior</div>
+        </div>
+        <div class="quiz-feedback" id="q1">✅ <strong>Correct — B:</strong> A pass-through address is a major red flag. The controller paid a transaction fee for an unnecessary movement of funds — a non-economic trade indicating illicit layering infrastructure. Per TRM Labs' Flip Book, this pattern suggests the address is being used to create distance between the illicit source and destination of funds.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-q"><span class="q-num">QUESTION 02 / FACT FRAMEWORK</span> Under the FACT Attribution Framework, what is the key distinction between "technical identification" and "investigative attribution"?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q2')"><span class="option-letter">A)</span> Technical identification requires a warrant; investigative attribution does not</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q2')"><span class="option-letter">B)</span> Technical identification is done by machines; investigative attribution is done by humans</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'right','q2')"><span class="option-letter">C)</span> Technical identification answers "what acted?" (device/account); investigative attribution answers "who acted?" (specific person) — requiring multi-stream evidence convergence</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q2')"><span class="option-letter">D)</span> They are the same — identifying a wallet identifies its owner</div>
+        </div>
+        <div class="quiz-feedback" id="q2">✅ <strong>Correct — C:</strong> The FACT Framework's core insight is that linking a device or account to an action (technical identification) is NOT the same as attributing that action to a person. A wallet address is not a person — a straw identity, stolen identity, or shared account may control it. Person-level attribution requires multi-stream evidence convergence.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-q"><span class="q-num">QUESTION 03 / INTERMEDIATE</span> An investigator traces illicit Bitcoin to a Binance deposit address. What is the MOST valuable legal process to serve on Binance?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q3')"><span class="option-letter">A)</span> Request only the KYC documents (government ID)</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q3')"><span class="option-letter">B)</span> Request only the transaction history</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'right','q3')"><span class="option-letter">C)</span> Omnibus request: all records including KYC, IP logs, email, device IDs, transaction history, and associated accounts — plus an emergency freeze if funds remain</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q3')"><span class="option-letter">D)</span> No need to serve — blockchain data is sufficient for prosecution</div>
+        </div>
+        <div class="quiz-feedback" id="q3">✅ <strong>Correct — C:</strong> TRM Labs' Flip Book recommends an omnibus "all records associated with the account and registrant" request. This captures KYC documents, subscriber info, email associations, IP address logs, full transaction history, device IDs, and associated accounts. The simultaneous emergency freeze is critical.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-q"><span class="q-num">QUESTION 04 / ADVANCED</span> How did ZachXBT attribute the $1.5B Bybit hack to Lazarus Group within 48 hours?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q4')"><span class="option-letter">A)</span> He accessed private law enforcement databases</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q4')"><span class="option-letter">B)</span> He found WHOIS records showing North Korean IP addresses</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'right','q4')"><span class="option-letter">C)</span> He matched Bybit outflows to Ethereum addresses previously linked to Lazarus Group in prior hacks (Phemex, BingX, Poloniex) using a reference dataset of documented behavioral fingerprints</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q4')"><span class="option-letter">D)</span> North Korea publicly claimed responsibility</div>
+        </div>
+        <div class="quiz-feedback" id="q4">✅ <strong>Correct — C:</strong> ZachXBT identified address overlap — some Bybit outflow wallets were the same Ethereum addresses previously used in Phemex, BingX, and Poloniex hacks already attributed to Lazarus Group. This pre-existing intelligence (the C stage of FACT) was the key to rapid attribution.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-q"><span class="q-num">QUESTION 05 / FACT FRAMEWORK</span> Under FACT, what must an investigator do when conditions for person-level attribution are NOT met?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q5')"><span class="option-letter">A)</span> Name the most likely suspect anyway, with a disclaimer</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q5')"><span class="option-letter">B)</span> Wait indefinitely for more evidence</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'right','q5')"><span class="option-letter">C)</span> Issue an explicit non-attribution finding: state that person-level attribution cannot be made, which reasonable alternative explanations remain, and that device/account association alone is insufficient</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q5')"><span class="option-letter">D)</span> Defer to law enforcement to make the determination</div>
+        </div>
+        <div class="quiz-feedback" id="q5">✅ <strong>Correct — C:</strong> FACT is intentionally conservative. When conditions are not met, FACT directs the practitioner to issue an explicit non-attribution finding. A framework that cannot refuse attribution cannot be trusted when it asserts attribution.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-q"><span class="q-num">QUESTION 06 / INTERMEDIATE</span> What is "chain-hopping" and why is it both a challenge and a traceable opportunity?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q6')"><span class="option-letter">A)</span> Rapidly moving funds between wallets on the same blockchain</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q6')"><span class="option-letter">B)</span> Splitting a large transaction into many small ones</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'right','q6')"><span class="option-letter">C)</span> Moving assets between different blockchains via bridges, forcing investigators to use multiple tools — but each bridge transaction is on-chain and permanently traceable</div>
+          <div class="quiz-option" onclick="answerQuiz(this,'wrong','q6')"><span class="option-letter">D)</span> Staking crypto on multiple protocols simultaneously</div>
+        </div>
+        <div class="quiz-feedback" id="q6">✅ <strong>Correct — C:</strong> Chain-hopping moves assets between blockchains (e.g., BTC→ETH→TRON via bridges), forcing investigators to use different block explorers and bridge-tracking tools (Pulsy, Socketscan). This is the Lazarus Group's primary post-hack technique. However, every bridge transaction is on-chain and creates a permanent record — bridge analysis tools aggregate these records, making cross-chain tracing possible.</div>
+      </div>
+    </div>
 
     <!-- ══════════════════════════════════════════════════
          S13: GLOSSARY & RESOURCES — UPDATED WITH GIAC/SANS
@@ -965,7 +1936,7 @@
           <span class="resource-icon">📘</span>
           <div>
             <div class="resource-title">TRM Labs Blockchain Investigator's Flip Book</div>
-            <div class="resource-url">trmlabs.com — Law enforcement field guide. Contact: lerelations@trmlabs.com</div>
+            <div class="resource-url">trmlabs.com — Law enforcement field guide. Contact: <span class="__cf_email__" data-cfemail="b0dcd5c2d5dcd1c4d9dfdec3f0c4c2dddcd1d2c39ed3dfdd">[email&#160;protected]</span></div>
           </div>
         </a>
         <a class="resource-item" href="https://go.chainalysis.com/crypto-crime-report.html" target="_blank">
@@ -1088,7 +2059,7 @@
 
 <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // LOADER
 window.addEventListener('load', () => {
   setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
@@ -1143,8 +2114,7 @@ function answerQuiz(el, result, qId) {
 function filterGlossary() {
   const q = document.getElementById('glossarySearch').value.toLowerCase();
   document.querySelectorAll('.glossary-item').forEach(item => {
-    item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
-  });
+    item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';  });
 }
 
 // SCROLL TOP
