@@ -641,6 +641,11 @@
       <span class="nav-item-text">Foundations</span>
       <span class="nav-difficulty diff-beginner">Beginner</span>
     </a>
+    <a class="nav-item" onclick="showSection('s1b')">
+      <span class="nav-item-num">01B</span>
+      <span class="nav-item-text">UTXO vs Account</span>
+      <span class="nav-difficulty diff-beginner">Beginner</span>
+    </a>
     <a class="nav-item" onclick="showSection('s2')">
       <span class="nav-item-num">02</span>
       <span class="nav-item-text">Key Terminology</span>
@@ -663,6 +668,21 @@
       <span class="nav-item-text">Tools & Arsenal</span>
       <span class="nav-difficulty diff-intermediate">Mid</span>
     </a>
+    <a class="nav-item" onclick="showSection('s5b')">
+      <span class="nav-item-num">05B</span>
+      <span class="nav-item-text">Bridge & Cross-Chain</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s5c')">
+      <span class="nav-item-num">05C</span>
+      <span class="nav-item-text">Smart Contract Forensics</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('s5d')">
+      <span class="nav-item-num">05D</span>
+      <span class="nav-item-text">Malware Analysis</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
 
     <div class="nav-section-label">Crime Typologies</div>
     <a class="nav-item" onclick="showSection('s6')">
@@ -680,32 +700,47 @@
       <span class="nav-item-text">Ransomware & APTs</span>
       <span class="nav-difficulty diff-advanced">Expert</span>
     </a>
+    <a class="nav-item" onclick="showSection('s8b')">
+      <span class="nav-item-num">08B</span>
+      <span class="nav-item-text">Privacy Coins</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
 
     <div class="nav-section-label">Advanced Ops</div>
-    <a class="nav-item" onclick="showSection('sfact')">
+    <a class="nav-item" onclick="showSection('saml')">
       <span class="nav-item-num">09</span>
+      <span class="nav-item-text">AML Lifecycle</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" onclick="showSection('sfact')">
+      <span class="nav-item-num">10</span>
       <span class="nav-item-text">FACT Framework</span>
       <span class="nav-difficulty diff-advanced">Expert</span>
     </a>
     <a class="nav-item" onclick="showSection('s9')">
-      <span class="nav-item-num">10</span>
+      <span class="nav-item-num">11</span>
       <span class="nav-item-text">Legal Process</span>
       <span class="nav-difficulty diff-advanced">Expert</span>
     </a>
+    <a class="nav-item" onclick="showSection('s9b')">
+      <span class="nav-item-num">11B</span>
+      <span class="nav-item-text">Canadian Law</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
     <a class="nav-item" onclick="showSection('s10')">
-      <span class="nav-item-num">11</span>
+      <span class="nav-item-num">12</span>
       <span class="nav-item-text">Asset Seizure</span>
       <span class="nav-difficulty diff-advanced">Expert</span>
     </a>
     <a class="nav-item" onclick="showSection('s11')">
-      <span class="nav-item-num">12</span>
+      <span class="nav-item-num">13</span>
       <span class="nav-item-text">Case Studies</span>
       <span class="nav-difficulty diff-advanced">Expert</span>
     </a>
 
     <div class="nav-section-label">Reference</div>
     <a class="nav-item" onclick="showSection('s12')">
-      <span class="nav-item-num">13</span>
+      <span class="nav-item-num">14</span>
       <span class="nav-item-text">Knowledge Check</span>
       <span class="nav-difficulty diff-intermediate">Mid</span>
     </a>
@@ -962,6 +997,82 @@
       </div>
     </div>
     <!-- ══════════════════════════════════════════════════
+         S1B: UTXO VS ACCOUNT-BASED
+    ══════════════════════════════════════════════════ -->
+    <div class="section" id="s1b">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> UTXO VS ACCOUNT-BASED</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 01B // BEGINNER — FOUNDATIONAL MODEL</div>
+        <div class="section-title">UTXO vs Account-Based Tracing</div>
+        <p class="section-desc">Bitcoin and Ethereum use fundamentally different transaction models. Understanding the distinction is essential — address clustering, change detection, and tracing methodology differ completely between the two.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card accent">
+          <div class="card-title"><span class="icon">₿</span> UTXO Model — Bitcoin</div>
+          <p><strong>Unspent Transaction Output.</strong> Bitcoin does not track balances. Instead, it tracks discrete "coins" — chunks of BTC that were received and not yet spent. When you spend Bitcoin, you consume entire UTXOs and create new ones as change.</p>
+          <p>Think of UTXOs like physical banknotes. If you have a $50 bill and buy something for $30, you hand over the $50 and receive $20 change. Bitcoin works identically — if you receive 1 BTC and send 0.4 BTC, the full 1 BTC UTXO is consumed and a new 0.4 BTC output goes to the recipient, plus a change output of ~0.6 BTC (minus fees) back to you.</p>
+          <p style="margin-bottom:0"><strong>Investigator implication:</strong> Every Bitcoin transaction exposes all inputs simultaneously — enabling Common Input Ownership clustering and change address detection. The transaction graph is exceptionally rich for tracing.</p>
+        </div>
+        <div class="card accent3">
+          <div class="card-title"><span class="icon">Ξ</span> Account-Based Model — Ethereum</div>
+          <p><strong>Balance tracking.</strong> Ethereum works like a bank account. Each address has a running balance that increases or decreases with each transaction. There is no concept of "consuming" a coin — you simply deduct from your balance and add to the recipient's.</p>
+          <p>Think of it like a spreadsheet: "Address A has 5 ETH. Address A sends 2 ETH to Address B. Address A now has 3 ETH. Address B now has 2 ETH." No change addresses. No input consolidation. Each transaction is a direct balance adjustment.</p>
+          <p style="margin-bottom:0"><strong>Investigator implication:</strong> No change address detection. CIUA clustering doesn't apply. Smart contract interactions add complexity — a single transaction can trigger dozens of internal transfers only visible on block explorers that decode contract calls.</p>
+        </div>
+      </div>
+
+      <h2>Tracing Methodology Differences</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Feature</th><th>UTXO (Bitcoin)</th><th>Account-Based (Ethereum / EVM)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Balance tracking</strong></td><td>No — track unspent coins</td><td>Yes — single running balance per address</td></tr>
+            <tr><td><strong>Change addresses</strong></td><td>Yes — critical clustering signal</td><td>No — not applicable</td></tr>
+            <tr><td><strong>Input clustering (CIUA)</strong></td><td>Yes — powerful heuristic</td><td>No — each tx has one sender</td></tr>
+            <tr><td><strong>Smart contracts</strong></td><td>Limited (multisig scripts)</td><td>Core feature — every DeFi interaction</td></tr>
+            <tr><td><strong>Privacy leakage</strong></td><td>High via input consolidation</td><td>Moderate via behavioral patterns</td></tr>
+            <tr><td><strong>Block explorer</strong></td><td>Blockchair, Blockchain.info</td><td>Etherscan, BscScan, Polygonscan</td></tr>
+            <tr><td><strong>Key tracing tool</strong></td><td>TRM Labs, Chainalysis Reactor</td><td>TRM Labs, Etherscan, Arkham</td></tr>
+            <tr><td><strong>Internal transactions</strong></td><td>Not applicable</td><td>Require contract trace decoding</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="drilldown" id="dd-utxo-cluster">
+        <div class="drilldown-header" onclick="toggleDD('dd-utxo-cluster')">
+          <span class="drilldown-icon">🔗</span>
+          <span class="drilldown-label">UTXO Clustering Deep Dive — CIUA & Change Detection</span>
+          <span class="drilldown-meta">Bitcoin's Built-In Investigative Gift</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>Common Input Ownership (CIUA):</strong> In a Bitcoin transaction, if Address A and Address B both appear as inputs (senders), they must both have signed the transaction — meaning the same person controls both private keys. This single heuristic has allowed investigators to cluster thousands of addresses into single entities.</p>
+          <p><strong>Change address detection:</strong> When a Bitcoin transaction sends funds, it typically creates two outputs: (1) the payment to the recipient and (2) change returned to the sender. Investigators identify change outputs by analyzing amounts (round numbers often go to recipients; odd amounts are often change), timing (change address first used at same time as original wallet), and script type matching.</p>
+          <p><strong>Peeling chain identification:</strong> A common UTXO laundering pattern where each transaction sends the majority of funds forward and a small "peel" to a separate address. Investigators identify these by the consistent ratio of forward vs. peel amounts and the sequential timing. Each hop is still traceable — the pattern itself is a signature.</p>
+          <div class="alert info" style="margin-bottom:0;margin-top:12px">
+            <div class="alert-label">⚡ Practice Exercise</div>
+            Pick any Bitcoin transaction hash on Blockchair. Identify: (1) how many inputs are there? (2) are multiple input addresses present — suggesting CIUA clustering? (3) which output is likely change vs. payment based on amount and address type? This three-question framework applies to every BTC tracing task.
+          </div>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-eth-internal">
+        <div class="drilldown-header" onclick="toggleDD('dd-eth-internal')">
+          <span class="drilldown-icon">📋</span>
+          <span class="drilldown-label">Ethereum Internal Transactions — The Hidden Layer</span>
+          <span class="drilldown-meta">What Etherscan Doesn't Show By Default</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>In Ethereum, a single external transaction (visible as one row on Etherscan) can trigger dozens of <strong>internal transactions</strong> — value transfers between contracts, contract-to-contract calls, and token movements — that are not visible on the main transaction view.</p>
+          <p>This is critical for investigating DeFi exploits: the "exploit transaction" may appear to send 0 ETH on the surface, while internally it borrows $100M via flash loan, drains a liquidity pool, repays the loan, and pockets the profit — all in a single block. Investigators must always check the "Internal Transactions" tab on Etherscan and use Tenderly or Phalcon for full execution trace decoding.</p>
+          <p><strong>Token transfers:</strong> ERC-20 token transfers (USDT, USDC, etc.) are also invisible in the main ETH transaction view — they appear only in the "Token Transfers" tab. An investigator who only reads the main ETH value will miss the entire economic substance of most DeFi transactions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
          S2: TERMINOLOGY
     ══════════════════════════════════════════════════ -->
     <div class="section" id="s2">
@@ -1175,7 +1286,7 @@
           <span class="drilldown-chevron">›</span>
         </div>
         <div class="drilldown-body">
-          <p>WHOIS records, SSL certificate history, Shodan/Censys scans, and domain registration data can link a scam website to a real identity or to other criminal infrastructure. The Lazarus Group registered <code>bybit-assessment[.]com</code> using the email <code>trevorgreer9312@gmail.com</code> hours before the $1.5B hack — a traceable footprint.</p>
+          <p>WHOIS records, SSL certificate history, Shodan/Censys scans, and domain registration data can link a scam website to a real identity or to other criminal infrastructure. The Lazarus Group registered <code>bybit-assessment[.]com</code> using the email <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe8a8c9b88918c998c9b9b8cc7cdcfccbe99939f9792d09d9193">[email&#160;protected]</a></code> hours before the $1.5B hack — a traceable footprint.</p>
           <p>Certificate Transparency logs (crt.sh) reveal all SSL certificates ever issued for a domain or email, often uncovering a network of related criminal infrastructure registered under the same identity.</p>
         </div>
       </div>
@@ -1253,6 +1364,252 @@
         <div class="tool-card"><span class="tool-cost cost-free">Free</span><div class="tool-name">Obsidian</div><div class="tool-type">Investigation Organization</div><div class="tool-desc">Create flowcharts, link-charts, and structured investigation notes. ZachXBT uses this to organize multi-entity investigations.</div></div>
       </div>
     </div>
+
+    <!-- S5B: BRIDGE & CROSS-CHAIN RECONCILIATION -->
+    <div class="section" id="s5b">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> BRIDGE & CROSS-CHAIN</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 05B // EXPERT — CROSS-CHAIN FORENSICS</div>
+        <div class="section-title">Bridge & Cross-Chain Reconciliation</div>
+        <p class="section-desc">Cross-chain movement is the most common advanced laundering technique. Every bridge creates investigable records — but only if you know where to look and how to reconcile across ledgers.</p>
+      </div>
+
+      <div class="card accent2">
+        <div class="card-title"><span class="icon">🌉</span> Why Criminals Chain-Hop</div>
+        <p>Moving assets across chains serves two laundering goals: it breaks the continuity of the on-chain trail (forcing investigators to switch tools and chain-specific explorers), and it can move funds into lower-liquidity chains where compliant exchanges are fewer. The Lazarus Group's post-Bybit laundering involved at least four chains within 72 hours of the theft.</p>
+        <p style="margin-bottom:0">The good news: every bridge transaction creates a permanent, public record on both chains. The two records are linked by amount, timing, and often a unique message ID. Cross-chain tracing is complex but never a dead end.</p>
+      </div>
+
+      <h2>Bridge Transaction Anatomy</h2>
+      <div class="drilldown" id="dd-bridge-anatomy">
+        <div class="drilldown-header" onclick="toggleDD('dd-bridge-anatomy')">
+          <span class="drilldown-icon">🔬</span>
+          <span class="drilldown-label">How a Bridge Transaction Creates Two Records</span>
+          <span class="drilldown-meta">Lock-and-Mint vs Burn-and-Mint vs Atomic Swap</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>Lock-and-Mint (most common):</strong> User sends Asset X to a bridge contract on Chain A. The bridge locks the asset. On Chain B, the bridge mints a wrapped equivalent (e.g., WBTC on Ethereum). Investigator sees: deposit TX on Chain A + mint TX on Chain B, linked by the bridge contract address and often a unique nonce or message ID.</p>
+          <p><strong>Burn-and-Mint:</strong> User burns the wrapped asset on Chain B; bridge mints native asset on Chain A. Common for Circle's CCTP (USDC cross-chain). Range Protocol tracks these specifically.</p>
+          <p><strong>Atomic Swap:</strong> Peer-to-peer exchange across chains with no bridge custodian. Rarer but used for privacy — harder to trace because there is no central bridge contract to identify.</p>
+          <p><strong>Reconciliation method:</strong> Match the departure TX on Chain A (amount, timestamp, bridge contract) to the arrival TX on Chain B (same amount minus fees, within a few minutes, bridge mint contract). The bridge contract address itself is a unique investigative anchor — all transactions through the same bridge share that anchor.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-bridge-tools">
+        <div class="drilldown-header" onclick="toggleDD('dd-bridge-tools')">
+          <span class="drilldown-icon">🛠️</span>
+          <span class="drilldown-label">Cross-Chain Investigation Workflow</span>
+          <span class="drilldown-meta">Step-by-Step Reconciliation Protocol</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <ul>
+            <li><strong>Step 1 — Identify the bridge:</strong> When a wallet sends funds to a known bridge contract (Stargate, Across, Synapse, cBridge, Hop Protocol, Wormhole), note the bridge name, destination chain encoded in the contract calldata, and the departure TX hash.</li>
+            <li><strong>Step 2 — Use Pulsy or Socketscan:</strong> Input the departure TX. Pulsy aggregates bridge activity across protocols and returns the corresponding arrival TX on the destination chain automatically.</li>
+            <li><strong>Step 3 — Manual fallback (CCTP/Range Protocol):</strong> For USDC moves via Circle's CCTP, use Range Protocol. Search by the source chain TX hash — it returns the destination chain and arrival TX.</li>
+            <li><strong>Step 4 — Switch explorers:</strong> Open the destination chain explorer (Tronscan, Solscan, Arbiscan, etc.) and load the arrival wallet. Continue tracing from there.</li>
+            <li><strong>Step 5 — Document each hop:</strong> Record departure chain, departure TX, departure amount, arrival chain, arrival TX, arrival amount, bridge protocol, and timestamp delta for every cross-chain move. This chain-of-custody log is your evidence for prosecutors.</li>
+          </ul>
+          <div class="alert warn" style="margin-bottom:0;margin-top:12px">
+            <div class="alert-label">⚠️ Amount Discrepancy Note</div>
+            Bridge fees mean the arrival amount will always be slightly less than the departure amount. A 0.1–0.5% discrepancy is normal and does not indicate a chain break. Larger discrepancies may indicate additional layering steps within the bridge protocol itself.
+          </div>
+        </div>
+      </div>
+
+      <h2>Known Laundering Bridge Patterns</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pattern</th><th>Chains Involved</th><th>Investigative Tool</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ETH → BTC via renBridge / THORChain</strong></td><td>Ethereum → Bitcoin</td><td>Pulsy + Blockchair</td><td>Lazarus Group primary path post-Bybit</td></tr>
+            <tr><td><strong>ETH → TRON (USDT conversion)</strong></td><td>Ethereum → Tron</td><td>Socketscan + Tronscan</td><td>Final layering before OTC cash-out</td></tr>
+            <tr><td><strong>BTC → Avalanche → TRON</strong></td><td>3-chain hop</td><td>TRM Labs full graph</td><td>Khinkis ransomware documented pattern</td></tr>
+            <tr><td><strong>USDC via CCTP (cross-chain)</strong></td><td>ETH / Solana / Arbitrum</td><td>Range Protocol</td><td>Fast, low-fee, often overlooked by investigators</td></tr>
+            <tr><td><strong>NFT-based laundering (cross-chain)</strong></td><td>ETH → Solana</td><td>Magic Eden + Etherscan</td><td>Mint NFT on ETH, sell on Solana for "clean" SOL</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- S5C: SMART CONTRACT FORENSICS -->
+    <div class="section" id="s5c">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> SMART CONTRACT FORENSICS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 05C // EXPERT — DEFI FORENSICS</div>
+        <div class="section-title">Smart Contract Forensics</div>
+        <p class="section-desc">DeFi exploits are entirely on-chain — every step of the attack is a permanent public record. This module covers how to read and investigate smart contract transactions, flash loan attacks, MEV, and NFT fraud.</p>
+      </div>
+
+      <div class="drilldown" id="dd-sc-read">
+        <div class="drilldown-header" onclick="toggleDD('dd-sc-read')">
+          <span class="drilldown-icon">📋</span>
+          <span class="drilldown-label">Reading a Smart Contract Transaction</span>
+          <span class="drilldown-meta">Etherscan → Tenderly → Phalcon</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>A smart contract transaction on Etherscan shows the raw calldata — encoded function calls and parameters that look like hexadecimal strings. To understand what actually happened, investigators use execution trace decoders:</p>
+          <ul>
+            <li><strong>Tenderly:</strong> Paste a TX hash. Tenderly decodes the full execution trace — every internal call, every state change, every token balance update — in human-readable form. Free tier available. Essential for DeFi exploit analysis.</li>
+            <li><strong>Phalcon (by BlockSec):</strong> Specialized in DeFi attack analysis. Automatically classifies exploit patterns (flash loan attack, price manipulation, reentrancy) and traces the full fund flow in a visual graph.</li>
+            <li><strong>Etherscan "Internal Transactions" tab:</strong> Shows contract-to-contract calls but without decoded function names. First stop before moving to Tenderly.</li>
+            <li><strong>4byte.directory:</strong> Decodes raw function signatures (0xa9059cbb = "transfer(address,uint256)"). Useful when Tenderly doesn't have the ABI.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-flash-loan-inv">
+        <div class="drilldown-header" onclick="toggleDD('dd-flash-loan-inv')">
+          <span class="drilldown-icon">⚡</span>
+          <span class="drilldown-label">Flash Loan Attack Investigation</span>
+          <span class="drilldown-meta">Anatomy of a DeFi Exploit</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>A flash loan is an uncollateralized loan that must be borrowed and repaid within the same blockchain transaction. Attackers use them to temporarily control enormous sums for price manipulation.</p>
+          <p><strong>Attack anatomy (Euler Finance, $197M, March 2023):</strong></p>
+          <ul>
+            <li>Attacker borrows $30M DAI via flash loan from Aave</li>
+            <li>Deposits into Euler Finance, receives eDAI (deposit tokens)</li>
+            <li>Takes out 10x leveraged position — exploiting a donation function bug that inflates their collateral</li>
+            <li>Liquidates their own position at favorable rate, draining Euler's reserves</li>
+            <li>Repays flash loan — entire sequence in one TX, profits extracted to attacker wallet</li>
+          </ul>
+          <p><strong>Investigation steps:</strong></p>
+          <ul>
+            <li>Identify the exploit TX (sudden large balance change in a protocol's contract)</li>
+            <li>Load in Phalcon — it automatically identifies flash loan source and profit extraction</li>
+            <li>Trace the attacker's wallet backward to find funding source (often Tornado Cash or a freshly funded exchange withdrawal)</li>
+            <li>Forward-trace profit wallet to mixing or VASP deposits</li>
+            <li>Check deployer wallet of the attacker's contract — often used across multiple exploits</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-mev">
+        <div class="drilldown-header" onclick="toggleDD('dd-mev')">
+          <span class="drilldown-icon">🤖</span>
+          <span class="drilldown-label">MEV — Maximal Extractable Value</span>
+          <span class="drilldown-meta">Front-Running, Sandwich Attacks & On-Chain Investigation</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>MEV (Maximal Extractable Value)</strong> refers to profit extracted by controlling the ordering of transactions within a block. Validators and searchers can insert, reorder, or censor transactions to profit at users' expense.</p>
+          <p><strong>Front-running:</strong> A bot sees a large pending swap in the mempool, submits the same trade with a higher gas fee to execute first, then sells back at a higher price. Result: user's trade executes at a worse price. Investigable on Eigenphi.io and mevboost.pics.</p>
+          <p><strong>Sandwich attack:</strong> Bot places a buy order before a victim's large swap and a sell order after — "sandwiching" the victim to extract the price impact as profit. On-chain signature: three transactions in sequence in the same block, same token pair, third TX directly after victim's TX.</p>
+          <p><strong>Investigative relevance:</strong> MEV bots are sometimes used to launder funds by intentionally losing to a controlled "victim" wallet — a form of on-chain money laundering. Identifying coordinated MEV between related wallets (same deployer, same profit extraction address) is a growing investigative domain.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-nft-fraud">
+        <div class="drilldown-header" onclick="toggleDD('dd-nft-fraud')">
+          <span class="drilldown-icon">🖼️</span>
+          <span class="drilldown-label">NFT Fraud — Wash Trading, Counterfeits & Phishing Drains</span>
+          <span class="drilldown-meta">Three Distinct NFT Crime Typologies</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>Wash trading:</strong> An actor buys their own NFT from themselves (using different wallets) to artificially inflate reported sale prices and volume. Creates false market signal and can be used to "laundering" crypto by establishing a fake cost basis. On-chain signature: seller and buyer wallets funded by the same source, circular payment patterns, no third-party buyers.</p>
+          <p><strong>Counterfeit collections:</strong> Scammers mint pixel-for-pixel copies of popular NFT collections (Bored Apes, CryptoPunks) with slightly different contract addresses. Victims buy on secondary markets believing they hold the original. Investigation: verify the official contract address against the project's verified channels before any other analysis.</p>
+          <p><strong>Phishing drains:</strong> Victim is lured to a malicious website that prompts them to sign a "setApprovalForAll" or "Permit" transaction — granting the attacker unlimited access to their entire NFT wallet. The drainer executes the approved transfers immediately. On-chain: look for ApprovalForAll events immediately preceding transfers of all NFTs from a wallet to an unknown address.</p>
+          <p><strong>Airdrop scams:</strong> Unknown tokens or NFTs are airdropped to wallets. When the victim interacts with the token contract to check or sell it, the interaction triggers a malicious transfer. Prevention and investigation: never interact with unsolicited tokens; trace the deployer of the malicious contract.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5D: MALWARE ANALYSIS -->
+    <div class="section" id="s5d">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> MALWARE ANALYSIS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 05D // EXPERT — DFIR & MALWARE</div>
+        <div class="section-title">Malware Analysis for Crypto Investigators</div>
+        <p class="section-desc">Extracting crypto-relevant artifacts from malware payloads — wallet addresses, C2 infrastructure, and victim credentials — is the technical bridge between Pillar 1 (Cybersecurity) and Pillar 2 (Financial Intelligence).</p>
+      </div>
+
+      <div class="alert info">
+        <div class="alert-label">🔗 SANS Connection</div>
+        This module maps directly to <strong>FOR500</strong> (Windows artifact analysis), <strong>FOR508</strong> (memory forensics, incident response), and <strong>SEC504</strong> (attacker tooling). The YARA and FLOSS techniques below are taught in FOR508.
+      </div>
+
+      <div class="drilldown" id="dd-mal-static">
+        <div class="drilldown-header" onclick="toggleDD('dd-mal-static')">
+          <span class="drilldown-icon">🔬</span>
+          <span class="drilldown-label">Static Analysis — Extracting Wallet Addresses Without Running the Malware</span>
+          <span class="drilldown-meta">FLOSS, Strings, PE Analysis</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Static analysis examines malware without executing it — safe for the investigator's machine, and often sufficient to extract key artifacts.</p>
+          <ul>
+            <li><strong>FLOSS (FireEye/Mandiant):</strong> Automatically extracts obfuscated strings from malware binaries — including XOR-encoded wallet addresses that "strings" alone would miss. Run <code>floss malware.exe</code> and grep the output for BTC/ETH address patterns.</li>
+            <li><strong>YARA rules:</strong> Write or apply signature rules targeting cryptocurrency address patterns. A YARA rule matching the regex <code>/1[a-km-zA-HJ-NP-Z1-9]{25,34}/</code> will flag any file containing a Bitcoin address. The FBI publishes YARA rules for known ransomware families including their embedded wallet addresses.</li>
+            <li><strong>PE Studio / CFF Explorer:</strong> Inspect PE headers, import tables, and embedded resources. Ransomware often embeds its ransom note (containing wallet addresses) as a resource within the executable.</li>
+            <li><strong>VirusTotal Intelligence:</strong> Submit the hash. VT surfaces previously extracted IOCs, related samples, contacted domains, and any known attribution tags from the research community.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-mal-memory">
+        <div class="drilldown-header" onclick="toggleDD('dd-mal-memory')">
+          <span class="drilldown-icon">💾</span>
+          <span class="drilldown-label">Memory Forensics — Capturing Live Artifacts (Volatility)</span>
+          <span class="drilldown-meta">Extracting Keys, Wallets & C2 from RAM</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Memory forensics captures the state of a running system — including decrypted malware payloads, active C2 connections, and sometimes in-memory private keys that were never written to disk.</p>
+          <ul>
+            <li><strong>Volatility 3:</strong> The industry-standard memory analysis framework. Key plugins for crypto investigations: <code>windows.pslist</code> (identify suspicious processes), <code>windows.cmdline</code> (capture command-line arguments including wallet addresses passed as parameters), <code>windows.netscan</code> (identify C2 connections — IP:port of the attacker's server).</li>
+            <li><strong>Dumping process memory:</strong> <code>windows.memmap --pid [PID] --dump</code> extracts the full memory of a process. Run FLOSS and grep against the dump for wallet address patterns.</li>
+            <li><strong>Bybit investigative relevance:</strong> The Safe{Wallet} developer machine infection was identified through infostealer log analysis — a form of memory artifact recovery. The log captured browser session cookies, saved credentials, and the exact moment the malicious JS was downloaded, connecting it to the Lazarus Group C2 domain.</li>
+            <li><strong>Clipboard hijackers:</strong> A common crypto malware class that monitors the clipboard and replaces copied wallet addresses with attacker-controlled addresses. Memory forensics can capture both the legitimate and substituted addresses simultaneously.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-mal-infostealer">
+        <div class="drilldown-header" onclick="toggleDD('dd-mal-infostealer')">
+          <span class="drilldown-icon">🕵️</span>
+          <span class="drilldown-label">Infostealer Logs — The Investigator's Intelligence Windfall</span>
+          <span class="drilldown-meta">Cavalier, Hudson Rock & What a Log Contains</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Infostealers (RedLine, Raccoon, Vidar, LummaC2) silently harvest credentials, cookies, saved passwords, browser history, and crypto wallet files from infected machines. The logs are sold on darknet markets — and are accessible to investigators via commercial platforms.</p>
+          <p><strong>What an infostealer log contains:</strong></p>
+          <ul>
+            <li>Saved browser passwords (exchanges, email, Discord, Telegram)</li>
+            <li>Browser cookies (session tokens that bypass 2FA)</li>
+            <li>Autofill data (name, address, phone, credit card)</li>
+            <li>Crypto wallet files (wallet.dat, seed phrase screenshots)</li>
+            <li>System info (IP address, hardware ID, installed software, geolocation)</li>
+            <li>Screenshots at time of infection</li>
+          </ul>
+          <p><strong>Investigative platforms:</strong> Cavalier (Hudson Rock) and similar commercial services index infostealer logs and make them searchable by email, domain, or IP. An investigator who discovers that a suspect's email appears in a Raccoon log from the same week as a hack can cross-reference the captured IP with the VASP subpoena return — linking the human to the on-chain action.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-mal-c2">
+        <div class="drilldown-header" onclick="toggleDD('dd-mal-c2')">
+          <span class="drilldown-icon">📡</span>
+          <span class="drilldown-label">C2 Infrastructure Pivoting</span>
+          <span class="drilldown-meta">From Domain to Wallet to Actor</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Command-and-Control (C2) infrastructure — the servers that receive stolen data and issue commands to malware — often links multiple campaigns to a single threat actor. C2 domains and IPs are extracted from malware samples and can be pivoted into broader attribution.</p>
+          <ul>
+            <li><strong>Passive DNS (RiskIQ/Farsight):</strong> Shows all IPs a domain has ever resolved to, and all domains that have ever resolved to an IP. A C2 domain used in one ransomware campaign may resolve to an IP that also hosted a domain registered with the same email used to set up a VASP account.</li>
+            <li><strong>Shodan/Censys:</strong> Search for C2 servers by banner fingerprint (Cobalt Strike, Metasploit, custom C2 frameworks leave distinctive HTTP headers). Returns all servers globally running that C2 software.</li>
+            <li><strong>Certificate Transparency (crt.sh):</strong> C2 operators often issue TLS certificates that reveal the registrant email — directly linking the infrastructure to a real-world identity.</li>
+            <li><strong>Bybit example:</strong> The domain <code>bybit-assessment[.]com</code> resolved to an IP that Certificate Transparency records linked to <code>trevorgreer9312@gmail.com</code> — the same email used in prior Lazarus Group "Contagious Interview" phishing domains.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- S6: SCAMS -->
     <div class="section" id="s6">
       <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> SCAMS & FRAUD</div>
@@ -1311,6 +1668,87 @@
           <p><strong>Investigation:</strong> Analyze on-chain token distribution — identify wallet clusters that coordinated buys; trace founders' wallets selling at peak; cross-reference wallet activity against Telegram group message timestamps.</p>
         </div>
       </div>
+      <h2>The Fraud Triangle</h2>
+
+      <div class="card fact" style="margin-bottom:20px">
+        <div class="card-title"><span class="icon">🔺</span> Cressey's Fraud Triangle — Why Fraud Happens</div>
+        <p>Developed by criminologist <strong>Donald Cressey</strong> in the 1950s, the Fraud Triangle is the foundational model for understanding why otherwise ordinary people commit occupational fraud. It identifies three conditions that must all be present simultaneously — remove any one side of the triangle and fraud becomes significantly less likely.</p>
+        <p style="margin-bottom:0;font-family:var(--mono);font-size:12px;color:var(--text-dim);letter-spacing:1px;">Applied across all fraud categories in this guide — from insider exchange theft to pig butchering operators to rug pull developers.</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:8px">
+        <div class="card warn" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:8px">⚡</div>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--warn);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Perceived Pressure</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Incentive / Motivation</div>
+          <p style="font-size:13px;text-align:left;margin-bottom:0">The financial or emotional driver pushing the actor toward fraud. In crypto crime: debt, greed, lifestyle inflation, gambling losses, coercion by criminal networks, or state-level resource pressure (Lazarus Group). The actor perceives a financial problem they cannot share with others.</p>
+        </div>
+        <div class="card danger" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:8px">🔓</div>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--danger);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Perceived Opportunity</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Access / Weak Controls</div>
+          <p style="font-size:13px;text-align:left;margin-bottom:0">The actor believes they can commit fraud without detection. In crypto: pseudonymous wallets, weak exchange KYC, no-KYC instant swaps, insider access to cold wallet signing, unaudited smart contracts, and victims who lack blockchain literacy. Opportunity is the factor investigators most directly influence by improving controls.</p>
+        </div>
+        <div class="card accent2" style="text-align:center;padding:28px 20px">
+          <div style="font-size:32px;margin-bottom:8px">🧠</div>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Rationalization</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Justification / Neutralization</div>
+          <p style="font-size:13px;text-align:left;margin-bottom:0">The actor constructs a moral justification. Common rationalizations: "Crypto is unregulated so it's not really illegal," "victims are greedy speculators who deserve it," "I'll pay it back," "exchanges are insured anyway," or "the government would just steal it too." Understanding rationalization helps investigators build psychological profiles and anticipate recidivism.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-fraud-triangle">
+        <div class="drilldown-header" onclick="toggleDD('dd-fraud-triangle')">
+          <span class="drilldown-icon">🔺</span>
+          <span class="drilldown-label">Fraud Triangle Applied to Crypto Crime Typologies</span>
+          <span class="drilldown-meta">How Each Side Manifests Across This Guide's Case Studies</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <div class="table-wrap" style="margin-bottom:0">
+            <table>
+              <thead><tr><th>Crime Type</th><th>Pressure</th><th>Opportunity</th><th>Rationalization</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Pig Butchering / Romance Scam</strong></td>
+                  <td>Poverty, coercion by trafficking networks, debt bondage</td>
+                  <td>Victims lack crypto literacy; fake platforms undetectable; TRON USDT withdrawals rapid</td>
+                  <td>"Victims chose to invest"; operators themselves are trafficked/coerced victims</td>
+                </tr>
+                <tr>
+                  <td><strong>Rug Pull (DeFi)</strong></td>
+                  <td>Fast enrichment; competitive pressure from other degens launching tokens</td>
+                  <td>Anonymous deployment; no mandatory audit; retail investors can't read smart contracts</td>
+                  <td>"Crypto is a casino — everyone knows the risk"; "We disclosed it as experimental"</td>
+                </tr>
+                <tr>
+                  <td><strong>Exchange Insider Theft (USMS Case)</strong></td>
+                  <td>Access to massive wallet balances; lifestyle comparison with crypto-wealthy peers</td>
+                  <td>Privileged admin access; inadequate multi-party custody controls; slow audit trails</td>
+                  <td>"Government doesn't deserve the crypto"; "I'll replace it before anyone notices"</td>
+                </tr>
+                <tr>
+                  <td><strong>Ransomware (Lazarus/State Actor)</strong></td>
+                  <td>State-mandated revenue generation; nuclear program funding quotas</td>
+                  <td>Unpatched enterprise systems; victims pay rather than restore; mixers obscure trail</td>
+                  <td>Geopolitical framing: sanctions justify retaliation; patriotic duty narrative</td>
+                </tr>
+                <tr>
+                  <td><strong>Pump & Dump</strong></td>
+                  <td>Greed; social competition in trading communities</td>
+                  <td>Retail herd behavior; coordinated private channels; illiquid low-cap tokens</td>
+                  <td>"Everyone in crypto does this"; "We just marketed aggressively"</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert info" style="margin-top:16px;margin-bottom:0">
+            <div class="alert-label">🔍 Investigative Application</div>
+            The Fraud Triangle is not just academic — it's a profiling and interview tool. Establishing which <em>pressure</em> drove the suspect narrows the suspect pool and supports motive evidence in court. Documenting the <em>opportunity</em> they exploited establishes the criminal nexus. Capturing their <em>rationalization</em> (often visible in social media posts, Discord messages, or recorded calls) can be used directly as evidence of knowing intent.
+          </div>
+        </div>
+      </div>
+
       <h2>Fraud Investigation Framework</h2>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Victim Report Triage</div><div class="step-text">Collect victim's wallet address, the address they sent funds to, screenshots of the scam platform, and any communications. Get the exact transaction hash. Is the scammer wallet still active?</div></div></div>
@@ -1353,7 +1791,7 @@
                 <li>Identified specific wallet clustering behaviors matching Lazarus Group's documented fingerprint</li>
                 <li>Cross-referenced Bybit outflows against known Lazarus addresses from prior hacks</li>
                 <li>Submitted evidence to Arkham Intelligence within hours; crowdsourced global identification of intermediary addresses</li>
-                <li>The domain <code>bybit-assessment[.]com</code> was registered using email <code>trevorgreer9312@gmail.com</code> — previously used in Lazarus Group's "Contagious Interview" campaign</li>
+                <li>The domain <code>bybit-assessment[.]com</code> was registered using email <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="03777166756c7164716666713a30323143646e626a6f2d606c6e">[email&#160;protected]</a></code> — previously used in Lazarus Group's "Contagious Interview" campaign</li>
               </ul>
             </div>
           </div>
@@ -1435,6 +1873,191 @@
         </div>
       </div>
     </div>
+
+    <!-- S8B: PRIVACY COINS -->
+    <div class="section" id="s8b">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> PRIVACY COINS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 08B // EXPERT — PRIVACY COIN INVESTIGATIONS</div>
+        <div class="section-title">Privacy Coins — Monero, Zcash & Beyond</div>
+        <p class="section-desc">Monero and Zcash hide sender, recipient, and amount by default. They are not untraceable — but they demand different techniques and realistic expectations about what on-chain analysis can achieve.</p>
+      </div>
+
+      <div class="alert danger">
+        <div class="alert-label">⚠️ Investigator Expectation Reset</div>
+        Unlike Bitcoin and Ethereum investigations where on-chain tracing is primary, privacy coin investigations depend almost entirely on <strong>off-chain intelligence</strong> — exchange chokepoints, metadata leaks, infostealer logs, and behavioural OSINT. The blockchain itself provides minimal direct evidence. Adjust your methodology accordingly.
+      </div>
+
+      <div class="drilldown" id="dd-monero">
+        <div class="drilldown-header" onclick="toggleDD('dd-monero')">
+          <span class="drilldown-icon">🔒</span>
+          <span class="drilldown-label">Monero (XMR) — How It Hides Everything</span>
+          <span class="drilldown-meta">Ring Signatures, Stealth Addresses & RingCT</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Monero achieves privacy through three layered cryptographic mechanisms:</p>
+          <ul>
+            <li><strong>Ring Signatures:</strong> A Monero transaction is signed by a group of keys (a "ring") — the actual sender is one of them, but an observer cannot tell which. Default ring size is 16, meaning any given output has a 1-in-16 chance of being the real input. This collapses CIUA clustering — you cannot determine which inputs belong to which senders.</li>
+            <li><strong>Stealth Addresses:</strong> The recipient generates a one-time address for each transaction. No two payments to the same person share a visible address on the blockchain — eliminating address clustering entirely.</li>
+            <li><strong>RingCT (Confidential Transactions):</strong> Transaction amounts are encrypted using cryptographic commitments. Amounts are verified as valid (sender has enough funds) without revealing the actual value to observers.</li>
+          </ul>
+          <p><strong>Result:</strong> A Monero block explorer shows transactions occurring, but reveals no sender, no recipient, and no amount. On-chain analysis provides near-zero direct intelligence.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-xmr-investigate">
+        <div class="drilldown-header" onclick="toggleDD('dd-xmr-investigate')">
+          <span class="drilldown-icon">🔍</span>
+          <span class="drilldown-label">Investigating Monero — What Actually Works</span>
+          <span class="drilldown-meta">Chokepoints, Metadata & Timing Attacks</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Despite strong on-chain privacy, Monero investigations succeed through off-chain techniques:</p>
+          <ul>
+            <li><strong>Exchange chokepoints:</strong> Criminals must convert XMR to spendable currency somewhere. Any exchange that accepts XMR deposits is a subpoena target. The conversion event (XMR in, BTC/ETH/fiat out) is the critical investigable moment — the exchange has KYC on the account that received the converted funds.</li>
+            <li><strong>Network-level timing analysis:</strong> When a Monero transaction is broadcast, the originating node's IP can be captured if law enforcement or researchers are monitoring the peer-to-peer network. The FBI and Europol have operated Monero nodes specifically to capture IP metadata. This is a covert technique, not available to civilian investigators.</li>
+            <li><strong>CipherTrace (Mastercard) Monero tracing:</strong> DARPA-funded research produced probabilistic tracing tools for Monero under a DHS contract. The tools use statistical analysis of ring member selection to narrow probable real inputs. Results are probabilistic, not definitive — not yet admissible as primary evidence in most jurisdictions, but useful for generating investigative leads.</li>
+            <li><strong>Operational security failures:</strong> The majority of Monero-using criminals are caught through OSINT, infostealer logs, exchange KYC, or conventional law enforcement techniques — not through Monero tracing. Monitoring the suspect's communications is more productive than monitoring the chain.</li>
+            <li><strong>Dusting attacks on XMR:</strong> Sending tiny amounts of XMR to a suspect address can sometimes trigger wallet consolidation behavior that reveals patterns, but this technique has significant limitations and legal constraints depending on jurisdiction.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-zcash">
+        <div class="drilldown-header" onclick="toggleDD('dd-zcash')">
+          <span class="drilldown-icon">🛡️</span>
+          <span class="drilldown-label">Zcash (ZEC) — Shielded vs Transparent</span>
+          <span class="drilldown-meta">The Opt-In Privacy Model</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Zcash uses zk-SNARKs (zero-knowledge proofs) to allow fully private "shielded" transactions between z-addresses. However, unlike Monero, privacy in Zcash is <strong>opt-in</strong> — and the majority of Zcash transactions use transparent t-addresses that are fully traceable, identical to Bitcoin.</p>
+          <p><strong>Investigative reality:</strong> Most Zcash usage is in transparent mode. Check first whether the addresses in question are t-addresses (traceable, starts with "t") or z-addresses (shielded, starts with "zs"). If t-addresses, treat identically to Bitcoin investigation. If z-addresses, apply the same off-chain chokepoint strategy as Monero.</p>
+          <p><strong>Shielded pool analysis:</strong> Even with z-addresses, the amount of ZEC entering and exiting the shielded pool is visible — only the internal routing is hidden. Large, timed deposits and withdrawals can be correlated statistically, similar to Tornado Cash analysis.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- SAML: AML LIFECYCLE -->
+    <div class="section" id="saml">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> AML LIFECYCLE</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 09 // ADVANCED — MONEY LAUNDERING</div>
+        <div class="section-title">The Money Laundering Lifecycle</div>
+        <p class="section-desc">The three-stage AML model — Placement, Layering, Integration — is the universal framework for understanding how illicit crypto funds are cleaned. Mapping each investigation to these stages tells you exactly where in the lifecycle the suspect is, and which intervention is most likely to succeed.</p>
+      </div>
+
+      <div class="card fact">
+        <div class="card-title"><span class="icon">🔄</span> Why the Three Stages Matter for Investigators</div>
+        <p>The stage of laundering determines your investigative strategy. Funds in <strong>Placement</strong> are most vulnerable — they're still closely linked to the crime. Funds in <strong>Layering</strong> are moving fast but leaving a trail. Funds that have reached <strong>Integration</strong> are hardest to recover but the actor is most exposed — lifestyle evidence is now available. Knowing which stage you're in shapes your urgency, your legal tools, and your evidence-gathering priorities.</p>
+      </div>
+
+      <div class="fact-stages">
+        <div class="fact-stage">
+          <div class="fact-stage-letter">P</div>
+          <div class="fact-stage-tag">Stage 01</div>
+          <div class="fact-stage-title">Placement</div>
+          <div class="fact-stage-desc">Converting illicit proceeds into the financial system. In crypto: the initial receipt of stolen/fraudulent funds into attacker-controlled wallets. The most traceable stage — funds are still directly linked to the crime event.</div>
+        </div>
+        <div class="fact-stage">
+          <div class="fact-stage-letter">L</div>
+          <div class="fact-stage-tag">Stage 02</div>
+          <div class="fact-stage-title">Layering</div>
+          <div class="fact-stage-desc">Obscuring the audit trail through complex transactions. In crypto: chain-hopping, mixer use, peeling chains, instant exchanges, DeFi cycling. The most technically complex stage for investigators — but every transaction is still on-chain.</div>
+        </div>
+        <div class="fact-stage">
+          <div class="fact-stage-letter">I</div>
+          <div class="fact-stage-tag">Stage 03</div>
+          <div class="fact-stage-title">Integration</div>
+          <div class="fact-stage-desc">Reintroducing funds as legitimate wealth. In crypto: converting to fiat via OTC brokers, purchasing real estate or luxury goods with crypto, declaring "trading profits" on tax returns. Lifestyle evidence becomes available here.</div>
+        </div>
+      </div>
+
+      <h2>Crypto-Specific AML Stages in Detail</h2>
+
+      <div class="drilldown" id="dd-placement">
+        <div class="drilldown-header" onclick="toggleDD('dd-placement')">
+          <span class="drilldown-icon">💥</span>
+          <span class="drilldown-label">Placement — First Contact With the Financial System</span>
+          <span class="drilldown-meta">When Funds Are Most Traceable & Most Freezable</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>In traditional AML, placement involves physically depositing cash — the highest-risk moment for the launderer. In crypto, placement has already occurred the moment the crime completes: the stolen ETH, the ransomware payment, or the pig butchering deposit lands in the attacker's first wallet.</p>
+          <p><strong>Investigative opportunity:</strong> Funds at placement are directly linked to the crime event with no intervening hops. A freeze at this stage recovers 100% of proceeds. Speed is the defining factor — the Bybit funds were moving within minutes of the theft.</p>
+          <p><strong>Crypto placement variants:</strong></p>
+          <ul>
+            <li><strong>Direct theft receipt:</strong> Hacked exchange wallet receives stolen ETH/BTC (Bybit, WazirX)</li>
+            <li><strong>Ransomware payment receipt:</strong> Victim sends BTC/XMR to attacker wallet — unique per victim, enabling multi-victim clustering</li>
+            <li><strong>Fraud deposit receipt:</strong> Pig butchering victim deposits to scam platform wallet</li>
+            <li><strong>Rug pull LP drain:</strong> Developer removes all liquidity — instant placement of investor funds</li>
+          </ul>
+          <p><strong>Action at placement:</strong> Emergency freeze request to any VASP where funds land within minutes of identification. Coordinate directly with exchange compliance hot-lines. The Bybit response team froze $40M+ within hours by having pre-established emergency contacts at major exchanges.</p>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-layering">
+        <div class="drilldown-header" onclick="toggleDD('dd-layering')">
+          <span class="drilldown-icon">🌀</span>
+          <span class="drilldown-label">Layering — The On-Chain Obstacle Course</span>
+          <span class="drilldown-meta">Every Hop Is a Clue, Not a Dead End</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Layering in crypto is more sophisticated than in traditional finance — but it leaves a permanent on-chain record that never disappears. Each layering technique has a signature that investigators can identify:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Layering Technique</th><th>On-Chain Signature</th><th>Investigative Counter</th></tr></thead>
+              <tbody>
+                <tr><td>Peeling chains</td><td>Sequential wallets, consistent forward/peel ratio, rapid timing</td><td>Follow the larger amount; the smaller "peel" is often noise</td></tr>
+                <tr><td>Mixer use (Tornado Cash)</td><td>Deposit to Tornado contract → withdrawal from Tornado contract (different address)</td><td>Exposure analysis; amount + timing correlation across deposits/withdrawals</td></tr>
+                <tr><td>Chain-hopping</td><td>Bridge contract deposit on Chain A + bridge mint on Chain B</td><td>Pulsy, Socketscan — reconcile by amount + timestamp</td></tr>
+                <tr><td>Instant exchange swaps</td><td>Deposit to ChangeNow/FixedFloat → withdrawal in different currency</td><td>Known instant exchange deposit addresses labeled in TRM Labs</td></tr>
+                <tr><td>DeFi cycling</td><td>Funds deposited to Aave/Compound, withdrawn as different token</td><td>Etherscan internal TX trace; Tenderly execution decode</td></tr>
+                <tr><td>NFT washing</td><td>Circular NFT sales between related wallets at inflated prices</td><td>Seller/buyer wallet funding source analysis; same-origin addresses</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert success" style="margin-bottom:0;margin-top:4px">
+            <div class="alert-label">✅ Core Principle</div>
+            Every layering hop — no matter how sophisticated — creates a transaction that is permanently recorded on-chain. Investigators do not lose the trail at layering; they accumulate more evidence. The challenge is resource and time, not technical impossibility.
+          </div>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-integration">
+        <div class="drilldown-header" onclick="toggleDD('dd-integration')">
+          <span class="drilldown-icon">🏡</span>
+          <span class="drilldown-label">Integration — Where Blockchain Meets Real Life</span>
+          <span class="drilldown-meta">OTC Brokers, Real Estate, Tax Returns & Lifestyle Evidence</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Integration is where crypto wealth re-enters the legitimate economy as apparent income or assets. This stage creates the richest real-world evidence — bank records, property deeds, luxury purchase receipts, and tax filings that can corroborate on-chain tracing for prosecution.</p>
+          <p><strong>Common crypto integration methods:</strong></p>
+          <ul>
+            <li><strong>OTC broker cash-out:</strong> Large-volume crypto sold for cash through over-the-counter desks with minimal scrutiny. The Khinkis ransomware case (March 2026) showed BTC→Tron conversion before OTC cash-out in a documented 3-chain integration pattern.</li>
+            <li><strong>Real estate purchases:</strong> Crypto converted to fiat, then used to purchase real estate — especially prevalent in jurisdictions with weak beneficial ownership disclosure (shell companies, nominee directors).</li>
+            <li><strong>Luxury goods:</strong> Direct crypto purchase of watches, vehicles, art. Many luxury dealers now accept crypto — creating a paper trail when KYC is collected. Cross-reference suspect lifestyle (social media) against timing of on-chain large withdrawals.</li>
+            <li><strong>Business invoicing:</strong> Crypto "consulting income" invoiced through shell companies — especially common for North Korean IT workers acting as front men for Lazarus Group revenue.</li>
+            <li><strong>Tax declaration as "trading profits":</strong> Some criminals self-report crypto gains (at a loss) on tax returns to establish a legal income explanation. This tax record becomes evidence of knowledge of the funds.</li>
+          </ul>
+          <p><strong>Investigative approach at integration:</strong> Once you have a named suspect from on-chain tracing + VASP KYC, request bank records, property records, luxury dealer records, and tax filings. The lifestyle evidence confirming unexplained wealth — the $243M Bitcoin theft suspects' nightclub spending, Haby's Instagram posts — is the integration-stage evidence that makes the case undeniable in court.</p>
+        </div>
+      </div>
+
+      <h2>FINTRAC & AML Compliance (Canada)</h2>
+      <div class="card accent3">
+        <div class="card-title"><span class="icon">🍁</span> Canadian AML Framework at a Glance</div>
+        <p><strong>FINTRAC (Financial Transactions and Reports Analysis Centre of Canada)</strong> is Canada's financial intelligence unit. Under PCMLTFA, Canadian VASPs are registered Money Services Businesses (MSBs) required to file: Suspicious Transaction Reports (STRs), Large Cash Transaction Reports (LCTRs), Electronic Funds Transfer Reports (EFTRs), and Casino Disbursement Reports.</p>
+        <p>FINTRAC receives and analyzes these reports and can voluntarily disclose financial intelligence to law enforcement when it has reasonable grounds to suspect the information would be relevant to an investigation of money laundering, terrorist financing, or threats to national security. FINTRAC disclosures can seed new investigations or corroborate existing ones.</p>
+        <p style="margin-bottom:0"><strong>For investigators:</strong> If your investigation involves a Canadian VASP, a parallel SAR/FINTRAC disclosure may already exist. Coordinate with your financial intelligence unit (FIU) to check — the disclosure may contain information not yet known to the investigation.</p>
+      </div>
+    </div>
+
     <!-- SFACT: FACT FRAMEWORK -->
     <div class="section" id="sfact">
       <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> FACT FRAMEWORK</div>
@@ -1637,6 +2260,96 @@
         </div>
       </div>
     </div>
+
+    <!-- S9B: CANADIAN LEGAL FRAMEWORK -->
+    <div class="section" id="s9b">
+      <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> CANADIAN LAW</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 11B // ADVANCED — CANADIAN LEGAL FRAMEWORK</div>
+        <div class="section-title">Canadian Legal Framework for Crypto Investigations</div>
+        <p class="section-desc">Canada has one of the most developed regulatory frameworks for crypto investigations outside the United States. This module covers the key statutes, reporting obligations, privacy constraints, and asset seizure tools available to Canadian investigators and compliance professionals.</p>
+      </div>
+
+      <div class="alert warn">
+        <div class="alert-label">⚠️ Disclaimer</div>
+        This module is educational context, not legal advice. Consult qualified Canadian legal counsel for case-specific guidance. Statutes and regulatory guidance are current as of March 2026.
+      </div>
+
+      <div class="drilldown" id="dd-pcmltfa">
+        <div class="drilldown-header" onclick="toggleDD('dd-pcmltfa')">
+          <span class="drilldown-icon">📜</span>
+          <span class="drilldown-label">PCMLTFA — Canada's Primary AML Statute</span>
+          <span class="drilldown-meta">Proceeds of Crime (Money Laundering) and Terrorist Financing Act</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>The <strong>Proceeds of Crime (Money Laundering) and Terrorist Financing Act (PCMLTFA)</strong> is Canada's foundational AML legislation, administered by FINTRAC. Key provisions for crypto investigators:</p>
+          <ul>
+            <li><strong>VASP registration as MSBs:</strong> All crypto asset trading platforms, exchangers, and ATM operators serving Canadians must register with FINTRAC as Money Services Businesses (MSBs), regardless of where they are incorporated. A foreign exchange serving Canadian customers is subject to PCMLTFA.</li>
+            <li><strong>Travel Rule ($1,000 CAD threshold):</strong> VASPs must collect and transmit originator/beneficiary information for crypto transfers of $1,000 CAD or more — equivalent to FATF's Travel Rule. This creates a paper trail for transfers above the threshold.</li>
+            <li><strong>Record retention (5 years):</strong> All KYC records, transaction records, and compliance documentation must be retained for at least 5 years. Investigators can subpoena records going back 5 years even if the VASP is no longer operating the specific account.</li>
+            <li><strong>Suspicious Transaction Reports (STRs):</strong> VASPs must file STRs with FINTRAC within 30 days of any transaction where there are reasonable grounds to suspect it is related to money laundering or terrorist financing. There is no minimum dollar amount.</li>
+            <li><strong>Large Cash Transaction Reports (LCTRs):</strong> Cash transactions of $10,000 CAD or more (in a single transaction, or multiple transactions within 24 hours) must be reported regardless of suspicion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-fintrac-disclosure">
+        <div class="drilldown-header" onclick="toggleDD('dd-fintrac-disclosure')">
+          <span class="drilldown-icon">🏛️</span>
+          <span class="drilldown-label">FINTRAC — Canada's Financial Intelligence Unit</span>
+          <span class="drilldown-meta">Disclosure Provisions & Intelligence Value</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>FINTRAC receives financial intelligence reports from MSBs and can disclose this information to law enforcement when specific legal thresholds are met:</p>
+          <ul>
+            <li><strong>Voluntary disclosure:</strong> FINTRAC may proactively disclose to RCMP, CSIS, CBSA, CRA, and other designated agencies when it has reasonable grounds to suspect the information is relevant to an investigation of money laundering or terrorist financing — without requiring a formal request.</li>
+            <li><strong>Requested disclosure:</strong> Designated law enforcement agencies can formally request a FINTRAC disclosure. The request must meet the reasonable grounds threshold.</li>
+            <li><strong>Intelligence value:</strong> A FINTRAC disclosure may contain: the identities of parties to suspicious transactions, patterns of transactions across multiple reporting entities, and cross-referenced STRs from different VASPs — potentially revealing laundering patterns that no single institution sees.</li>
+            <li><strong>Limitation:</strong> FINTRAC intelligence is financial intelligence — not evidence. It can seed an investigation and direct investigators toward evidence sources, but FINTRAC records themselves are generally not admissible as evidence without further investigation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-pipeda">
+        <div class="drilldown-header" onclick="toggleDD('dd-pipeda')">
+          <span class="drilldown-icon">🔐</span>
+          <span class="drilldown-label">PIPEDA — Privacy Constraints for OSINT</span>
+          <span class="drilldown-meta">What Canadian Investigators Can & Cannot Collect</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p><strong>PIPEDA (Personal Information Protection and Electronic Documents Act)</strong> governs how private sector organizations collect, use, and disclose personal information. Key investigative implications:</p>
+          <ul>
+            <li><strong>Publicly available information exemption:</strong> Information that is publicly available — including social media posts, public blockchain transactions, domain registration records, and publicly accessible court filings — is not subject to PIPEDA consent requirements. This is the legal basis for most OSINT collection by civilian investigators.</li>
+            <li><strong>Law enforcement exemption:</strong> Organizations may disclose personal information to law enforcement without consent when responding to a lawful subpoena, warrant, or court order — or when they have reasonable grounds to believe disclosure is necessary for national security or the administration of justice.</li>
+            <li><strong>Private investigators:</strong> Licensed private investigators in Canada operate under provincial legislation (e.g., Ontario's Private Security and Investigative Services Act). PIPEDA still constrains what personal information they can collect and use — they do not have the same exemptions as law enforcement.</li>
+            <li><strong>Data minimization principle:</strong> Even when collection is lawful, PIPEDA requires collecting only the information necessary for the stated purpose. Investigators should document their necessity justification for each category of personal data collected.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="drilldown" id="dd-rcmp-seizure">
+        <div class="drilldown-header" onclick="toggleDD('dd-rcmp-seizure')">
+          <span class="drilldown-icon">🍁</span>
+          <span class="drilldown-label">RCMP Asset Seizure — Criminal Code Provisions</span>
+          <span class="drilldown-meta">Restraint Orders, Seizure Warrants & Civil Forfeiture</span>
+          <span class="drilldown-chevron">›</span>
+        </div>
+        <div class="drilldown-body">
+          <p>Canadian law provides multiple tools for seizing crypto assets at different stages of an investigation:</p>
+          <ul>
+            <li><strong>Restraint Order (s. 462.33 Criminal Code):</strong> Court order prohibiting the disposal or transfer of property believed to be proceeds of crime. Available before charges are laid. The most time-sensitive tool — applies at the Placement stage before funds move.</li>
+            <li><strong>Seizure Warrant (s. 462.32 Criminal Code):</strong> Authorizes law enforcement to physically seize property. For crypto: requires seizure of the private key or transfer of funds to a government-controlled wallet. Practical challenge — the suspect must be compelled to disclose the private key, or the device containing it must be physically seized and forensically examined.</li>
+            <li><strong>Forfeiture Order (post-conviction):</strong> Following a conviction, the court orders permanent forfeiture of proceeds of crime. The standard of proof is balance of probabilities (civil standard) even in a criminal proceeding for the forfeiture hearing itself.</li>
+            <li><strong>Civil Forfeiture (provincial):</strong> Most provinces (Ontario, BC, Alberta) have civil forfeiture legislation allowing seizure of property connected to unlawful activity without a criminal conviction. The standard of proof is balance of probabilities. Useful when criminal prosecution is not pursued but assets can be identified.</li>
+          </ul>
+          <p><strong>Private key seizure — practical note:</strong> Compelling disclosure of a private key raises Charter s. 7 (right against self-incrimination) and s. 8 (unreasonable search) issues that are still being litigated in Canadian courts. Coordinate with Crown counsel before any compelled private key disclosure demand.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- S10: ASSET SEIZURE -->
     <div class="section" id="s10">
       <div class="breadcrumb">BLOCKCHAIN HUNTER <span>›</span> ASSET SEIZURE</div>
@@ -1878,6 +2591,8 @@
         <div class="glossary-item"><div class="glossary-term">Common Input Ownership (CIUA)</div><div class="glossary-def">Bitcoin address clustering heuristic: if two addresses both sign inputs in the same transaction, they share the same private key holder.</div></div>
         <div class="glossary-item"><div class="glossary-term">Counterparty</div><div class="glossary-def">The party on the opposite side of a transaction. Identifying VASP counterparties creates legal chokepoints.</div></div>
         <div class="glossary-item"><div class="glossary-term">DEX (Decentralized Exchange)</div><div class="glossary-def">A cryptocurrency exchange without a central authority or KYC requirements. Funds swapped without identity verification — complicates investigations but all trades are on-chain.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Diamond Model</div><div class="glossary-def">Cyber threat intelligence framework structuring adversary intelligence across four vertices: Adversary, Infrastructure, Capability, and Victim. Used to connect multiple crypto hacks to a single threat actor group by mapping shared infrastructure and capabilities across incidents.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Dusting Attack</div><div class="glossary-def">Sending tiny amounts of crypto (dust) to target addresses to track their activity and deanonymize wallet clusters. When the victim consolidates inputs including the dust, CIUA clustering reveals other wallets they control. A surveillance and deanonymization technique, not theft.</div></div>
         <div class="glossary-item"><div class="glossary-term">Direct Exposure</div><div class="glossary-def">When an address directly transacted with an illicit source (one hop away).</div></div>
         <div class="glossary-item"><div class="glossary-term">EXIF Data</div><div class="glossary-def">Metadata embedded in photos, often including GPS coordinates, device info, and timestamps. Can reveal suspect location via photo OSINT.</div></div>
         <div class="glossary-item"><div class="glossary-term">Exposure</div><div class="glossary-def">How directly proceeds have traveled from one address to another. Commercial tools quantify as a percentage. 10%+ is typically flagged as significant.</div></div>
@@ -1885,7 +2600,10 @@
         <div class="glossary-item"><div class="glossary-term">FACT Lite</div><div class="glossary-def">Triage profile (F + A only). Preserves authority and hypothesis discipline without permitting person-level attribution. Must escalate to full FACT before naming anyone.</div></div>
         <div class="glossary-item"><div class="glossary-term">FATF</div><div class="glossary-def">Financial Action Task Force. International body setting AML/CFT standards. Coined the term "VASP" and established the Travel Rule for crypto transfers.</div></div>
         <div class="glossary-item"><div class="glossary-term">FININT</div><div class="glossary-def">Financial Intelligence. Combining blockchain analytics with OSINT, AML data, and traditional financial intelligence to identify real-world actors behind crypto transactions.</div></div>
+        <div class="glossary-item"><div class="glossary-term">FINTRAC</div><div class="glossary-def">Financial Transactions and Reports Analysis Centre of Canada. Canada's financial intelligence unit (FIU). Receives STRs, LCTRs, and EFTRs from regulated MSBs under PCMLTFA. Can disclose financial intelligence to law enforcement when reasonable grounds exist to suspect money laundering or terrorist financing.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Front-Running</div><div class="glossary-def">MEV attack where a bot detects a large pending transaction in the mempool and submits an identical trade with higher gas fees to execute first, profiting from the price movement the victim's trade causes. Investigable via Eigenphi.io.</div></div>
         <div class="glossary-item"><div class="glossary-term">Flash Loan Attack</div><div class="glossary-def">DeFi exploit using uncollateralized instant loans to manipulate prices and drain protocols in a single transaction. Entirely on-chain and traceable.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Fraud Triangle</div><div class="glossary-def">Model developed by criminologist Donald Cressey outlining the three conditions that must simultaneously be present for occupational fraud to occur: <strong>Perceived Pressure</strong> (financial or emotional motivation), <strong>Perceived Opportunity</strong> (belief the fraud can be committed without detection), and <strong>Rationalization</strong> (a moral justification the actor tells themselves). Applied in crypto investigations to establish motive, exploit vectors, and intent evidence.</div></div>
         <div class="glossary-item"><div class="glossary-term">FOR500</div><div class="glossary-def">SANS/GIAC course: Windows Forensic Analysis. Covers artifact recovery, registry, memory forensics — critical for extracting crypto-related artifacts from compromised endpoints.</div></div>
         <div class="glossary-item"><div class="glossary-term">FOR508</div><div class="glossary-def">SANS/GIAC course: Advanced Incident Response, Threat Hunting, and Digital Forensics. Core DFIR course for E-Crime Disruptors; maps to FACT Stages A and C.</div></div>
         <div class="glossary-item"><div class="glossary-term">FOR509</div><div class="glossary-def">SANS/GIAC course: Enterprise Cloud Forensics and Incident Response. Essential for investigating exchange infrastructure compromises and API-layer attacks.</div></div>
@@ -1897,19 +2615,27 @@
         <div class="glossary-item"><div class="glossary-term">Lazarus Group</div><div class="glossary-def">North Korea's elite state-sponsored hacking unit. Stole $2B+ in 2025 including the $1.5B Bybit hack. Controlled by the Reconnaissance General Bureau (RGB).</div></div>
         <div class="glossary-item"><div class="glossary-term">Mempool</div><div class="glossary-def">Queue of unconfirmed transactions waiting for block inclusion. Investigators can monitor the mempool for real-time alerts on tracked addresses.</div></div>
         <div class="glossary-item"><div class="glossary-term">Mixer / Tumbler</div><div class="glossary-def">Services that pool and redistribute crypto to break the chain of association. Examples: Tornado Cash (ETH), Wasabi Wallet (BTC). OFAC has sanctioned several.</div></div>
+        <div class="glossary-item"><div class="glossary-term">MEV (Maximal Extractable Value)</div><div class="glossary-def">Profit extracted by controlling transaction ordering within a block. Includes front-running, sandwich attacks, and arbitrage. Can be weaponized as a money laundering technique by intentionally losing MEV contests to controlled wallets.</div></div>
+        <div class="glossary-item"><div class="glossary-term">MITRE ATT&amp;CK</div><div class="glossary-def">Globally accessible knowledge base of adversary tactics, techniques, and procedures based on real-world observations. Used by crypto investigators to map malware behavior to named TTPs — enabling pattern-matching across threat actors. Lazarus Group campaigns map to T1566 (Phishing), T1204 (User Execution), T1041 (Exfiltration).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Money Laundering</div><div class="glossary-def">Three-stage process of concealing illicit proceeds: <strong>Placement</strong> (initial entry — stolen funds land in attacker wallet), <strong>Layering</strong> (obfuscation — chain-hopping, mixers, peeling chains), <strong>Integration</strong> (re-entry as legitimate wealth — OTC cash-out, real estate, lifestyle spending). Each stage has distinct investigative tools and urgency.</div></div>
         <div class="glossary-item"><div class="glossary-term">MLAT</div><div class="glossary-def">Mutual Legal Assistance Treaty. International agreement enabling legal cooperation between countries for obtaining evidence from foreign-jurisdiction VASPs.</div></div>
         <div class="glossary-item"><div class="glossary-term">Multisig Wallet</div><div class="glossary-def">Wallet requiring multiple private key signatures. Used for exchange security — exploited in Bybit and WazirX hacks via supply chain attacks on signing infrastructure.</div></div>
+        <div class="glossary-item"><div class="glossary-term">NFT (Non-Fungible Token)</div><div class="glossary-def">A unique digital asset on a blockchain representing ownership of a specific item. NFT fraud includes wash trading (circular self-sales to inflate price), counterfeit collections (copies of popular projects with different contract addresses), phishing drains (ApprovalForAll exploits), and airdrop scams with malicious token contracts.</div></div>
         <div class="glossary-item"><div class="glossary-term">OFAC</div><div class="glossary-def">U.S. Office of Foreign Assets Control. Sanctions cryptocurrency addresses linked to Lazarus Group, Tornado Cash, and other sanctioned entities.</div></div>
         <div class="glossary-item"><div class="glossary-term">OSINT</div><div class="glossary-def">Open Source Intelligence. Information from publicly available sources — social media, domain registrations, court filings. Combined with on-chain data for full attribution.</div></div>
         <div class="glossary-item"><div class="glossary-term">OTC Broker</div><div class="glossary-def">Over-the-counter broker facilitating large crypto trades outside of exchanges. Sometimes used for money laundering cash-out.</div></div>
         <div class="glossary-item"><div class="glossary-term">Pass-Through Address</div><div class="glossary-def">An address that receives and immediately sends all funds, leaving $0 balance. Major red flag for illicit layering infrastructure.</div></div>
         <div class="glossary-item"><div class="glossary-term">PCMLTFA</div><div class="glossary-def">Proceeds of Crime (Money Laundering) and Terrorist Financing Act. Canada's primary AML legislation. Requires VASPs to report suspicious transactions to FINTRAC.</div></div>
+        <div class="glossary-item"><div class="glossary-term">PIPEDA</div><div class="glossary-def">Personal Information Protection and Electronic Documents Act. Canada's federal private-sector privacy law. Publicly available information (blockchain data, social media, court filings) is exempt from consent requirements. Law enforcement has additional exemptions when acting under lawful authority.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Privacy Coin</div><div class="glossary-def">Cryptocurrency designed to obscure transaction details. Monero (XMR) hides sender, recipient, and amount via ring signatures, stealth addresses, and RingCT. Zcash (ZEC) uses zk-SNARKs for optional shielded transactions. Investigations rely on exchange chokepoints and metadata rather than on-chain tracing.</div></div>
         <div class="glossary-item"><div class="glossary-term">Peeling Chain</div><div class="glossary-def">Funds moved through many sequential addresses, each time peeling off a slightly smaller amount, to confuse investigators tracing the trail.</div></div>
         <div class="glossary-item"><div class="glossary-term">Private Key</div><div class="glossary-def">The secret cryptographic key controlling a wallet. Whoever has the private key controls the funds — and is the person FACT's C stage must attribute.</div></div>
         <div class="glossary-item"><div class="glossary-term">Pseudonymous</div><div class="glossary-def">Not fully anonymous. Blockchain addresses don't contain names, but behavioral patterns and links to real-world identity make them investigable.</div></div>
         <div class="glossary-item"><div class="glossary-term">Rug Pull</div><div class="glossary-def">Scam where developers drain a token's liquidity pool and abandon the project after attracting investor funds.</div></div>
         <div class="glossary-item"><div class="glossary-term">SANS Institute</div><div class="glossary-def">The world's largest cybersecurity training organization. Offers DFIR, cybercrime, and incident response courses (FOR500, FOR508, FOR509, FOR589, SEC504) directly relevant to crypto investigation.</div></div>
         <div class="glossary-item"><div class="glossary-term">SAR (Suspicious Activity Report)</div><div class="glossary-def">Report filed by financial institutions for suspicious transactions. Common investigative lead source for crypto cases (FINTRAC in Canada, FinCEN in USA).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Social Engineering</div><div class="glossary-def">Psychological manipulation of individuals into performing actions or divulging information. In crypto crime: phishing, fake exchange support impersonation, Lazarus Group's "Contagious Interview" fake job offers, and romance/pig butchering relationship building. The human vector behind the majority of high-value exchange compromises.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Sybil Attack</div><div class="glossary-def">Creating multiple fake identities (wallets, accounts, nodes) to gain disproportionate influence. In fraud: generating artificial transaction volume, faking DeFi protocol user counts, or manipulating governance votes using many wallets controlled by a single actor. Detected by funding-source clustering analysis.</div></div>
         <div class="glossary-item"><div class="glossary-term">SEC504</div><div class="glossary-def">SANS/GIAC course: Hacker Tools, Techniques, and Incident Handling. Covers adversary TTPs, network forensics, and incident scoping — foundational for understanding exchange hacks and ransomware delivery.</div></div>
         <div class="glossary-item"><div class="glossary-term">Smart Contract</div><div class="glossary-def">Self-executing code on a blockchain. DeFi protocols run on smart contracts; exploits target their logic. All execution is publicly visible on-chain.</div></div>
         <div class="glossary-item"><div class="glossary-term">Straw Identity</div><div class="glossary-def">A person used to open an account on behalf of the real criminal. Common in money laundering. FACT's A stage requires this as a candidate actor.</div></div>
@@ -1917,7 +2643,9 @@
         <div class="glossary-item"><div class="glossary-term">Timing Analysis</div><div class="glossary-def">Cross-referencing blockchain timestamps against external events (social media, login logs) to correlate identities or behaviors.</div></div>
         <div class="glossary-item"><div class="glossary-term">Tornado Cash</div><div class="glossary-def">Ethereum-based mixing protocol. Sanctioned by OFAC in 2022. Lazarus Group's preferred ETH mixing tool. Developer Roman Storm convicted in 2024.</div></div>
         <div class="glossary-item"><div class="glossary-term">Transaction Hash (TXID)</div><div class="glossary-def">Unique identifier for a specific blockchain transaction. The receipt number — used to look up exact transactions on block explorers.</div></div>
+        <div class="glossary-item"><div class="glossary-term">UTXO (Unspent Transaction Output)</div><div class="glossary-def">Bitcoin's transaction model — tracking discrete unspent coins rather than account balances. Spending a UTXO consumes it entirely and creates new outputs. Enables powerful clustering: Common Input Ownership (CIUA) and change address detection. Contrasts with Ethereum's account-based model where balances are simply debited/credited.</div></div>
         <div class="glossary-item"><div class="glossary-term">VASP</div><div class="glossary-def">Virtual Asset Service Provider. Any platform for buying, selling, or trading crypto. Most hold KYC data investigators can obtain via legal process.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Zero-Knowledge Proof (ZK-Proof)</div><div class="glossary-def">Cryptographic method proving knowledge of a value without revealing it. Used in Zcash (zk-SNARKs) for private transactions and in Layer 2 chains (zkSync, StarkNet) for scaling. Investigators must understand ZK systems to assess traceability on ZK-based chains — on-chain analysis is limited but exchange chokepoints still apply.</div></div>
       </div>
 
       <hr>
@@ -2059,7 +2787,7 @@
 
 <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // LOADER
 window.addEventListener('load', () => {
   setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
@@ -2072,7 +2800,7 @@ function toggleDD(id) {
 }
 
 // SECTION NAVIGATION
-const sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','sfact','s9','s10','s11','s12','s13'];
+const sections = ['s0','s1','s1b','s2','s3','s4','s5','s5b','s5c','s5d','s6','s7','s8','s8b','saml','sfact','s9','s9b','s10','s11','s12','s13'];
 const visited = new Set(['s0']);
 
 function showSection(id) {
@@ -2114,7 +2842,8 @@ function answerQuiz(el, result, qId) {
 function filterGlossary() {
   const q = document.getElementById('glossarySearch').value.toLowerCase();
   document.querySelectorAll('.glossary-item').forEach(item => {
-    item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';  });
+    item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
 }
 
 // SCROLL TOP
