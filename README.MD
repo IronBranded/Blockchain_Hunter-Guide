@@ -23,7 +23,6 @@ The guide is structured around the **FACT Attribution Framework** (Shavers, 2025
     🟢 OPEN THE GUIDE 🟢
   </a>
 </h3>
----
 
 ## Features
 
