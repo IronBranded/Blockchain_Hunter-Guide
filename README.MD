@@ -16,7 +16,10 @@
 **Blockchain Hunter Guide** is a self-contained, single-file HTML field manual for anyone learning or practicing cryptocurrency crime investigation. It bridges the gap between "Crypto 101" and the advanced forensic tradecraft used by investigators like ZachXBT, TRM Labs, Chainalysis, and global law enforcement agencies.
 
 The guide is structured around the **FACT Attribution Framework** (Shavers, 2025) — a jurisprudence-centered methodology that explicitly separates *technical identification* ("what acted?") from *person-level attribution* ("who acted?"). This distinction is the cornerstone of legally defensible blockchain investigation.
+---
 
+OPEN THE GUIDE
+https://ironbranded.github.io/Blockchain_Hunter-Guide/
 ---
 
 ## Features
