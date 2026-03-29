@@ -1,5 +1,5 @@
-# 🔍 Blockchain Hunter Guide
-### *Forensic Investigator's Field Manual — v2.1*
+# Blockchain Hunter Guide
+### *Forensic Investigator's Field Manual — Version 1.0*
 
 > **The complete, open-source guide to cryptocurrency crime investigation.** From blockchain fundamentals to advanced forensic tradecraft — built around the FACT Attribution Framework with Canadian legal context.
 
@@ -51,7 +51,7 @@ The guide is structured around the **FACT Attribution Framework** (Shavers, 2025
 | 07 | Exchange Hacks & DeFi Exploits | **Expert** |
 | 08 | Ransomware & Nation-State Threats (Lazarus Group) | **Expert** |
 | 09 | Legal Process & VASP Cooperation | **Expert** |
-| 09b | 🇨🇦 Canadian Legal Framework | **Expert** |
+| 09b | Canadian Legal Framework | **Expert** |
 | 10 | Asset Seizure & Forfeiture | **Expert** |
 | 11 | Case Studies (50+ real investigations) | **Expert** |
 | 12 | Knowledge Check (interactive quizzes) | Mixed |
