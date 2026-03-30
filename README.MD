@@ -18,6 +18,7 @@ The guide is structured as a modular learning path with 12 core modules plus a r
     🟢 OPEN THE GUIDE 🟢
   </a>
 </h3>
+
 ---
 
 ## What's Inside
