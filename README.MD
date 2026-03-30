@@ -5,6 +5,12 @@
 
 ---
 
+## Disclaimer
+
+This guide is for educational purposes only. All case studies reference publicly documented investigations. Tool descriptions reflect capabilities as of March 2026. Always consult legal counsel before deploying investigative techniques, particularly regarding breach database access, which may have jurisdiction-specific restrictions.
+
+---
+
 ## Overview
 
 **NEXUS v1.0** is a single-file interactive HTML guide designed for anyone who wants to understand and practice cryptocurrency crime investigation. It bridges the gap between "Crypto 101" fundamentals and professional-grade forensic tradecraft.
@@ -124,12 +130,6 @@ Navigate using the left sidebar. Progress is tracked as you visit each module. U
 - **Security researchers** — blockchain security, threat intelligence
 - **Crypto enthusiasts** — understand how on-chain investigations actually work
 - **Students & educators** — structured curriculum for blockchain forensics coursework
-
----
-
-## Disclaimer
-
-This guide is for educational purposes only. All case studies reference publicly documented investigations. Tool descriptions reflect capabilities as of March 2026. Always consult legal counsel before deploying investigative techniques, particularly regarding breach database access, which may have jurisdiction-specific restrictions.
 
 ---
 
