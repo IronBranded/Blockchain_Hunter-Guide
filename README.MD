@@ -1,196 +1,136 @@
-# Blockchain Hunter Guide
-### *Forensic Investigator's Field Manual — Version 1.0*
+# NEXUS v1.0
+## E-Crimes Hunting & Disruption Guide
 
-> **The complete, open-source guide to cryptocurrency crime investigation.** From blockchain fundamentals to advanced forensic tradecraft — built around the FACT Attribution Framework with Canadian legal context.
-
-[![Status](https://img.shields.io/badge/status-live-brightgreen?style=flat-square)](https://github.com/IronBranded/Blockchain_Hunter-Guide)
-[![Framework](https://img.shields.io/badge/framework-FACT_v1.1-9b59b6?style=flat-square)](https://doi.org/10.5281/zenodo.18005597)
-[![Modules](https://img.shields.io/badge/modules-16-00d4ff?style=flat-square)](#modules)
-[![Canadian Context](https://img.shields.io/badge/context-🇨🇦_Canada-ff0000?style=flat-square)](#canadian-legal-framework)
-[![Last Updated](https://img.shields.io/badge/updated-March_2026-orange?style=flat-square)](#)
+> A comprehensive, visually-driven field manual for blockchain forensics and crypto crime investigation — from foundational concepts to advanced disruption tactics used by real-world investigators.
 
 ---
 
-## What Is This?
+## Overview
 
-**Blockchain Hunter Guide** is a self-contained, single-file HTML field manual for anyone learning or practicing cryptocurrency crime investigation. It bridges the gap between "Crypto 101" and the advanced forensic tradecraft used by investigators like ZachXBT, TRM Labs, Chainalysis, and global law enforcement agencies.
+**NEXUS v1.0** is a single-file interactive HTML guide designed for anyone who wants to understand and practice cryptocurrency crime investigation. It bridges the gap between "Crypto 101" fundamentals and professional-grade forensic tradecraft.
 
-The guide is structured around the **FACT Attribution Framework** (Shavers, 2025) — a jurisprudence-centered methodology that explicitly separates *technical identification* ("what acted?") from *person-level attribution* ("who acted?"). This distinction is the cornerstone of legally defensible blockchain investigation.
-
----
-
-<h3 align="center">
-  <a href="https://ironbranded.github.io/Blockchain_Hunter-Guide/" target="_blank" rel="noopener noreferrer">
-    🟢 OPEN THE GUIDE 🟢
-  </a>
-</h3>
+The guide is structured as a modular learning path with 12 core modules plus a reference section, progressive difficulty levels (Beginner → Expert), an interactive knowledge check quiz, and a searchable glossary.
 
 ---
 
+## What's Inside
 
-## Features
-
-- **16 progressive modules** from beginner foundations to expert tradecraft
-- **FACT Attribution Framework** — the full F→A→C→T lifecycle applied throughout
-- **Interactive knowledge checks** — 6 scenario-based quiz questions with explanations
-- **50+ real case studies** including the $1.5B Bybit hack, the $243M BTC theft, and the Khinkis ransomware OTC case
-- **Canadian legal context** — FINTRAC, PCMLTFA, PIPEDA, RCMP asset seizure framework
-- **25+ tool profiles** — TRM Labs, Arkham, Cielo, Tenderly, Phalcon, OSINT Industries, and more
-- **Searchable glossary** with 40+ defined terms
-- **Zero dependencies** — one HTML file, no backend, no build step
-
----
-
-## Modules
-
-| # | Module | Level |
-|---|--------|-------|
-| 00 | Introduction & Investigator Principles | Beginner |
-| 01 | Blockchain Foundations (BTC, ETH, Tron, Solana, Monero) | Beginner |
-| 02 | Key Terminology (searchable, with autocomplete) | Beginner |
-| FA | **FACT Attribution Framework** — Identification vs Attribution | Intermediate |
+| Module | Title | Level |
+|--------|-------|-------|
+| 00 | Introduction — E-Crime Investigation | Beginner |
+| 01 | Blockchain Foundations | Beginner |
+| 02 | Key Terminology | Beginner |
 | 03 | Blockchain Tracing in Practice | Intermediate |
-| 03b | UTXO vs Account-Based Tracing | Intermediate |
-| 04 | OSINT Techniques (ZachXBT methodology) | Intermediate |
-| 05 | Tools & Arsenal (25+ tools profiled) | Intermediate |
-| 05b | Bridge & Cross-Chain Reconciliation | **Expert** |
-| 05c | Smart Contract Forensics (Flash Loans, MEV) | **Expert** |
-| 05d | Malware Analysis (YARA, FLOSS, C2 extraction) | **Expert** |
-| 06 | Scams & Fraud Typologies | Intermediate |
-| 07 | Exchange Hacks & DeFi Exploits | **Expert** |
-| 08 | Ransomware & Nation-State Threats (Lazarus Group) | **Expert** |
-| 09 | Legal Process & VASP Cooperation | **Expert** |
-| 09b | Canadian Legal Framework | **Expert** |
-| 10 | Asset Seizure & Forfeiture | **Expert** |
-| 11 | Case Studies (50+ real investigations) | **Expert** |
-| 12 | Knowledge Check (interactive quizzes) | Mixed |
-| REF | Glossary & Key Resources | All Levels |
+| 04 | OSINT Techniques | Intermediate |
+| 05 | The Investigator's Toolkit (25+ tools) | Intermediate |
+| 06 | Crypto Scams & Fraud Typologies | Intermediate |
+| 07 | Exchange Hacks & DeFi Exploits | Advanced |
+| 08 | Ransomware & Nation-State Threats | Advanced |
+| 09 | Legal Process & VASP Cooperation | Advanced |
+| 10 | Asset Seizure & Forfeiture | Advanced |
+| 11 | Real-World Case Studies | Advanced |
+| 12 | Knowledge Check (Quiz) | All |
+| REF | Glossary & Resources | All |
 
 ---
 
-## Canadian Legal Framework
+## Key Content Areas
 
-Module 09b provides a dedicated deep-dive into the Canadian legal landscape for crypto investigations, covering:
+### Phase 1 — Foundations of the Ledger
+- **Blockchain mechanics**: How blocks are validated and why the ledger is immutable
+- **Wallet anatomy**: Public/private keys, address formats across Bitcoin, Ethereum, Tron, Solana, BNB Chain
+- **Why blockchain IS traceable**: The investigator's advantage over traditional financial crime
+- **Core terminology**: Sourced from the TRM Labs Blockchain Investigator's Flip Book
 
-- **FINTRAC** — MSB registration, STR/LCTR/EFTR reporting obligations, law enforcement disclosure provisions
-- **PCMLTFA** — Canada's primary AML legislation; Travel Rule threshold ($1,000 CAD), 5-year record retention, VASP obligations
-- **PIPEDA** — Privacy constraints for OSINT; publicly available information exemption; law enforcement vs. civilian distinctions
-- **RCMP Asset Seizure** — Restraint Orders, Seizure Warrants, Forfeiture Orders, Civil Forfeiture (provincial), and practical notes on private key seizure
+### Phase 2 — The E-Crime Landscape & Adversary TTPs
+- **Crime typologies**: Pig butchering/romance scams, rug pulls, pump-and-dumps, social engineering
+- **Exchange hacks**: The $1.5B Bybit hack dissected step-by-step
+- **Ransomware flows**: Payment → mixing → OTC cash-out (Khinkis case, March 2026)
+- **Nation-state threats**: Lazarus Group / TraderTraitor attribution methodology
+- **Obfuscation mechanics**: Mixers/tumblers, chain-hopping, peeling chains, DeFi layering
 
-> *This section is educational context, not legal advice. Consult qualified legal counsel for specific cases.*
+### Phase 3 — The Investigator's Toolkit
+- **On-chain forensics**: TRM Labs, Arkham Intelligence, Cielo Finance, MetaSleuth, Etherscan, Blockchair, Dune Analytics
+- **Bridge & cross-chain tracking**: Pulsy, Socketscan, Range Protocol
+- **OSINT & identity**: OSINT Industries, IntelX, Snusbase, LeakPeek, Spur.us, Cavalier
+- **Evidence preservation**: Wayback Machine, Archive.today, Obsidian
+- **Tracing methodology**: The 3-step framework (Identify → Trace → Disrupt) from TRM Labs
+
+### Phase 4 — Disruption & Legal Action
+- **VASP legal process**: KYC requests, omnibus subpoenas, emergency freezes
+- **Asset seizure**: Custody options, theories of forfeiture, pre-seizure planning
+- **International cooperation**: MLAT treaties, FBI/Europol/INTERPOL channels
+- **Attribution techniques**: Pattern matching, behavioral fingerprinting, timing analysis
 
 ---
 
-## Core Framework: FACT Attribution
+## Landmark Cases Covered
 
-This guide is built around the **FACT Attribution Framework** by Brett Shavers (2025):
-
-```
-F — Forensic Authority & Compliance    Establish legal/organizational authority before analysis
-A — Analyze Evidence                   Structured technical analysis; generate candidate actors
-C — Correlate & Sequence               Multi-stream convergence across identity layers
-T — Testify & Transfer Findings        Defensible reporting with documented uncertainty
-```
-
-**The central principle:** A wallet address is not a person. Identifying that `bc1q…` deposited to Binance is *technical identification* — not *person-level attribution*. The latter requires converging multiple independent evidence streams and explicitly falsifying alternative actors.
-
-Full citation: Shavers, B. (2025). *The FACT Attribution Framework v1.1*. Zenodo. [doi.org/10.5281/zenodo.18005597](https://doi.org/10.5281/zenodo.18005597)
+| Case | Amount | Key Lesson |
+|------|--------|------------|
+| Bybit Hack (Feb 2025) | $1.5B | Supply chain attack + Lazarus attribution methodology |
+| $243M BTC Theft (Aug 2024) | $243M | Social media OSINT + spending pattern analysis |
+| Haby Coinbase Scammer (2025) | $2M+ | Timing analysis + location OSINT from Instagram stories |
+| USMS Asset Theft (Jan 2026) | $46M | Behavioral OSINT from private Telegram recordings |
+| Hyperliquid Whale (2025) | $20M | Bridge analysis + funding source tracing |
+| Khinkis OTC Broker (Mar 2026) | $4.7M+ | Ransomware payment tracing + exposure analysis |
+| Al-Sadaqah Terror Financing | — | Direct VASP exposure → legal process workflow |
 
 ---
 
-## Getting Started
+## Source Materials
 
-The guide is a single, self-contained HTML file with no external dependencies beyond Google Fonts (loaded via CDN).
+NEXUS v1.0 draws on the following primary sources:
+
+- **TRM Labs Blockchain Investigator's Flip Book** (law enforcement edition) — methodology, case examples, and legal process guidance
+- **FACT Attribution Framework v1.1** — supplementary attribution and clustering methodology
+- **Chainalysis Crypto Crime Report** (annual) — statistics and trend data
+- **FBI IC3 PSAs** — official Lazarus Group address lists and warnings
+- **ZachXBT's published investigations** — real-world technique examples (Telegram, Substack, X)
+- **OSINT Industries' ZachXBT toolkit thread** — curated tool list sourced directly from ZachXBT
+- **OFAC sanctions database** — sanctioned addresses, mixers, and entities
+
+---
+
+## Usage
+
+NEXUS v1.0 is a single self-contained HTML file with no external dependencies beyond Google Fonts.
 
 ```bash
-# Clone the repository
-git clone https://github.com/IronBranded/Blockchain_Hunter-Guide.git
-
-# Open directly in any browser — no server required
+# Open locally
 open index.html
+
+# Or serve via any static HTTP server
+python3 -m http.server 8080
 ```
 
-Or simply [download the latest release](https://github.com/IronBranded/Blockchain_Hunter-Guide/releases) and open `index.html`.
+Navigate using the left sidebar. Progress is tracked as you visit each module. Use the Knowledge Check (Module 12) to test retention.
 
 ---
 
-## Key Case Studies Covered
+## Intended Audience
 
-| Case | Amount | Lesson |
-|------|--------|--------|
-| Bybit Exchange Hack (Feb 2025) | $1.5B | Supply chain attack; FACT applied; Lazarus Group attribution |
-| $243M Bitcoin Theft (Aug 2024) | $243M | Social media OSINT + on-chain convergence (FACT Stage C) |
-| Haby — Coinbase Impersonation (Abbotsford, BC) | $2M+ | Canadian OSINT; Instagram location metadata; timing analysis |
-| USMS Government Wallet Theft (Jan 2026) | $46M | Private Telegram bragging as investigative lead |
-| Khinkis Ransomware OTC Broker (Mar 2026) | $4.7M+ | Taint analysis; bridge tracking; BTC→Tron chain-hop |
-
----
-
-## Contributing
-
-Issues and pull requests are welcome. Areas of particular value:
-
-- Additional case studies with FACT analysis annotations
-- Updated tool profiles (the toolkit evolves fast)
-- New quiz questions for underrepresented modules
-- Translations for non-English-speaking investigators
-
-Please open an issue before submitting large changes so we can discuss scope and fit.
+- Cybersecurity professionals (DFIR, Threat Hunting, OSINT, CTI, Malware Analysts)
+- **Law enforcement** — digital asset investigators, financial crimes units, cyber divisions
+- **Private investigators & compliance teams** — VASP compliance, AML analysts
+- **Security researchers** — blockchain security, threat intelligence
+- **Crypto enthusiasts** — understand how on-chain investigations actually work
+- **Students & educators** — structured curriculum for blockchain forensics coursework
 
 ---
 
-## Learning & Certification Pathways
+## Disclaimer
 
-The skills covered in this guide map directly to industry certifications across blockchain forensics, digital forensics & incident response (DFIR), and cybercrime investigation. The pathways below are organized from foundational to advanced.
-
-### 🔗 Blockchain & Crypto-Specific
-
-| Certification | Provider | Relevance |
-|---|---|---|
-| **Chainalysis Reactor Certification (CBCI)** | Chainalysis | Industry-standard blockchain investigator cert; core tracing methodology |
-| **TRM Academy Training** | TRM Labs | Free law-enforcement-focused blockchain investigation training |
-| **CFCE (Certified Forensic Computer Examiner)** | IACIS | General digital forensics foundation; supports FACT Framework practice |
-
-### 🛡️ GIAC / SANS Institute
-
-SANS courses provide the deepest DFIR and cybercrime investigation training available, directly reinforcing the cybersecurity pillar of the E-Crime Disruptor methodology.
-
-| Course / Certification | Code | Relevance to This Guide |
-|---|---|---|
-| **Hacker Tools, Techniques, and Incident Handling** | SEC504 | Maps to Pillar 1: adversary TTPs, network forensics, incident scoping — the "how" of exchange hacks and ransomware |
-| **Windows Forensic Analysis** | FOR500 | Artifact recovery, registry analysis, memory forensics; critical for extracting wallet addresses and C2 indicators from compromised machines |
-| **Advanced Incident Response, Threat Hunting, and Digital Forensics** | FOR508 | Deep DFIR; threat hunting methodology; correlates directly with on-chain IoC development and the FACT A+C stages |
-| **Enterprise Cloud Forensics and Incident Response** | FOR509 | Cloud environment forensics; essential for investigating exchange infrastructure compromises and API-layer attacks |
-| **Cybercrime Investigations** | FOR589 | The most directly applicable SANS course — covers cryptocurrency tracing, dark web investigations, ransomware payments, and OSINT techniques used throughout this guide |
-
-> **Recommended SANS sequence for E-Crime Disruptors:** SEC504 → FOR508 → FOR589, with FOR500 and FOR509 as parallel electives depending on your primary environment.
-
-### 🎓 Complementary Certifications
-
-- **CISA / CISSP** — Broader security governance context for enterprise-level investigations
-- **CFE (Certified Fraud Examiner)** — ACFE; financial crime investigation methodology complementing FININT skills
-- **CAMS (Certified Anti-Money Laundering Specialist)** — ACAMS; AML/PCMLTFA regulatory framework; essential for Canadian practitioners
-- **Placing the Suspect Behind the Keyboard (PSBTK™)** — Brett Shavers; dedicated training on the FACT Attribution Framework
+This guide is for educational purposes only. All case studies reference publicly documented investigations. Tool descriptions reflect capabilities as of March 2026. Always consult legal counsel before deploying investigative techniques, particularly regarding breach database access, which may have jurisdiction-specific restrictions.
 
 ---
 
-## Resources & Further Reading
+## Version History
 
-- [FACT Attribution Framework v1.1](https://doi.org/10.5281/zenodo.18005597) — Brett Shavers (2025)
-- [TRM Labs Blockchain Investigator's Flip Book](https://www.trmlabs.com) — Law enforcement field guide
-- [Chainalysis Crypto Crime Report](https://go.chainalysis.com/crypto-crime-report.html) — Annual statistics
-- [FINTRAC](https://fintrac-canafe.canada.ca) — Canadian AML guidance and MSB obligations
-- [TRM Academy](https://academy.trmlabs.com) — Free blockchain investigation training for law enforcement
-- [SANS FOR589: Cybercrime Investigations](https://www.sans.org/cyber-security-courses/cybercrime-investigations/) — The premier DFIR-to-crypto investigation bridge course
-- [suspectbehindthekeyboard.com](https://suspectbehindthekeyboard.com) — FACT Framework training and PSBTK™ Training System
-- [@ZachXBT](https://x.com/zachxbt) — Primary source for real-world investigative methodology
+| Version | Date | Notes |
+|---------|------|-------|
+| v1.0 | March 2026 | Initial release under NEXUS branding. 12 modules, 25+ tools, 50+ case references. |
 
 ---
 
-## License
-
-This guide is provided for **educational purposes**. Content referencing the FACT Attribution Framework is cited under fair use — full rights remain with Brett Shavers © 2025. See `LICENSE` for details.
-
----
-
-*Built for investigators, journalists, compliance professionals, and anyone who wants to understand how cryptocurrency crime is traced and prosecuted. Feedback via GitHub Issues.*
+*NEXUS v1.0 — E-Crimes Hunting & Disruption Guide*  
