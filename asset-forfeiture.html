@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS v1.0 — Asset Forfeiture</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">NEXUS</div>
+  <div class="loader-title">E-Crimes Hunting &amp; Disruption</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  <div class="loader-msg">Initializing Forensic Intelligence Database</div>
+  <div class="loader-version">v1.0</div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="21" cy="21" r="19" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <circle cx="21" cy="21" r="8" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1"/>
+          <circle cx="21" cy="21" r="3" fill="#00d4ff"/>
+          <line x1="21" y1="2" x2="21" y2="9" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="21" y1="33" x2="21" y2="40" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="2" y1="21" x2="9" y2="21" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="33" y1="21" x2="40" y2="21" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="7" y1="7" x2="12" y2="12" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+          <line x1="30" y1="30" x2="35" y2="35" stroke="#00d4ff" stroke-width="1" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="header-title">
+        <a href="../index.html" style="text-decoration:none;color:inherit;">NEXUS <span style="color:var(--accent2)">v1.0</span></a>
+        <span class="sub">E-Crimes Hunting &amp; Disruption Guide</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>Progress</span><span id="progressPct">0%</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="layout">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section-label">Getting Started</div>
+    <a class="nav-item" href="../index.html">
+      <span class="nav-item-num">00</span>
+      <span class="nav-item-text">Introduction</span>
+      <span class="nav-difficulty diff-beginner">Beginner</span>
+    </a>
+    <a class="nav-item" href="../foundations.html">
+      <span class="nav-item-num">01</span>
+      <span class="nav-item-text">Foundations &amp; Terminology</span>
+      <span class="nav-difficulty diff-beginner">Beginner</span>
+    </a>
+    <div class="nav-section-label">Core Skills</div>
+    <a class="nav-item" href="../tracing.html">
+      <span class="nav-item-num">03</span>
+      <span class="nav-item-text">Blockchain Tracing</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" href="../osint.html">
+      <span class="nav-item-num">04</span>
+      <span class="nav-item-text">OSINT Techniques</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" href="../tools.html">
+      <span class="nav-item-num">05</span>
+      <span class="nav-item-text">Tools &amp; Arsenal</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <div class="nav-section-label">E-Crimes Typologies</div>
+    <a class="nav-item" href="../typologies/economic-crimes.html">
+      <span class="nav-item-num">06</span>
+      <span class="nav-item-text">Economic Crimes</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" href="../typologies/electronic-crimes.html">
+      <span class="nav-item-num">07</span>
+      <span class="nav-item-text">Electronic Crimes</span>
+      <span class="nav-difficulty diff-intermediate">Mid</span>
+    </a>
+    <a class="nav-item" href="../typologies/blockchain-pcmltf.html">
+      <span class="nav-item-num">08</span>
+      <span class="nav-item-text">Blockchain PCMLTF</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <div class="nav-section-label">Advanced Ops</div>
+    <a class="nav-item" href="../advanced/dfir.html">
+      <span class="nav-item-num">09</span>
+      <span class="nav-item-text">DFIR / Threat Hunting</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" href="../advanced/malware.html">
+      <span class="nav-item-num">10</span>
+      <span class="nav-item-text">Malware Analysis</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <div class="nav-section-label">Reference</div>
+    <a class="nav-item" href="../reference/case-studies.html">
+      <span class="nav-item-num">R1</span>
+      <span class="nav-item-text">Case Studies</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" href="../reference/legal-process.html">
+      <span class="nav-item-num">R2</span>
+      <span class="nav-item-text">Legal Process</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item active" href="../reference/asset-forfeiture.html">
+      <span class="nav-item-num">R3</span>
+      <span class="nav-item-text">Asset Forfeiture</span>
+      <span class="nav-difficulty diff-advanced">Expert</span>
+    </a>
+    <a class="nav-item" href="../reference/glossary.html">
+      <span class="nav-item-num">R4</span>
+      <span class="nav-item-text">Glossary &amp; Resources</span>
+      <span class="nav-difficulty diff-all">All</span>
+    </a>
+  </nav>
+
+  <main class="main-content">
+    <button class="mobile-nav-toggle" onclick="toggleMobileNav()">☰ Navigate Modules</button>
+<div class="breadcrumb">NEXUS v1.0 <span>›</span> REFERENCE <span>›</span> ASSET FORFEITURE</div>
+      <div class="section-header">
+        <div class="section-tag">REFERENCE R4 // ADVANCED</div>
+        <div class="section-title">Asset Seizure &amp; Forfeiture</div>
+        <p class="section-desc">The legal and practical mechanics of seizing, holding, and forfeiting cryptocurrency — from TRM Labs' Flip Book and DOJ Asset Forfeiture Program guidelines.</p>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title"><span class="icon">🔐</span> Why Seize Crypto Assets?</div>
+        <ul>
+          <li>Punish criminal behavior and remove ill-gotten gains from criminal control</li>
+          <li>Return assets to victims of the underlying crime</li>
+          <li>Deter future illegal activity by removing the financial profit motive</li>
+          <li>Disrupt criminal organizations' financial infrastructure and operating capital</li>
+          <li>Generate public deterrence through visible consequences for crypto crime</li>
+        </ul>
+      </div>
+
+      <h2>Custody Options for Seized Assets</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Hardware Wallet</div>
+          <p><strong>Pros:</strong> Industry standard; more secure than software wallets; portable; relatively low cost.</p>
+          <p><strong>Cons:</strong> May not support all currencies (especially thinly-traded assets); single point of failure if device lost.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Third-Party Custodian</div>
+          <p><strong>Pros:</strong> Expert custody, institutional-grade security, insurance options, multi-signature controls.</p>
+          <p><strong>Cons:</strong> Transfer complexity; custodian fees; requires due diligence on custodian's own security posture.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">VASP Custody</div>
+          <p><strong>Pros:</strong> Efficient when seizing from that VASP; market-rate liquidation access.</p>
+          <p><strong>Cons:</strong> Assets may be commingled; VASPs have been hacked; requires confidentiality safeguards to prevent subject withdrawal.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Online Software Wallet</div>
+          <p><strong>Pros:</strong> Quick deployment; wide asset compatibility including thinly-traded currencies.</p>
+          <p><strong>Cons:</strong> Higher intrusion risk; not recommended for large seizures; operational security burden on agency.</p>
+        </div>
+      </div>
+
+      <h2>Five Pre-Seizure Considerations</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">A</div><div class="step-body"><div class="step-title">Custody Type</div><div class="step-text">What wallet/custodian will the agency use? Match security level to asset value. Large seizures (>$1M) warrant third-party institutional custody. Hardware wallets appropriate for mid-range. Never use software wallets for high-value seizures.</div></div></div>
+        <div class="step"><div class="step-num">B</div><div class="step-body"><div class="step-title">Access Control</div><div class="step-text">Who will have access? Implement need-to-know controls. Log every access event. Avoid single point of failure — if one officer leaves, the agency retains access. Multi-signature custody recommended for large holdings.</div></div></div>
+        <div class="step"><div class="step-num">C</div><div class="step-body"><div class="step-title">Asset Form</div><div class="step-text">Accept crypto as-is or convert to fiat equivalent? Consider price volatility. Thinly-traded currencies may be illiquid. Prosecutors and courts require guidance on value at time of seizure vs. time of forfeiture.</div></div></div>
+        <div class="step"><div class="step-num">D</div><div class="step-body"><div class="step-title">Contingencies</div><div class="step-text">Virtual currencies are technically nascent — software becomes obsolete, VASPs get hacked, blockchains fork, protocols upgrade. Maintain a living policy document for seizure procedures. Review annually.</div></div></div>
+        <div class="step"><div class="step-num">E</div><div class="step-body"><div class="step-title">Liquidation Plan</div><div class="step-text">VASP market-rate sale, third-party auction (GSA), or victim restitution in crypto? Each has tradeoffs. Returning crypto to fraud victims unfamiliar with wallets requires careful planning. Some jurisdictions require court approval before liquidation.</div></div></div>
+      </div>
+  </main>
+</div>
+
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
