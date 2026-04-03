@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS v1.0 — Page Not Found</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a0f; --accent: #00d4ff; --accent2: #ff6b00;
+    --text: #b8d4e8; --text-dim: #4a6a8a; --border: #1a3a5c;
+    --panel: #0a1628;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,212,255,0.012) 2px,rgba(0,212,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .code {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(64px, 15vw, 120px);
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: 8px;
+    text-shadow: 0 0 60px rgba(0,212,255,0.35);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .label {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 32px;
+  }
+  .msg {
+    max-width: 480px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    padding: 20px 24px;
+    border-left: 3px solid var(--accent);
+  }
+  .msg span { color: var(--accent); }
+  a.btn {
+    display: inline-block;
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 12px 32px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  a.btn:hover {
+    background: rgba(0,212,255,0.1);
+    box-shadow: 0 0 24px rgba(0,212,255,0.25);
+  }
+  .countdown { margin-top: 16px; font-size: 10px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+  <div class="code">404</div>
+  <div class="label">Target Address Not Found</div>
+  <div class="msg">
+    The address you traced led to a <span>dead wallet</span>.<br><br>
+    This path doesn't exist in the NEXUS database.<br>
+    Return to base and resume the investigation from the main index.
+  </div>
+  <a class="btn" href="/">↩ Return to NEXUS</a>
+  <div class="countdown" id="cd">Auto-redirecting in <span id="n">8</span>s</div>
+
+  <script>
+    let n = 8;
+    const el = document.getElementById('n');
+    const t = setInterval(() => {
+      n--;
+      el.textContent = n;
+      if (n <= 0) { clearInterval(t); window.location.href = '/'; }
+    }, 1000);
+  </script>
+</body>
+</html>

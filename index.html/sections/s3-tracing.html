@@ -1,0 +1,68 @@
+<div class="breadcrumb">NEXUS v1.0 <span>›</span> BLOCKCHAIN TRACING</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 03 // INTERMEDIATE</div>
+        <div class="section-title">Blockchain Tracing in Practice</div>
+        <p class="section-desc">The step-by-step methodology for tracing illicit funds — from acquiring an address to identifying a real person. Based on TRM Labs' official investigator methodology.</p>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title"><span class="icon">🗺️</span> The Investigative Goal</div>
+        <p>The goal of blockchain tracing is to <strong>identify the actual controller of an otherwise pseudo-anonymous address</strong>. To do so, trace blockchain transactions to find counterparty exposure with an entity or individual that can provide the identity of the beneficial controller. More simply: <strong>follow the money</strong> to or from an entity that can provide real-world identity.</p>
+      </div>
+
+      <h2>The Three-Step Framework</h2>
+      <div class="grid-3" style="margin-bottom:24px">
+        <div class="card accent" style="text-align:center">
+          <div style="font-family:var(--display);font-size:32px;font-weight:900;color:var(--accent);margin-bottom:8px">1</div>
+          <div class="card-title" style="justify-content:center">Identify Illicit Conduct</div>
+          <p>Acquire the address/transaction from SAR, complaint, OSINT, or source. Confirm illicit activity is present and document the evidence trail from the outset.</p>
+        </div>
+        <div class="card accent2" style="text-align:center">
+          <div style="font-family:var(--display);font-size:32px;font-weight:900;color:var(--accent2);margin-bottom:8px">2</div>
+          <div class="card-title" style="justify-content:center">Trace Proceeds</div>
+          <p>Follow the flow of funds through the blockchain, mapping the transaction network, identifying leverage points and third-party custodians with KYC data.</p>
+        </div>
+        <div class="card accent3" style="text-align:center">
+          <div style="font-family:var(--display);font-size:32px;font-weight:900;color:var(--accent3);margin-bottom:8px">3</div>
+          <div class="card-title" style="justify-content:center">Seek Disruption</div>
+          <p>Serve legal process on VASPs to obtain KYC data. Seek emergency asset freezes, seizure orders, and ultimately arrest or civil forfeiture.</p>
+        </div>
+      </div>
+
+      <h2>Detailed Tracing Steps</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">A</div>
+          <div class="step-body">
+            <div class="step-title">Input Transaction into Blockchain Tool</div>
+            <div class="step-text">Copy/paste the transaction hash, addresses, or other information into a blockchain tracing tool (TRM Labs, Arkham, Etherscan). <strong>Best practice:</strong> acquire the address electronically to avoid transcription errors. Many tools auto-populate even partial addresses.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">B</div>
+          <div class="step-body">
+            <div class="step-title">Identify Leverage Points — Map the Network</div>
+            <div class="step-text">Ask: How many transactions? When were the most recent? How much value is currently held? Is it part of a larger cluster? Does it have attribution or risk flags? Does it have exposure to a VASP that keeps KYC records?</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">C</div>
+          <div class="step-body">
+            <div class="step-title">Identify Third Parties for Legal Process</div>
+            <div class="step-text">After plotting the address and its direct counterparties, identify which VASPs or custodians have exposure to the illicit funds. Screenshot the graph as evidence explaining to a prosecutor why legal process should be served on a specific exchange.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">D</div>
+          <div class="step-body">
+            <div class="step-title">Serve Legal Process &amp; Seek Freeze</div>
+            <div class="step-text">Issue subpoenas or court orders to VASPs requesting KYC documents, subscriber info, email associations, IP address logs, full transaction history, device IDs, and associated accounts. Request simultaneous asset freeze where funds remain on the platform.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card warn">
+        <div class="card-title"><span class="icon">🚩</span> Red Flag: Pass-Through Addresses</div>
+        <p>A <strong>pass-through address</strong> is a significant indicator of illicit layering. Key patterns: only two transactions (one in, one out of the entire sum received), large amounts moved in rapid succession (e.g., 39 minutes apart), $0 current balance, part of a large cluster. This represents a non-economic trade — the controller paid fees for an unnecessary step.</p>
+        <p>Example from TRM's Flip Book: <code>bc1q5spf8v3lwxcnxy9ep0mcxppy3qzdynk53vs9k7</code> — linked to a romance fraud scheme that received and immediately sent $154,814.</p>
+      </div>
