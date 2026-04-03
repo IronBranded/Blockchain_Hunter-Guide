@@ -1,0 +1,60 @@
+<div class="breadcrumb">NEXUS v1.0 <span>›</span> OSINT TECHNIQUES</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 04 // INTERMEDIATE</div>
+        <div class="section-title">OSINT Techniques</div>
+        <p class="section-desc">Open Source Intelligence bridges the gap between a pseudonymous wallet address and a real-world identity. These are the methods used by ZachXBT and professional investigators.</p>
+      </div>
+
+      <div class="expert-quote">
+        "ZachXBT's investigative approach combines blockchain forensics with OSINT techniques... cross-referencing on-chain data with public records such as domain registrations, court filings, and social media activity. He also monitors online forums and chat groups on Telegram and Discord where cybercriminals congregate."
+        <span class="expert-quote-attr">— Wikipedia profile of ZachXBT (March 2026)</span>
+      </div>
+
+      <h2>The OSINT Investigation Workflow</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-step">PHASE 1</div>
+          <div class="timeline-title">On-Chain Pivot Points</div>
+          <div class="timeline-text">Start with what the blockchain provides: wallet addresses, transaction hashes, amounts, timing. Look for exchange deposits (requiring KYC), ENS/domain names, NFT mints, or labeled addresses. These are the first pivot points into the real world.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">PHASE 2</div>
+          <div class="timeline-title">Social Media Intelligence</div>
+          <div class="timeline-text">Criminals brag. Search Twitter/X, Telegram, Discord, and Reddit for mentions of wallet addresses, amounts, project names, or usernames. ZachXBT identified $243M BTC theft suspects partly through their social media spending — luxury purchases and nightclub appearances inconsistent with any legitimate income.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">PHASE 3</div>
+          <div class="timeline-title">Username &amp; Email Pivots</div>
+          <div class="timeline-text">A username used in one context often reappears elsewhere. Use OSINT Industries, Sherlock, and IntelX to find all accounts associated with a username, email, or phone number. Breach databases (Snusbase, LeakPeek) may reveal passwords, IPs, or real names — often the break that cracks a case.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">PHASE 4</div>
+          <div class="timeline-title">Domain &amp; Infrastructure Intel</div>
+          <div class="timeline-text">WHOIS records, SSL certificate history, Shodan/Censys scans, and domain registration data can link a scam website to a real identity or to other criminal infrastructure. The Lazarus Group registered <code>bybit-assessment[.]com</code> using <code>trevorgreer9312@gmail.com</code> hours before the $1.5B Bybit hack — a traceable footprint.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">PHASE 5</div>
+          <div class="timeline-title">Physical Evidence Correlation</div>
+          <div class="timeline-text">Instagram story locations, EXIF data embedded in photos, check-ins, flight patterns, and purchases can place a suspect in a physical location. ZachXBT confirmed a suspect's location in Abbotsford, BC, through Instagram story posts. OSINT on Khinkis revealed travel patterns to Southeast Asia and Australia.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">PHASE 6</div>
+          <div class="timeline-title">Archive &amp; Preserve Evidence</div>
+          <div class="timeline-text">Use Wayback Machine and Archive.today to preserve evidence before suspects delete it. Screenshot with timestamps. Organize everything in Obsidian or a similar link-analysis tool. Archive web pages immediately upon discovery — evidence disappears fast once suspects detect investigation.</div>
+        </div>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title"><span class="icon">⏱️</span> Timing Analysis</div>
+        <p>Matching exact blockchain transaction timestamps to social media posts, login events, or real-world activity. ZachXBT used timing analysis to match Bitcoin transfers to Tron wallet addresses in the Khinkis ransomware investigation by cross-referencing blockchain timestamps against exchange withdrawal times.</p>
+        <p><strong>Key timing red flags:</strong> funds moving within minutes of a hack announcement; transactions at unusual hours indicating specific timezone; rapid cascading transactions suggesting automated laundering scripts; dormant addresses suddenly activating after months (criminal cashing out).</p>
+      </div>
+
+      <div class="card accent2">
+        <div class="card-title"><span class="icon">🕸️</span> Address Clustering Heuristics</div>
+        <ul>
+          <li><strong>Common Input Ownership (CIUA):</strong> If two addresses both sign inputs in the same Bitcoin transaction, the same private key holder controls both — they belong to the same cluster.</li>
+          <li><strong>Change Address Detection:</strong> Bitcoin transactions often send "change" back to the sender. Identifying change addresses reveals more wallets controlled by the same entity.</li>
+          <li><strong>Behavioral Pattern Matching:</strong> Addresses that receive from the same counterparties, or send funds together repeatedly, often belong to the same cluster even without CIUA evidence.</li>
+        </ul>
+      </div>
