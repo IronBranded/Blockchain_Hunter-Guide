@@ -1,0 +1,73 @@
+<div class="breadcrumb">NEXUS v1.0 <span>›</span> FOUNDATIONS</div>
+      <div class="section-header">
+        <div class="section-tag">MODULE 01 // BEGINNER</div>
+        <div class="section-title">Blockchain Foundations</div>
+        <p class="section-desc">You cannot investigate what you don't understand. This module builds foundational knowledge of how blockchains work and why they are investigable — despite the perception of anonymity.</p>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title"><span class="icon">⛓️</span> What is a Blockchain?</div>
+        <p>A blockchain is a <strong>publicly available, immutable ledger</strong> of every transaction ever made on that network. Think of it as a global spreadsheet that anyone can read, but from which no one can delete rows.</p>
+        <p>When Person A sends Bitcoin to Person B, that transaction is cryptographically verified by thousands of computers worldwide and permanently written into a "block" — chained to every previous block. This transparency is what makes blockchain investigation possible. Unlike traditional financial crime where investigators need warrants to access bank records, on-chain data is <strong>publicly visible to everyone</strong>.</p>
+      </div>
+
+      <h2>How Transactions Work</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-step">STEP 01</div>
+          <div class="timeline-title">Wallet Creation</div>
+          <div class="timeline-text">A user creates a crypto wallet, generating a private key (a secret password) and a public address (like a bank account number). The address is pseudonymous — it doesn't contain a name, but it is permanently traceable.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">STEP 02</div>
+          <div class="timeline-title">Transaction Broadcast</div>
+          <div class="timeline-text">When sending crypto, the sender broadcasts a signed transaction to the network: "I'm sending 0.5 BTC from address <code>1ABC…</code> to address <code>3XYZ…</code>." This is signed with the private key, proving ownership of funds without revealing the key itself.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">STEP 03</div>
+          <div class="timeline-title">Network Verification</div>
+          <div class="timeline-text">Network nodes verify the transaction is valid — the sender has sufficient funds and the signature is cryptographically correct. Valid transactions enter the mempool (pending queue).</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">STEP 04</div>
+          <div class="timeline-title">Block Confirmation</div>
+          <div class="timeline-text">Miners or validators bundle pending transactions into a block and add it to the chain. Bitcoin: ~10 min. Ethereum: ~12 sec. Once confirmed, the transaction is permanent and irreversible.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">STEP 05</div>
+          <div class="timeline-title">Public Permanent Record</div>
+          <div class="timeline-text">The transaction is now visible to anyone using a block explorer: sender address, recipient address, amount, timestamp, and transaction hash (TXID). This is the investigator's primary evidence source.</div>
+        </div>
+      </div>
+
+      <h2>Major Blockchains Investigators Encounter</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Blockchain</th><th>Currency</th><th>Address Format</th><th>Explorer</th><th>Investigative Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Bitcoin</strong></td><td>BTC</td><td>27–34 chars; starts 1, 3, or bc1</td><td>Blockchair, Blockchain.info</td><td>Ransomware standard; UTXO model enables clustering</td></tr>
+            <tr><td><strong>Ethereum</strong></td><td>ETH</td><td>42 chars, starts 0x</td><td>Etherscan</td><td>Smart contracts, DeFi, ERC-20 tokens; account model</td></tr>
+            <tr><td><strong>Tron</strong></td><td>TRX / USDT</td><td>34 chars, starts T</td><td>Tronscan</td><td>Most popular chain for USDT laundering; pig butchering cashout</td></tr>
+            <tr><td><strong>Solana</strong></td><td>SOL</td><td>32–44 chars, base58</td><td>Solscan</td><td>High speed/low cost; memecoins, NFT fraud, rug pulls</td></tr>
+            <tr><td><strong>BNB Chain</strong></td><td>BNB</td><td>Same as ETH (0x)</td><td>BscScan</td><td>Lower fees; high volume rug pulls, PancakeSwap exploits</td></tr>
+            <tr><td><strong>Monero</strong></td><td>XMR</td><td>Starts with 4 or 8</td><td>xmrchain.net (limited)</td><td>Privacy coin; ransomware payment preference; hardest to trace</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert warn">
+        <div class="alert-label">⚠️ Privacy Coins</div>
+        <strong>Monero (XMR)</strong> and <strong>Zcash (ZEC)</strong> use cryptographic techniques to obscure sender, recipient, and amount. Significantly harder to trace but not impossible — exchanges that onboard/offboard these assets create investigable chokepoints.
+      </div>
+
+      <div class="card accent2">
+        <div class="card-title"><span class="icon">🔎</span> Why Blockchain IS Traceable — The Investigator's Advantage</div>
+        <p>Criminals often believe crypto is "anonymous." This misconception is their vulnerability and the investigator's advantage:</p>
+        <ul>
+          <li><strong>Every transaction is public</strong> — unlike cash, there is a permanent, immutable audit trail for every movement</li>
+          <li><strong>Addresses cluster together</strong> — one person controls multiple addresses that exhibit identifiable behavioral patterns</li>
+          <li><strong>Exchanges require KYC</strong> — to convert crypto to fiat, criminals must eventually pass through identity verification</li>
+          <li><strong>Metadata leaks identity</strong> — IP addresses, device IDs, timing patterns, and transaction errors expose real-world presence</li>
+          <li><strong>Criminals brag</strong> — social media posts, luxury spending, and forum activity create OSINT leads that link pseudonyms to real people</li>
+        </ul>
+      </div>
