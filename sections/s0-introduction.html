@@ -23,6 +23,311 @@
         </div>
       </div>
 
+      <!-- ═══════════════════════════════════════════════════════════
+           THE UNIFIED KILL CHAIN — orienting framework
+           ═══════════════════════════════════════════════════════════ -->
+
+      <h2>The Unified E-Crime Kill Chain</h2>
+
+      <p style="margin-bottom:20px;font-size:14px;color:var(--text)">
+        Every major crypto-enabled crime follows the same two-part arc. The <strong>cyber kill chain</strong> describes how attackers breach systems and exfiltrate assets. The <strong>AML layering chain</strong> describes how those assets are laundered into untraceable fiat. These two frameworks are almost never presented together — but the handoff between them is precisely where most investigations stall. Understanding the full continuum is the core competency this guide builds.
+      </p>
+
+      <!-- Kill Chain Stepper — self-contained, no external dependencies -->
+      <div id="nexus-kc-root" style="margin-bottom:28px;">
+
+        <style>
+          #nexus-kc-root { font-family: var(--body), 'Rajdhani', sans-serif; }
+          .nkc-track { display:flex; align-items:flex-start; gap:0; margin-bottom:18px; overflow-x:auto; padding-bottom:6px; }
+          .nkc-step {
+            flex:1; min-width:58px; display:flex; flex-direction:column;
+            align-items:center; gap:5px; cursor:pointer; position:relative; padding:0 2px 4px;
+            border:none; background:none;
+          }
+          .nkc-step:not(:last-child)::after {
+            content:''; position:absolute; top:10px; left:calc(50% + 9px);
+            width:calc(100% - 18px); height:1px;
+            background:var(--border); z-index:0;
+          }
+          .nkc-dot {
+            width:20px; height:20px; border-radius:50%; border:2px solid var(--border);
+            background:var(--panel); z-index:1; position:relative; transition:all 0.2s; flex-shrink:0;
+          }
+          .nkc-step.active .nkc-dot  { background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(0,212,255,0.4); }
+          .nkc-step.done .nkc-dot    { background:var(--border); border-color:var(--border); }
+          .nkc-step.handoff.active .nkc-dot { background:var(--warn); border-color:var(--warn); box-shadow:0 0 8px rgba(255,179,0,0.4); }
+          .nkc-step.aml.active .nkc-dot    { background:var(--accent3); border-color:var(--accent3); box-shadow:0 0 8px rgba(0,255,157,0.4); }
+          .nkc-step-label {
+            font-family:var(--mono); font-size:9px; color:var(--text-dim);
+            text-align:center; line-height:1.35; max-width:64px; letter-spacing:0.5px;
+            text-transform:uppercase;
+          }
+          .nkc-step.active .nkc-step-label { color:var(--accent); }
+          .nkc-step.handoff.active .nkc-step-label { color:var(--warn); }
+          .nkc-step.aml.active .nkc-step-label { color:var(--accent3); }
+
+          .nkc-card {
+            background:var(--panel2); border:1px solid var(--border);
+            border-radius:var(--radius); overflow:hidden; margin-bottom:14px;
+          }
+          .nkc-card-header {
+            padding:16px 20px 14px; border-bottom:1px solid var(--border);
+            border-left:3px solid var(--accent);
+          }
+          .nkc-card-header.handoff { border-left-color:var(--warn); }
+          .nkc-card-header.aml     { border-left-color:var(--accent3); }
+
+          .nkc-phase-tag {
+            font-family:var(--mono); font-size:9px; letter-spacing:3px;
+            text-transform:uppercase; margin-bottom:6px; display:inline-block;
+            padding:2px 8px; border-radius:2px;
+          }
+          .nkc-phase-tag.cyber    { background:rgba(83,74,183,0.15); color:#AFA9EC; }
+          .nkc-phase-tag.handoff  { background:rgba(255,179,0,0.12); color:var(--warn); }
+          .nkc-phase-tag.aml      { background:rgba(0,255,157,0.1); color:var(--accent3); }
+
+          .nkc-title    { font-family:var(--display); font-size:18px; font-weight:700; color:var(--text-bright); text-transform:uppercase; letter-spacing:2px; margin:0 0 4px; }
+          .nkc-subtitle { font-size:13px; color:var(--text-dim); margin:0; line-height:1.5; font-family:var(--body); }
+          .nkc-desc     { font-size:13px; color:var(--text); line-height:1.75; padding:16px 20px 4px; }
+
+          .nkc-cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:14px 20px 18px; }
+          @media (max-width:600px) { .nkc-cols { grid-template-columns:1fr; } }
+
+          .nkc-col-label {
+            font-family:var(--mono); font-size:9px; letter-spacing:2px;
+            text-transform:uppercase; color:var(--text-dim); margin-bottom:8px;
+          }
+          .nkc-list { list-style:none; padding:0; margin:0; }
+          .nkc-list li {
+            font-size:12px; color:var(--text); line-height:1.65;
+            padding:3px 0 3px 14px; position:relative; border-bottom:1px solid rgba(255,255,255,0.03);
+          }
+          .nkc-list li:last-child { border-bottom:none; }
+          .nkc-list li::before {
+            content:'›'; position:absolute; left:0; top:3px;
+            color:var(--accent); font-weight:700; font-family:var(--mono);
+          }
+          .nkc-list.handoff li::before { color:var(--warn); }
+          .nkc-list.aml     li::before { color:var(--accent3); }
+
+          .nkc-nav {
+            display:flex; gap:8px; justify-content:space-between;
+            align-items:center; margin-top:4px;
+          }
+          .nkc-btn {
+            font-family:var(--mono); font-size:10px; letter-spacing:2px;
+            text-transform:uppercase; padding:8px 18px;
+            border:1px solid var(--border); border-radius:var(--radius);
+            background:var(--panel); color:var(--text); cursor:pointer;
+            transition:all 0.2s;
+          }
+          .nkc-btn:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+          .nkc-btn:disabled { opacity:0.3; cursor:default; }
+          .nkc-counter { font-family:var(--mono); font-size:10px; color:var(--text-dim); letter-spacing:1px; }
+          .nkc-group-legend {
+            display:flex; gap:16px; flex-wrap:wrap; margin-bottom:14px;
+          }
+          .nkc-legend-item {
+            display:flex; align-items:center; gap:6px;
+            font-family:var(--mono); font-size:9px; color:var(--text-dim); letter-spacing:1px;
+            text-transform:uppercase;
+          }
+          .nkc-legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+        </style>
+
+        <!-- Legend -->
+        <div class="nkc-group-legend">
+          <div class="nkc-legend-item"><div class="nkc-legend-dot" style="background:#7F77DD;"></div>Cyber kill chain (6 phases)</div>
+          <div class="nkc-legend-item"><div class="nkc-legend-dot" style="background:var(--warn);"></div>The handoff</div>
+          <div class="nkc-legend-item"><div class="nkc-legend-dot" style="background:var(--accent3);"></div>AML layering chain (3 stages)</div>
+        </div>
+
+        <!-- Step track -->
+        <div class="nkc-track" id="nkc-track"></div>
+
+        <!-- Panel -->
+        <div id="nkc-panel"></div>
+
+        <!-- Nav -->
+        <div class="nkc-nav">
+          <button class="nkc-btn" id="nkc-prev" onclick="nkcNav(-1)">&#8592; Prev</button>
+          <span class="nkc-counter" id="nkc-counter"></span>
+          <button class="nkc-btn" id="nkc-next" onclick="nkcNav(1)">Next &#8594;</button>
+        </div>
+
+      </div><!-- /nexus-kc-root -->
+
+      <script>
+      (function(){
+        var phases = [
+          {
+            group:'cyber',
+            tag:'Cyber — Phase 1 of 6',
+            title:'Reconnaissance',
+            subtitle:'The attacker builds a complete picture of the target before touching a single system.',
+            desc:'Reconnaissance is entirely passive — no malware, no intrusion, no detectable footprint on the target. The attacker researches who works at the organisation, what software they use, which vendors they trust, and where the weak points are. For crypto-targeting attacks this commonly means identifying exchange developers on LinkedIn, mapping third-party signing infrastructure from job postings, and scanning GitHub repos for accidentally committed API keys. Nation-state actors like Lazarus Group invest weeks or months in this phase for high-value targets.',
+            criminal:['OSINT on employee LinkedIn profiles and GitHub repos','Identifying third-party software vendors trusted by the target','Mapping wallet custody infrastructure from public job postings','Dark web forum research on known software vulnerabilities','Scanning for exposed developer endpoints via Shodan / Censys'],
+            investigator:['Threat intelligence feeds for early attacker infrastructure profiling','Dark web monitoring for mentions of your organisation or key personnel','Exposed asset discovery to understand your own attack surface','Supply chain vendor risk assessment and security questionnaires','Employee security awareness training targeting recon vectors']
+          },
+          {
+            group:'cyber',
+            tag:'Cyber — Phase 2 of 6',
+            title:'Weaponisation',
+            subtitle:'The attacker builds or acquires the specific tool that will be used against this target.',
+            desc:'Weaponisation moves the attack from research to preparation. The attacker crafts or purchases a payload — custom malware, a phishing kit, a malicious browser extension, or JavaScript designed to inject into a signing interface. Nation-state actors like Lazarus Group build bespoke tooling tailored to each high-value target, often spending weeks in this phase. Criminal groups operating at scale typically buy commodity Malware-as-a-Service (MaaS) from darknet subscription services. The output is a weapon ready to be deployed.',
+            criminal:['Custom malware development (Lazarus TraderTraitor supply chain tooling)','MaaS subscription purchase — RedLine, Vidar, Lumma infostealer families','Building phishing pages that precisely mimic trusted exchange interfaces','Preparing malicious JavaScript for injection into signing infrastructure','Packaging malware inside legitimate-looking coding test repositories'],
+            investigator:['Malware sample analysis and family attribution via sandbox triage','Darknet marketplace monitoring for newly listed tools targeting crypto','YARA rule development from prior samples of the same family','Threat actor TTP profiling using MITRE ATT&CK framework','Threat intelligence sharing with sector peers and ISACs']
+          },
+          {
+            group:'cyber',
+            tag:'Cyber — Phase 3 of 6',
+            title:'Delivery',
+            subtitle:'The weapon is transmitted to the target — the attacker makes first contact.',
+            desc:'Delivery is the moment the attacker reaches out. The most common vector in high-value crypto attacks is spear-phishing: a highly researched, individually crafted message that appears entirely legitimate to the recipient. Supply chain attacks deliver malware through trusted software update mechanisms, bypassing perimeter defences entirely without ever contacting the target directly. The Bybit hack combined both: a LinkedIn fake job offer to compromise a Safe{Wallet} developer, then JavaScript injection delivered through their own legitimate build pipeline.',
+            criminal:['LinkedIn fake job offer with malicious coding test (Contagious Interview)','Spear-phishing emails to exchange developers and signing key holders','Malicious npm / pip packages that execute on install in developer environments','Compromised software update mechanisms for widely-used developer tooling','Malvertising delivering drive-by downloads to crypto-sector employees'],
+            investigator:['Email gateway analysis and full header forensics for suspicious messages','Endpoint detection for unexpected process spawning from email clients','Developer environment monitoring — unexpected npm, pip, cargo installs','Supply chain integrity verification via cryptographic file hashing','Sandboxed analysis of all executable attachments before delivery reaches endpoints']
+          },
+          {
+            group:'cyber',
+            tag:'Cyber — Phase 4 of 6',
+            title:'Exploitation',
+            subtitle:'The payload executes and the attacker achieves initial access inside the target environment.',
+            desc:'Exploitation is the moment the weapon activates. A developer opens a malicious PDF, runs a fake coding test, or visits a compromised webpage — the payload executes, exploiting either a software vulnerability or, far more commonly in modern crypto attacks, human trust. At this point the attacker has a foothold. For crypto-focused intrusions, the immediate goal is to reach signing keys, wallet software, or exchange administrator sessions. Social engineering exploits are now more common than technical CVE exploitation in high-value crypto breaches.',
+            criminal:['Running malicious coding test repo that installs backdoor during setup','Executing attachment that drops infostealer harvesting browser credentials','Browser exploit via malicious job application PDF or document','Token approval drain via fake dApp "connect wallet" prompting','Credential harvesting through pixel-perfect fake exchange login pages'],
+            investigator:['EDR telemetry for anomalous initial execution events','Process creation logging (Sysmon Event ID 1) with command-line capture','Endpoint memory forensics for injected shellcode and hollowed processes','Browser extension audit for unexpected token spend approvals','User behaviour analytics for anomalous credential use post-phishing']
+          },
+          {
+            group:'cyber',
+            tag:'Cyber — Phase 5 of 6',
+            title:'Installation & C2',
+            subtitle:'The attacker establishes persistence and a covert command channel — the dwell phase.',
+            desc:'Once inside, the attacker installs a persistent backdoor and establishes command-and-control (C2) communication: a covert channel to attacker-controlled infrastructure. This phase can last days, weeks, or months. The attacker moves laterally through the network, escalating privileges and mapping the environment. In the Bybit case, the attacker maintained access to the Safe{Wallet} developer machine for two days before activating the payload — waiting precisely for a scheduled cold-to-warm wallet signing event. Dwell time is the investigator\'s greatest enemy and the attacker\'s greatest asset.',
+            criminal:['Deploying Cobalt Strike beacon or custom C2 implant for persistent access','Registry Run key or scheduled task for persistence across reboots','Lateral movement via PsExec, WMI, or pass-the-hash across network','Credential dumping from LSASS memory using Mimikatz or equivalents','Living-off-the-land: abusing legitimate admin tools to avoid AV detection'],
+            investigator:['Network traffic analysis for C2 beaconing intervals and patterns','SIEM correlation rules for lateral movement indicators (PsExec, WMI)','Memory forensics (Volatility) for injected DLLs and hollowed processes','Threat hunting for Cobalt Strike default configuration artefacts','Canary tokens and honeypot accounts to detect lateral movement early']
+          },
+          {
+            group:'cyber',
+            tag:'Cyber — Phase 6 of 6',
+            title:'Actions on objectives',
+            subtitle:'The attack culminates — assets are stolen. This is the handoff point.',
+            desc:'Actions on objectives is the moment everything converges. In crypto-focused attacks this means redirecting a transaction, draining a wallet, or injecting a malicious signing payload at the exact moment it will succeed. The Bybit attack activated malicious JavaScript precisely during a scheduled cold-to-warm wallet transfer, silently changing the destination address mid-signing. The theft of 401,347 ETH happened in seconds. This phase is also the handoff — the moment the cyber kill chain ends and the AML layering chain begins. The blockchain timestamp of the first attacker-controlled transaction is the anchor for everything that follows.',
+            criminal:['Silent transaction redirection via injected JavaScript in signing interface','Private key or seed phrase exfiltration via infostealer C2 channel','Direct wallet drain via compromised exchange administrator credentials','Smart contract exploit draining protocol liquidity in single atomic transaction','Clipboard hijacker silently replacing victim-copied wallet addresses'],
+            investigator:['On-chain real-time monitoring for anomalous large-value outflows','Mempool alerting on flagged attacker addresses (before confirmation)','Transaction signing audit logs to detect unauthorised signing events','Immediate incident response: capture first attacker wallet address','Emergency freeze requests to downstream VASPs — minutes matter here']
+          },
+          {
+            group:'handoff',
+            tag:'The Handoff — Discipline Boundary',
+            title:'Stolen assets hit the blockchain',
+            subtitle:'The seam between cyber investigation and financial crime investigation.',
+            desc:'This is the single most important concept in the unified framework. The moment stolen assets arrive in an attacker-controlled wallet, the nature of the investigation changes entirely. Cyber forensics — endpoint artefacts, memory dumps, network logs — gives way to blockchain forensics: transaction graphs, wallet clustering, VASP exposure analysis. Most investigators are trained in one discipline or the other. The gap between them is where most high-value crypto investigations stall. NEXUS is built around the skills required to operate across this seam without losing the trail. The blockchain timestamp of the first attacker-controlled inflow is the single most important data point in the financial investigation that follows.',
+            criminal:['Fragmentation: funds split across hundreds of fresh wallets within minutes','Automation: scripted laundering bots execute without any human delay','Speed: full layering cycle often begins before the victim knows the theft occurred','Misdirection: small decoy transactions designed to exhaust investigator attention'],
+            investigator:['Capture the first attacker wallet address — start the clock immediately','Input to TRM Labs or Arkham Intelligence for real-time transaction graph','Issue emergency freeze requests to any identifiable downstream VASPs','Correlate the on-chain theft timestamp with the cyber incident timeline','Preserve all blockchain evidence: TXIDs, addresses, graph screenshots with timestamps']
+          },
+          {
+            group:'aml',
+            tag:'AML — Stage 1 of 3',
+            title:'Placement',
+            subtitle:'Illicit funds enter the financial ecosystem — the highest-risk stage for the criminal.',
+            desc:'Placement is where the criminal\'s exposure is greatest: the proceeds are most directly linked to the underlying crime and most detectable. In crypto crime, placement often happens automatically the instant the theft completes — funds land in the attacker\'s wallet and are immediately swept into exchange deposit addresses, no-KYC instant exchange inputs, or Bitcoin ATM outputs. The investigator\'s window at placement is extremely narrow. Speed of response here determines whether an asset freeze is possible before the layering cycle begins and the trail becomes orders of magnitude harder to follow.',
+            criminal:['Fragmenting stolen funds across hundreds of fresh, unlinked wallets instantly','Depositing to no-KYC instant exchange services (ChangeNow, FixedFloat, SimpleSwap)','Bitcoin ATM cash withdrawals structured below mandatory reporting thresholds','NFT self-purchase between controlled wallets to establish false "legitimate" provenance','P2P exchange trades using cash or gift cards to avoid KYC at entry point'],
+            investigator:['Bitcoin ATM operator subpoena: camera footage, transaction logs, phone numbers used','Emergency VASP freeze request — issue simultaneously with KYC subpoena, not after','SAR / FINTRAC correlation: check for existing suspicious activity reports on target wallets','Structuring pattern analysis: aggregate transactions across multiple ATMs and VASPs','TRM Labs exposure analysis to establish direct illicit-source linkage for legal process']
+          },
+          {
+            group:'aml',
+            tag:'AML — Stage 2 of 3',
+            title:'Layering',
+            subtitle:'The audit trail is deliberately obscured through complex, multi-hop transaction chains.',
+            desc:'Layering is where blockchain forensics is most powerful — and where the criminal invests the most effort. Every hop is on-chain and permanently recorded, but the sheer volume of transactions across multiple chains and services is designed to exhaust investigator resources. Lazarus Group\'s post-Bybit layering involved thousands of wallets, multiple bridge protocols, Tornado Cash cycles, and instant exchange swaps — all executed within 48 hours of the theft. Commercial tools like TRM Labs automate multi-hop tracing that would take experienced investigators weeks to reconstruct manually. Understanding layering mechanics is essential for knowing where to focus legal process.',
+            criminal:['Chain-hopping: ETH to BTC to Monero to TRON using cross-chain bridges','Tornado Cash or Wasabi CoinJoin to cryptographically break transaction linkage','Peeling chains: sequential address hops each forwarding slightly less value','DEX swaps on Uniswap, Curve, or Jupiter — no KYC, no operator to subpoena','No-KYC instant exchanges cycling through multiple conversion services rapidly'],
+            investigator:['Bridge tracking tools (Pulsy, Socketscan) to follow funds across chain boundaries','Mixer output analysis: timing correlation and amount matching across Tornado deposits/withdrawals','Automated peeling chain tracing via TRM Labs graph — do not attempt manually at scale','Privacy coin chokepoint identification: Monero on/off-ramps at regulated exchange desks','Document every hop meticulously — each address is a potential exhibit in legal proceedings']
+          },
+          {
+            group:'aml',
+            tag:'AML — Stage 3 of 3',
+            title:'Integration',
+            subtitle:'Laundered funds re-enter the legitimate economy and become indistinguishable from clean wealth.',
+            desc:'Integration is the endgame for the criminal: proceeds appear legitimate and are indistinguishable from lawful wealth. OTC brokers are the most common integration mechanism for large-scale crypto crime — they facilitate large crypto-to-fiat conversions outside regulated exchange infrastructure, often with minimal AML controls. The Khinkis case (March 2026) documented $4.7M+ in ransomware proceeds routed through a single OTC broker\'s exchange account. At integration, the investigator\'s primary leverage is the KYC record at the final VASP — frequently the only real-world identity in the entire chain from theft to cash.',
+            criminal:['OTC broker fiat conversion with minimal AML controls (documented: Khinkis case, 2026)','Real estate purchase using crypto-origin funds in permissive jurisdictions','Luxury goods — watches, vehicles, art — purchased for resale or as a store of value','Shell company investment to create an ongoing stream of apparently legitimate revenue','Crypto payroll to criminal network members: affiliates, mules, and infrastructure operators'],
+            investigator:['OTC broker identification via on-chain clustering, TRM VASP database, and bridge analysis','Emergency asset freeze at integration VASP — simultaneous with KYC subpoena','Bank record subpoena to trace fiat proceeds from VASP withdrawal to final destination','Property registration and vehicle registry searches for assets purchased with traced proceeds','Civil forfeiture filing on identified real estate, luxury assets, and business investments']
+          }
+        ];
+
+        var current = 0;
+        var visited = {0:true};
+
+        function groupOf(p) { return p.group; }
+
+        function renderTrack() {
+          var html = '';
+          for (var i = 0; i < phases.length; i++) {
+            var p = phases[i];
+            var cls = 'nkc-step ' + p.group;
+            if (i === current) cls += ' active';
+            else if (visited[i]) cls += ' done';
+            html += '<button class="'+cls+'" onclick="nkcGo('+i+')" title="'+p.title+'">' +
+              '<div class="nkc-dot"></div>' +
+              '<div class="nkc-step-label">'+p.title+'</div>' +
+              '</button>';
+          }
+          document.getElementById('nkc-track').innerHTML = html;
+        }
+
+        function renderPanel() {
+          var p = phases[current];
+          var g = p.group;
+          var headerCls = g === 'handoff' ? 'handoff' : g === 'aml' ? 'aml' : '';
+          var tagCls = g;
+          var listCls = g === 'handoff' ? 'handoff' : g === 'aml' ? 'aml' : '';
+          var html =
+            '<div class="nkc-card">' +
+              '<div class="nkc-card-header '+headerCls+'">' +
+                '<div class="nkc-phase-tag '+tagCls+'">'+p.tag+'</div>' +
+                '<div class="nkc-title">'+p.title+'</div>' +
+                '<div class="nkc-subtitle">'+p.subtitle+'</div>' +
+              '</div>' +
+              '<div class="nkc-desc">'+p.desc+'</div>' +
+              '<div class="nkc-cols">' +
+                '<div>' +
+                  '<div class="nkc-col-label">Criminal techniques</div>' +
+                  '<ul class="nkc-list '+listCls+'">' +
+                    p.criminal.map(function(t){ return '<li>'+t+'</li>'; }).join('') +
+                  '</ul>' +
+                '</div>' +
+                '<div>' +
+                  '<div class="nkc-col-label">Investigator response</div>' +
+                  '<ul class="nkc-list '+listCls+'">' +
+                    p.investigator.map(function(t){ return '<li>'+t+'</li>'; }).join('') +
+                  '</ul>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+          document.getElementById('nkc-panel').innerHTML = html;
+          document.getElementById('nkc-counter').textContent = (current+1) + ' of ' + phases.length;
+          document.getElementById('nkc-prev').disabled = current === 0;
+          document.getElementById('nkc-next').disabled = current === phases.length - 1;
+        }
+
+        window.nkcGo = function(i) {
+          current = i; visited[i] = true; renderTrack(); renderPanel();
+        };
+        window.nkcNav = function(d) {
+          nkcGo(Math.max(0, Math.min(phases.length - 1, current + d)));
+        };
+
+        renderTrack();
+        renderPanel();
+      })();
+      </script>
+
+      <div class="alert info" style="margin-top:4px;">
+        <div class="alert-label">📌 How the rest of this guide maps to the kill chain</div>
+        <strong>Modules 01–05</strong> build the foundational skills for the financial investigation side (blockchain mechanics, tracing methodology, OSINT, tools). <strong>Modules 06–08</strong> cover the crime typologies that feed both sides of the chain. <strong>Modules 09–11</strong> (Case Studies, DFIR, Malware) cover the cyber kill chain phases in depth. <strong>References R1–R4</strong> address legal process, asset seizure, and real-world landmark cases.
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           CONVERGENCE OF DISCIPLINES
+           ═══════════════════════════════════════════════════════════ -->
+
       <h2>Convergence of Disciplines</h2>
       <div class="grid-3">
         <div class="tool-card">
@@ -64,6 +369,7 @@
           <li><strong>Pseudonymous ≠ Anonymous:</strong> Wallet addresses don't contain names, but behaviors, patterns, and mistakes leave an indelible trail.</li>
           <li><strong>On-chain + off-chain:</strong> The strongest investigations combine blockchain data with OSINT, social media, breach data, and traditional intelligence.</li>
           <li><strong>Speed matters:</strong> Funds move in minutes. The faster the trace, the more likely an exchange can freeze assets before they're cashed out.</li>
+          <li><strong>The handoff is where cases are won or lost:</strong> Investigators who can operate across both the cyber and financial domains close cases that specialists cannot.</li>
           <li><strong>Disruption is the goal:</strong> Attribution alone is not enough. Every investigation should aim to impose operational and legal consequences.</li>
           <li><strong>Documentation is evidence:</strong> Screenshot everything with timestamps. Archive web pages. Every note could become a court exhibit.</li>
         </ul>
@@ -87,5 +393,5 @@
 
       <div class="alert success">
         <div class="alert-label">✅ Ready to Begin</div>
-        Start with <strong>Module 01 — Blockchain Foundations</strong> if you're new to crypto forensics, or jump directly to <strong>Module 06 — Economic Crimes</strong> for crime typology drilldowns.
+        Start with <strong>Module 01 — Blockchain Foundations</strong> if you're new to crypto forensics, or jump directly to <strong>Module 06 — Economic Crimes</strong> for crime typology drilldowns. Return to this page any time to orient yourself within the unified kill chain.
       </div>
