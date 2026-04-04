@@ -15,7 +15,7 @@ This guide is for educational purposes only. All case studies reference publicly
 
 **NEXUS v1.0** is a single-file interactive HTML guide designed for anyone who wants to understand and practice cryptocurrency crime investigation. It bridges the gap between "Crypto 101" fundamentals and professional-grade forensic tradecraft.
 
-The guide is structured as a modular learning path with 12 core modules plus a reference section, progressive difficulty levels (Beginner → Expert), an interactive knowledge check quiz, and a searchable glossary.
+The guide is structured as a modular learning path with 11 core modules plus a reference section, progressive difficulty levels (Beginner → Expert), and a searchable glossary.
 
 ---
 
@@ -40,10 +40,10 @@ The guide is structured as a modular learning path with 12 core modules plus a r
 | 06 | Crypto Scams & Fraud Typologies | Intermediate |
 | 07 | Exchange Hacks & DeFi Exploits | Advanced |
 | 08 | Ransomware & Nation-State Threats | Advanced |
-| 09 | Legal Process & VASP Cooperation | Advanced |
-| 10 | Asset Seizure & Forfeiture | Advanced |
-| 11 | Real-World Case Studies | Advanced |
-| 12 | Knowledge Check (Quiz) | All |
+| 09 | Real-World Case Studies | Advanced |
+| 10 | DFIR / Threat Hunting | Advanced |
+| 11 | Malware Analysis | Advanced |
+| 12 | Knowledge Check (Quiz) | *Coming Soon* |
 | REF | Glossary & Resources | All |
 
 ---
@@ -84,7 +84,7 @@ The guide is structured as a modular learning path with 12 core modules plus a r
 |------|--------|------------|
 | Bybit Hack (Feb 2025) | $1.5B | Supply chain attack + Lazarus attribution methodology |
 | $243M BTC Theft (Aug 2024) | $243M | Social media OSINT + spending pattern analysis |
-| Haby Coinbase Scammer (2025) | $2M+ | Timing analysis + location OSINT from Instagram stories |
+| Haby Coinbase Scammer (2024–2025) | $2M+ | Timing analysis + location OSINT from Instagram stories |
 | USMS Asset Theft (Jan 2026) | $46M | Behavioral OSINT from private Telegram recordings |
 | Hyperliquid Whale (2025) | $20M | Bridge analysis + funding source tracing |
 | Khinkis OTC Broker (Mar 2026) | $4.7M+ | Ransomware payment tracing + exposure analysis |
@@ -118,7 +118,7 @@ open index.html
 python3 -m http.server 8080
 ```
 
-Navigate using the left sidebar. Progress is tracked as you visit each module. Use the Knowledge Check (Module 12) to test retention.
+Navigate using the left sidebar. Progress is tracked as you visit each module.
 
 ---
 
@@ -137,8 +137,8 @@ Navigate using the left sidebar. Progress is tracked as you visit each module. U
 
 | Version | Date | Notes |
 |---------|------|-------|
-| v1.0 | March 2026 | Initial release under NEXUS branding. 12 modules, 25+ tools, 50+ case references. |
+| v1.0 | March 2026 | Initial release under NEXUS branding. 11 modules, 25+ tools, 50+ case references. |
 
 ---
 
-*NEXUS v1.0 — E-Crimes Hunting & Disruption Guide*  
+*NEXUS v1.0 — E-Crimes Hunting & Disruption Guide*
